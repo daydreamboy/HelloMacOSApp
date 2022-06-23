@@ -54,8 +54,8 @@
 		2B446B372864549600991153 /* LogMate */ = {
 			isa = PBXGroup;
 			children = (
-				2B446B46286455D600991153 /* UI */,
 				2B446B45286455CD00991153 /* Classes */,
+				2B446B46286455D600991153 /* UI */,
 				2B446B382864549600991153 /* AppDelegate.swift */,
 				2B446B3A2864549800991153 /* Assets.xcassets */,
 				2B446B3C2864549800991153 /* MainMenu.xib */,

@@ -29,11 +29,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     {
         let controller = MainWindowController()
         
-//        if( Preferences.shared.lastStart == nil )
-//        {
-//            controller.window?.center()
-//        }
-        
         self.mainWindowControllers.append(controller)
         controller.window?.makeKeyAndOrderFront(sender)
     }

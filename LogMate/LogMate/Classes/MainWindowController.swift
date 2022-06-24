@@ -100,5 +100,24 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
     func tableView(_ tableView: NSTableView, didClick tableColumn: NSTableColumn) {
         print("didClick \(tableColumn.identifier.rawValue)")
     }
+    
+    @IBAction func openFiles(_ sender: Any) {
+        let dialog = NSOpenPanel();
 
+        dialog.title                   = "选择一个或多个文本文件";
+        dialog.showsResizeIndicator    = true;
+        dialog.showsHiddenFiles        = false;
+        dialog.canChooseDirectories    = false;
+        dialog.allowsMultipleSelection = true;
+
+        if (dialog.runModal() == NSApplication.ModalResponse.OK) {
+            let results = dialog.urls
+            
+            for result in results {
+                print("You selected path: \(result.path)")
+            }
+        } else {
+            return
+        }
+    }
 }

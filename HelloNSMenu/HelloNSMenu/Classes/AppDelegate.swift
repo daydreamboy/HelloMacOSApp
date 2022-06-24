@@ -9,22 +9,27 @@ import Cocoa
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
-
-    @IBOutlet var window: NSWindow!
-
-
+    
+    @objc private dynamic var mainWindowControllers: [ MainWindowController ] = []
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        self.newDocument(nil)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
     }
 
     func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
         return true
     }
 
+    // MARK:
+    func newDocument(_ sender: Any?)
+    {
+        let controller = MainWindowController()
 
+        self.mainWindowControllers.append(controller)
+        controller.window?.makeKeyAndOrderFront(sender)
+    }
 }
 

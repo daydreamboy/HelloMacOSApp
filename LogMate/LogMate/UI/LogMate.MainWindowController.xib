@@ -2,12 +2,15 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="20037"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MainWindowController" customModule="LogMate" customModuleProvider="target">
             <connections>
+                <outlet property="messageDetailView" destination="TEZ-l3-Wv6" id="hAM-ZH-4nD"/>
                 <outlet property="recordArrayController" destination="CgW-On-EIF" id="xxY-pi-Tum"/>
+                <outlet property="webView" destination="TbD-tL-krK" id="psR-ao-TfQ"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -28,7 +31,20 @@
                         <subviews>
                             <visualEffectView appearanceType="vibrantDark" blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="VsO-sY-giw" userLabel="LeftPanel">
                                 <rect key="frame" x="0.0" y="0.0" width="300" height="800"/>
+                                <subviews>
+                                    <wkWebView wantsLayer="YES" alphaValue="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="TbD-tL-krK">
+                                        <rect key="frame" x="0.0" y="7" width="300" height="743"/>
+                                        <wkWebViewConfiguration key="configuration">
+                                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                            <wkPreferences key="preferences"/>
+                                        </wkWebViewConfiguration>
+                                    </wkWebView>
+                                </subviews>
                                 <constraints>
+                                    <constraint firstItem="TbD-tL-krK" firstAttribute="centerX" secondItem="VsO-sY-giw" secondAttribute="centerX" id="8B3-fI-qTL"/>
+                                    <constraint firstItem="TbD-tL-krK" firstAttribute="centerY" secondItem="VsO-sY-giw" secondAttribute="centerY" constant="21.5" id="AyS-Yp-iPQ"/>
+                                    <constraint firstItem="TbD-tL-krK" firstAttribute="height" secondItem="VsO-sY-giw" secondAttribute="height" constant="-57" id="ECp-3x-Tau"/>
+                                    <constraint firstItem="TbD-tL-krK" firstAttribute="width" secondItem="VsO-sY-giw" secondAttribute="width" id="ioO-b6-VOC"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="pxa-J8-07Y"/>
                                 </constraints>
                             </visualEffectView>

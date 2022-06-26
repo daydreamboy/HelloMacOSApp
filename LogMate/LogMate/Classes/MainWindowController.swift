@@ -6,10 +6,14 @@
 //
 
 import Cocoa
+import WebKit
 
 class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableViewDelegate {
     
     @objc @IBOutlet private dynamic var recordArrayController: NSArrayController?
+    
+    @IBOutlet weak var webView: WKWebView!
+    @IBOutlet var messageDetailView: NSTextView!
     
     fileprivate enum CellIdentifiers {
         static let TimeCell = "TimeCell"
@@ -95,6 +99,8 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
     
     func tableViewSelectionDidChange(_ notification: Notification) {
         print("did change")
+        //let text = self.recordList[row]
+        //self.messageDetailView.textStorage = NSTextStorage.init(string: text)
     }
     
     func tableView(_ tableView: NSTableView, didClick tableColumn: NSTableColumn) {

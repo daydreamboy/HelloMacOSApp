@@ -18,16 +18,14 @@ class MainViewController: NSViewController, NSTableViewDelegate {
     @objc dynamic var loading = false
 
     override func viewDidLoad() {
-      super.viewDidLoad()
+        super.viewDidLoad()
         
         // Note: only press search button or stroke enter to trigger action
         self.searchField.sendsWholeSearchString = true
         
-      //let itemPrototype = self.storyboard?.instantiateController(withIdentifier: "collectionViewItem") as! NSCollectionViewItem
-        
-        //imageCollectionView.register(<#T##nib: NSNib?##NSNib?#>, forItemWithIdentifier: <#T##NSUserInterfaceItemIdentifier#>)
-        
-        //imageCollectionView.itemPrototype = itemPrototype
+        // Note: get a nib for collection view item
+        let itemNib = NSNib.init(nibNamed: "CollectionViewItem", bundle: Bundle.main)
+        imageCollectionView.register(itemNib, forItemWithIdentifier: NSUserInterfaceItemIdentifier.init(rawValue: "CollectionViewItem"))
     }
     
     

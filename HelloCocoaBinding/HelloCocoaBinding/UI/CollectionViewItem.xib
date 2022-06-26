@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="NSApplication"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <collectionViewItem id="BuH-fm-o70">
+            <connections>
+                <outlet property="view" destination="Nhb-XR-O8C" id="ENZ-IF-Rlh"/>
+            </connections>
+        </collectionViewItem>
+        <customView identifier="CollectionViewItem" id="Nhb-XR-O8C">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="460"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hkf-8R-J9Y">
+                    <rect key="frame" x="0.0" y="0.0" width="300" height="460"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="aRv-LB-8jm"/>
+                    <connections>
+                        <binding destination="BuH-fm-o70" name="value" keyPath="representedObject" id="K9Z-8i-2Ra"/>
+                    </connections>
+                </imageView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="hkf-8R-J9Y" firstAttribute="leading" secondItem="Nhb-XR-O8C" secondAttribute="leading" id="Px2-wB-Xjp"/>
+                <constraint firstAttribute="bottom" secondItem="hkf-8R-J9Y" secondAttribute="bottom" id="Rob-xd-fdM"/>
+                <constraint firstAttribute="trailing" secondItem="hkf-8R-J9Y" secondAttribute="trailing" id="cHh-YE-tnV"/>
+                <constraint firstItem="hkf-8R-J9Y" firstAttribute="top" secondItem="Nhb-XR-O8C" secondAttribute="top" id="pbD-0v-1Np"/>
+            </constraints>
+            <point key="canvasLocation" x="-375" y="-49"/>
+        </customView>
+        <userDefaultsController representsSharedInstance="YES" id="wGE-SK-FhN"/>
+    </objects>
+</document>

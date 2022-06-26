@@ -49,7 +49,7 @@ classDiagram
 
 NSTableView可以不设置dataSource属性，通过将它的Table Content绑定到一个NSArrayController对象上，也可以完成列表的自动刷新。
 
-基本步骤，如下
+基本步骤[^3]，如下
 
 #### a. 创建NSArrayController的IBOutlet
 
@@ -218,9 +218,9 @@ class Result: NSObject {
 
 #### a. 使用Formatter对象
 
+在Interface Builder中可以在NSTextFieldCell下面添加Formatter对象，数据显示时会自动该Formatter对象进行数据格式化，如下
 
-
-
+<img src="images/09_set_formatter.png" style="zoom:50%; float: left" />
 
 
 
@@ -232,8 +232,7 @@ class Result: NSObject {
 
 [^1]:https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CocoaBindings/CocoaBindings.html
 [^2]:https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CocoaBindings/Concepts/WhatAreBindings.html#//apple_ref/doc/uid/20002372-177085
-
-
+[^3]:https://www.raywenderlich.com/921-cocoa-bindings-on-macos
 
 
 

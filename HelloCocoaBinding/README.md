@@ -43,9 +43,134 @@ classDiagram
 
 
 
-## 2、
+## 2、常见UI组件Binding
+
+### (1) NSTableView Binding
+
+NSTableView可以不设置dataSource属性，通过将它的Table Content绑定到一个NSArrayController对象上，也可以完成列表的自动刷新。
+
+基本步骤，如下
+
+#### a. 创建NSArrayController的IBOutlet
+
+在Interface Builder中创建一个NSArrayController，如下
+
+![](images/01_create_NSArrayController_object.png)
 
 
+
+#### b. 设置Table Content的binding
+
+选中NSTableView，在Binding Inspector中，找到Table Content，勾选Bind to，并选择为Array Controller，如下
+
+![](images/02_NSTableView_bind_array.png)
+
+这里的Array Controller就是上面在Interface Builder中创建的Array Controller对象，然后设置Controller Key为arrangedObjects。
+
+完成这个操作，就是把NSTableView的数据绑定到NSArrayController的arrangedObjects属性。
+
+说明
+
+> 1. Controller Key的含义是指某个控制器的属性，比如arrangedObjects是NSArrayController的属性
+>
+> 2. arrangedObjects属性，是KVO observable，而且arrangedObjects属性返回的数组是经过NSArrayController的arrange方法，有过滤和排序的能力
+
+
+
+上面创建searchResultsController变量，如果获取到数据，则设置到它的content属性上，如下
+
+```swift
+self.searchResultsController.content = itunesResults
+```
+
+到这里，NSTableView能显示正确row的个数，但是每个row中cell是没有数据的，这是因为cell需要binding。
+
+说明
+
+> content属性是NSObjectController的属性，定义如下
+>
+> ```objective-c
+> @property(strong) id content;
+> ```
+>
+> 
+
+
+
+#### c. 设置NSTextField的binding
+
+NSTableCellView是NSTableView的每个cell，但是NSTableCellView还有它的子视图。
+
+以cell显示文本为例，实际上是通过NSTextField显示文本，因此需要显示cell的内容，是需要绑定具体显示的UI组件。
+
+例如NSTableView显示3列文本，分别Rank、Title和Publisher，如下
+
+<img src="images/04_set_NSTextField_bindings.png" style="zoom:50%; float: left" />
+
+需要依次将对应的NSTextField设置好binding，以Rank为例，如下
+
+<img src="images/05_set_model_key_path.png" style="zoom:50%; float: left" />
+
+找到Value，勾选Bind to，并选择Table Cell View，然后设置Model Key Path为objectValue.rank。
+
+这里Binding操作和上面设置Table Content的binding不一样，这里没有直接绑定到Array Controller对象上，而绑定到每个NSTableCellView的objectValue属性上。
+
+官方文档对objectValue属性描述，如下
+
+> The `objectValue` is automatically set by the table when using bindings or is the object returned by the [`NSTableViewDataSource`](dash-apple-api://load?request_key=lc/documentation/appkit/nstableviewdatasource) protocol method [`tableView:objectValueForTableColumn:row:`](dash-apple-api://load?request_key=lc/documentation/appkit/nstableviewdatasource/1533674-tableview).
+
+可见NSTableView设置好Binding，那么每个NSTableCellView的objectValue属性也会自动设置对应的数据对象，因此NSTextField需要的数据直接绑定到objectValue属性上。
+
+objectValue属性返回的一个id类型，这个类型是Array Controller对象返回的数组中的元素类型。
+
+在HelloCocoaBinding工程中，这个元素类型是Result类，它的定义，如下
+
+```swift
+class Result: NSObject {
+    @objc dynamic var rank = 0
+    @objc dynamic var artistName = ""
+    @objc dynamic var trackName = ""
+    @objc dynamic var averageUserRating = 0.0
+    @objc dynamic var averageUserRatingForCurrentVersion = 0.0
+    @objc dynamic var itemDescription = ""
+    @objc dynamic var price = 0.00
+    @objc dynamic var releaseDate = Date()
+    @objc dynamic var artworkURL: URL?
+    @objc dynamic var artworkImage: NSImage?
+    @objc dynamic var screenShotURLs: [URL] = []
+    @objc dynamic var screenShots = NSMutableArray()
+    @objc dynamic var userRatingCount = 0
+    @objc dynamic var userRatingCountForCurrentVersion = 0
+    @objc dynamic var primaryGenre = ""
+    @objc dynamic var fileSizeInBytes = 0
+    @objc dynamic var cellColor = NSColor.white
+    ...
+}
+```
+
+说明
+
+> 1. @objc TODO
+> 2. dynamic TODO
+
+同样的操作，将Title和Publisher设置好binding，它们的Model Key Path为
+
+* objectValue.trackName
+* objectValue.artistName
+
+到这里NSTableView，应该能显示所有的cell数据。
+
+
+
+#### d. 设置NSTableView的selection binding
+
+
+
+
+
+
+
+https://stackoverflow.com/a/57292829
 
 
 

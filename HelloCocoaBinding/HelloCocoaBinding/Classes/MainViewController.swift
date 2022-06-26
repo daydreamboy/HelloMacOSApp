@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  HelloCocoaBinding
 //
 //  Created by wesley_chen on 2022/6/26.
@@ -7,7 +7,7 @@
 
 import Cocoa
 
-class ViewController: NSViewController {
+class MainViewController: NSViewController, NSTableViewDelegate {
 
     @IBOutlet weak var searchField: NSSearchField!
     @IBOutlet weak var numberOfResultsComboBox: NSComboBox!
@@ -20,12 +20,18 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
       super.viewDidLoad()
         
+        // Note: only press search button or stroke enter to trigger action
+        self.searchField.sendsWholeSearchString = true
+        
       //let itemPrototype = self.storyboard?.instantiateController(withIdentifier: "collectionViewItem") as! NSCollectionViewItem
         
         //imageCollectionView.register(<#T##nib: NSNib?##NSNib?#>, forItemWithIdentifier: <#T##NSUserInterfaceItemIdentifier#>)
         
         //imageCollectionView.itemPrototype = itemPrototype
     }
+    
+    
+    // MARK: IBAction
     
     @IBAction func searchClicked(_ sender: Any) {
       //1
@@ -62,6 +68,8 @@ class ViewController: NSViewController {
     @IBAction func searchFieldEntered(_ sender: Any) {
         searchClicked(sender)
     }
+    
+    // MARK: NSTableViewDelegate
     
     //1
     func tableViewSelectionDidChange(_ notification: Notification) {

@@ -164,13 +164,61 @@ class Result: NSObject {
 
 #### d. 设置NSTableView的selection binding
 
+对NSTableView的选中row进行数据绑定，这里对row的选中可以是仅一行，也可以是多行。
+
+在NSTableView的Binding Inspec中找到Selection Indexes，勾选Bind to，并选择Array Controller对象，然后设置Controller Key为selectionIndexes。
+
+<img src="images/03_NSTableView_bind_selectionIndexes.png" style="zoom:50%; float: left" />
+
+说明
+
+> NSArrayContoller的selectionIndexes属性，用于表示数组中被选中元素的下标。
+>
+> 官方文档描述，如下
+>
+> An index set containing the indexes of the receiver’s currently selected objects in the content array
+
+完成上面的绑定操作后，当NSTableView中row被选中时，会自动更新NSArrayContoller的selectionIndexes属性，同时也会更新它的selection属性。
+
+说明
+
+> selection属性是NSObjectController的属性，NSArrayContoller继承自NSObjectController
 
 
 
+如果其他UI组件要监听NSTableView的选中row的事件，以选中一行为例。
+
+可以它的Binding Inspector去绑定NSArrayContoller的selection属性，如下
+
+<img src="images/06_set_app_name_label_binding.png" style="zoom:50%; float: left" />
+
+这里还需要设置Model Key Path，即选中的某个模型的trackName字段。
 
 
 
-https://stackoverflow.com/a/57292829
+### (2) hidden属性 binding
+
+上面NSTableView的数据绑定，由于数据和UI都比较复杂，所以绑定操作的步骤比较多。
+
+如果是简单的UI属性绑定到某个变量，绑定操作的步骤则相对比较少。
+
+以某个View的hidden属性的绑定为例，如下
+
+<img src="images/07_set_hidden_binding.png" style="zoom:50%; float: left" />
+
+新建一个变量loading，用于UI监听这个变量的数据变更。然后在Interface Builder中，选中Indicator，找到Binding Inspector的Hidden设置，如下
+
+<img src="images/08_set_hidden_binding_2.png" style="zoom:50%; float: left" />
+
+由于需要将监听的值取反，这里直接使用Value Transformer中的NSNegateBoolean
+
+
+
+### (3) 数据转换
+
+#### a. 使用Formatter对象
+
+
 
 
 

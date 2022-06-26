@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4F3D30BB286836CE005D9790 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3D30BA286836CE005D9790 /* AppDelegate.swift */; };
-		4F3D30BD286836CE005D9790 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3D30BC286836CE005D9790 /* ViewController.swift */; };
+		4F3D30BD286836CE005D9790 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3D30BC286836CE005D9790 /* MainViewController.swift */; };
 		4F3D30BF286836D0005D9790 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F3D30BE286836D0005D9790 /* Assets.xcassets */; };
 		4F3D30C2286836D0005D9790 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F3D30C0286836D0005D9790 /* Main.storyboard */; };
 		4F3D30E528684BD3005D9790 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3D30E428684BD3005D9790 /* Result.swift */; };
@@ -18,7 +18,7 @@
 /* Begin PBXFileReference section */
 		4F3D30B7286836CE005D9790 /* HelloCocoaBinding.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloCocoaBinding.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F3D30BA286836CE005D9790 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4F3D30BC286836CE005D9790 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4F3D30BC286836CE005D9790 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4F3D30BE286836D0005D9790 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4F3D30C1286836D0005D9790 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F3D30C3286836D0005D9790 /* HelloCocoaBinding.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HelloCocoaBinding.entitlements; sourceTree = "<group>"; };
@@ -70,7 +70,7 @@
 			children = (
 				4F3D30E428684BD3005D9790 /* Result.swift */,
 				4F3D30E628684BEC005D9790 /* ResultRequestManager.swift */,
-				4F3D30BC286836CE005D9790 /* ViewController.swift */,
+				4F3D30BC286836CE005D9790 /* MainViewController.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -155,7 +155,7 @@
 			files = (
 				4F3D30E728684BEC005D9790 /* ResultRequestManager.swift in Sources */,
 				4F3D30E528684BD3005D9790 /* Result.swift in Sources */,
-				4F3D30BD286836CE005D9790 /* ViewController.swift in Sources */,
+				4F3D30BD286836CE005D9790 /* MainViewController.swift in Sources */,
 				4F3D30BB286836CE005D9790 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -49,9 +49,10 @@ https://ourcodeworld.com/articles/read/1117/how-to-implement-a-file-and-director
 
 | 类                  | UI组件      | 作用                    |      |
 | ------------------- | ----------- | ----------------------- | ---- |
+| NSImageView         | 显示图片    |                         |      |
 | NSProgressIndicator | loading组件 | 有2个样式：转圈和进度条 |      |
 | NSSearchField       | 搜索框      |                         |      |
-|                     |             |                         |      |
+| NSTextView          | 显示文本框  |                         |      |
 
 
 

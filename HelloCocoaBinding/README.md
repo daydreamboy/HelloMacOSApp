@@ -150,7 +150,7 @@ class Result: NSObject {
 
 说明
 
-> 1. @objc TODO
+> 1. @objc TODO: https://stackoverflow.com/questions/46027620/binding-in-osx-class-is-not-key-value-coding-compliant-for-the-key-name-of-bin
 > 2. dynamic TODO
 
 同样的操作，将Title和Publisher设置好binding，它们的Model Key Path为

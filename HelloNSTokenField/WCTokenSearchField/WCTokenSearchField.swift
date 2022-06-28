@@ -22,5 +22,7 @@ class WCTokenSearchField: NSTextField {
         layer?.borderColor = NSColor(white: 0.82, alpha: 1.0).cgColor
         layer?.borderWidth = 1
         layer?.cornerRadius = 5
+        
+        (cell as! WCTokenSearchFieldCell).placeholderString = self.placeholderString
     }
 }

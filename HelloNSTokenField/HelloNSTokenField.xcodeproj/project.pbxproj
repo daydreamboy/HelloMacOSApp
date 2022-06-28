@@ -74,8 +74,8 @@
 			isa = PBXGroup;
 			children = (
 				4F5486E5286B40DD0002A872 /* WCTokenSearchField.swift */,
-				4F5486E7286B42880002A872 /* WCTokenAttachmentCell.swift */,
 				4F5486E9286B454D0002A872 /* WCTokenSearchFieldCell.swift */,
+				4F5486E7286B42880002A872 /* WCTokenAttachmentCell.swift */,
 				4F5486EB286B45C90002A872 /* WCTokenTextView.swift */,
 			);
 			path = WCTokenSearchField;

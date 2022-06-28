@@ -14,15 +14,24 @@ class WCTokenSearchField: NSTextField {
         setupSearchField()
     }
     
+    class func leftPadding() -> Double {
+        return 4 + 22 + 4
+    }
+    
     private func setupSearchField() {
         wantsLayer = true
-        let tokenSearchFieldLayer = CALayer()
-        layer = tokenSearchFieldLayer
         layer?.backgroundColor = NSColor.white.cgColor
         layer?.borderColor = NSColor(white: 0.82, alpha: 1.0).cgColor
         layer?.borderWidth = 1
         layer?.cornerRadius = 5
         
-        (cell as! WCTokenSearchFieldCell).placeholderString = self.placeholderString
+        // https://stackoverflow.com/questions/29172719/drawing-fixed-symbol-inside-nstextfield
+        let magnifierIcon: NSImage? = NSImage.init(systemSymbolName: "magnifyingglass", accessibilityDescription: "Search")
+        if let icon = magnifierIcon {
+            let imageView: NSImageView = NSImageView.init(image: icon)
+            let side = self.frame.size.height
+            imageView.frame = NSMakeRect(4, 0, side, side)
+            self.addSubview(imageView)
+        }
     }
 }

@@ -8,7 +8,7 @@
 import Cocoa
 
 class WCTokenSearchFieldCell: NSTextFieldCell {
-    @IBInspectable var leftPadding: CGFloat = 20.0
+    //@IBInspectable var leftPadding: CGFloat = 20.0
     
     var tokenTextView: WCTokenTextView = WCTokenTextView()
 
@@ -20,6 +20,7 @@ class WCTokenSearchFieldCell: NSTextFieldCell {
     
     // @see https://stackoverflow.com/questions/38137824/nstextfield-padding-on-the-left
     override func drawingRect(forBounds rect: NSRect) -> NSRect {
+        let leftPadding: Double = WCTokenSearchField.leftPadding()
         let rectInset = NSMakeRect(rect.origin.x + leftPadding, rect.origin.y, rect.size.width - leftPadding, rect.size.height)
         
 //        NSGraphicsContext.saveGraphicsState()

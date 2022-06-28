@@ -20,8 +20,8 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
         static let MessageCell = "MessageCell"
     }
     
-    
-    var recordList:[String] = []
+    var regexString: String?
+    var recordList: [String] = []
 
     convenience init() {
         self.init(sender: nil)
@@ -44,6 +44,8 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
             "9 d",
             "10 d",
         ]
+        
+        self.regexString = "[0-9]+[0-9]+[0-9]+[0-9]+-[0-9]+[0-9]+-[0-9]+[0-9]+ [0-9]+[0-9]+:[0-9]+[0-9]+:[0-9]+[0-9]+.[0-9]+[0-9]+[0-9]+"
     }
     
     override func windowDidLoad() {
@@ -117,13 +119,43 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
         dialog.allowsMultipleSelection = true;
 
         if (dialog.runModal() == NSApplication.ModalResponse.OK) {
-            let results = dialog.urls
-            
-            for result in results {
-                print("You selected path: \(result.path)")
-            }
+            self.recordList = readFiles(fileURLs: dialog.urls)
+            print(self.recordList)
         } else {
             return
         }
+    }
+    
+    func readFiles(fileURLs: [URL]) -> [String] {
+        // TODO: order files' contents
+        var totalLines: [String] = []
+        var eachLinesOfFile: [String: Array<String>] = [:]
+        
+        for fileURL in fileURLs {
+            print("You selected path: \(fileURL.path)")
+            var lines = readLines(filePath: fileURL.path)
+            
+            totalLines.append(contentsOf: lines)
+        }
+        
+        return totalLines
+    }
+    
+    func readLines(filePath: String) -> [String] {
+        var lines: [String] = []
+        
+        if let aStreamReader = WCStringStreamReader(path: filePath) {
+            defer {
+                aStreamReader.close()
+            }
+            
+            // Example 1: use nextLine func
+            while let line = aStreamReader.nextLine() {
+                //print("line\(aStreamReader.numberOfLines): \(line)")
+                lines.append(line)
+            }
+        }
+        
+        return lines
     }
 }

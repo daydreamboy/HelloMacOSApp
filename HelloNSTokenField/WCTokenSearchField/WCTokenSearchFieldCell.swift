@@ -7,6 +7,7 @@
 
 import Cocoa
 
+// TODO:  Configure: Set this class to the NSTextFieldCell object's custom class
 class WCTokenSearchFieldCell: NSTextFieldCell {
     public var leftPadding: CGFloat = 0.0
     private var tokenTextView: WCTokenTextView = WCTokenTextView()
@@ -20,15 +21,11 @@ class WCTokenSearchFieldCell: NSTextFieldCell {
     }
 
     override func fieldEditor(for controlView: NSView) -> NSTextView? {
-        if self.isHighlighted {
-            return tokenTextView
-        }
-        else {
-            return nil
-        }
+        return tokenTextView
     }
     
     override func endEditing(_ textObj: NSText) {
-        print("")
+        // Note: must not call super, to avoid share the field editor (tokenTextView) to other NSTextField/NSSearchField
+        //super.endEditing(textObj)
     }
 }

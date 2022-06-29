@@ -7,54 +7,11 @@
 
 import Cocoa
 
-struct TokenSearchTypes {
-    static let tokenizbleStemWords: [String] = [
-      "from",
-      "to",
-      "subject",
-      "label",
-      "has",
-      "list",
-      "filename",
-      "in",
-      "has",
-      "cc",
-      "after",
-      "before",
-      "newer_than"
-    ]
-}
-
 class WCTokenTextView: NSTextView {
-    
-    enum TokenMode {
-        case `default`
-        case stem
-    }
-    
-    public var mode: TokenMode = .default
+        
+    public var mode: WCTokenMode = .default
     
     let tokenizingCharacterSet: CharacterSet = CharacterSet.newlines
-    
-    override var isHidden: Bool {
-            get {
-                super.isHidden
-            }
-            set {
-                super.isHidden = newValue
-                if newValue == true {
-                    print("to hide")
-                }
-            }
-        }
-    
-    override func viewDidHide() {
-        print("hit")
-    }
-    
-    override func removeFromSuperview() {
-        print("hit")
-    }
     
     // MARK: Override
     
@@ -90,19 +47,25 @@ class WCTokenTextView: NSTextView {
     // MARK: -
     
     fileprivate func notifyEndEditing() {
-        var tokenStrings: [String] = []
+        var tokens: [WCToken] = []
         textStorage?.enumerateAttribute(NSAttributedString.Key.attachment, in: NSMakeRange(0, textStorage!.length), using: { (value, range, stop) in
             if value is NSTextAttachment {
                let attachment: NSTextAttachment? = (value as? NSTextAttachment)
 
                 if let textAttachmentCell = attachment?.attachmentCell, textAttachmentCell is WCTokenAttachmentCell {
-                    tokenStrings.append((textAttachmentCell as! WCTokenAttachmentCell).stringValue)
+                    let token = WCToken.init()
+                    token.mode = self.mode
+                    token.stringValue = (textAttachmentCell as! WCTokenAttachmentCell).stringValue
+                    token.key = (textAttachmentCell as! WCTokenAttachmentCell).cellTitleString
+                    token.value = (textAttachmentCell as! WCTokenAttachmentCell).stringValue
+                    
+                    tokens.append(token)
                 }
             }
         })
         
         let userInfo: [String: Any] = [
-            "tokenStrings": tokenStrings
+            "tokens": tokens
         ]
         
         NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "WCTokenTextViewDidEndEditing"), object: self, userInfo: userInfo)
@@ -144,18 +107,18 @@ class WCTokenTextView: NSTextView {
         }
     }
 
-    /// Make token into small components: title and value parts
-    private func tokenComponents(string: String) -> (stem: String?, value: String?) {
+    /// Make token into small components: key and value parts
+    private func tokenComponents(string: String) -> (key: String?, value: String?) {
         switch mode {
         case .default:
             return (nil, string)
         case .stem:
-            let stringComponents: [String] = string.split(separator: ":").flatMap(String.init)
+            let stringComponents: [String] = string.components(separatedBy: ":").filter({ !$0.isEmpty })
+            
+            let tokenKey: String? = stringComponents.first?.trimmingCharacters(in: .whitespacesAndNewlines)
+            let tokenValue: String? = stringComponents.last?.trimmingCharacters(in: .whitespacesAndNewlines)
 
-            let tokenStem: String? = stringComponents.first?.trimmingCharacters(in: .whitespaces)
-            let tokenValue: String? = stringComponents.last?.trimmingCharacters(in: .whitespaces)
-
-            return (tokenStem, tokenValue)
+            return (tokenKey, tokenValue)
         }
     }
 
@@ -164,6 +127,7 @@ class WCTokenTextView: NSTextView {
 
         switch mode {
         case .default:
+            // Note: default mode example string: 123\U0000fffc456\U0000fffc
             var ranges: [NSRange] = []
             var isTokenStart = false
             
@@ -197,17 +161,50 @@ class WCTokenTextView: NSTextView {
             
             return ranges
         case .stem:
-//            // TOOD: return array
-//            for (stem) in TokenSearchTypes.tokenizbleStemWords {
-//                let stemRange: NSRange = string.range(of: stem)
-//                if stemRange.location != NSNotFound {
-//                    return NSRange(
-//                        location: stemRange.location,
-//                        length: string.length - stemRange.location
-//                    )
-//                }
-//            }
-            return nil
+            // Note: stem mode example string: key:value\U0000fffcsomeOtherThing
+            var ranges: [NSRange] = []
+            var isTokenStart = false
+            
+            // Note: token range: [tokenStartIndex, tokenEndIndex)
+            var tokenStartIndex = 0
+            var tokenEndIndex = 0
+            let OBJUnicodeChar = "\u{fffc}"
+            
+            string.enumerateSubstrings(in: NSMakeRange(0, string.length), options: NSString.EnumerationOptions.byComposedCharacterSequences) { substring, substringRange, range, stop in
+                
+                // Note: the first char is not OBJ, treat it as token start
+                if (substring != OBJUnicodeChar && !isTokenStart) {
+                    isTokenStart = true
+                    tokenStartIndex = substringRange.location
+                }
+                // Note: the first char is OBJ, treat is as token end
+                else if (substring == OBJUnicodeChar && isTokenStart) {
+                    isTokenStart = false
+                    tokenEndIndex = substringRange.location
+                    
+                    let tokenRange = NSMakeRange(tokenStartIndex, tokenEndIndex - tokenStartIndex)
+                    ranges.append(tokenRange)
+                }
+            }
+            
+            if isTokenStart {
+                tokenEndIndex = string.length
+                let tokenRange = NSMakeRange(tokenStartIndex, tokenEndIndex - tokenStartIndex)
+                ranges.append(tokenRange)
+            }
+            
+            // Note: check token ranges which should contain a `:`
+            var rangesToRemove: [NSRange] = []
+            for range in ranges {
+                let substring = string.substring(with: range)
+                if substring.contains(":") == false {
+                    rangesToRemove.append(range)
+                }
+            }
+            
+            ranges = ranges.filter { !rangesToRemove.contains($0) }
+            
+            return ranges
         }
     }
 
@@ -228,10 +225,14 @@ class WCTokenTextView: NSTextView {
                     let string: NSAttributedString = NSAttributedString(attachment: attachment)
                     let tokenString: NSMutableAttributedString = NSMutableAttributedString(attributedString: string)
 
+                    // TEMP: consider to omit
+                    /*
                     tokenString.addAttributes([
                         NSAttributedString.Key.font: NSFont.systemFont(ofSize: 13)
                     ], range: NSRange(location: 0, length: tokenString.length))
+                     */
 
+                    // TODO: not safe
                     textStorage?.replaceCharacters(in: tokenRange, with: tokenString)
 
             //        typingAttributes = [

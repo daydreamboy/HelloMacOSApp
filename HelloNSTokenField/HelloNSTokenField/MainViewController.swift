@@ -7,16 +7,23 @@
 
 import Cocoa
 
-class MainViewController: NSViewController, NSTextFieldDelegate, WCTokenSearchFieldDelegate {
-    func tokenSearchFieldDidPressEnter(_ textField: WCTokenSearchField, _ tokenStrings: [String]?) {
-        print(tokenStrings!)
-    }
-
+class MainViewController: NSViewController, NSTextFieldDelegate {
     @IBOutlet weak var tokenSearchField: WCTokenSearchField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tokenSearchField.tokenSearchDelegate = self
+    }
+}
+
+extension MainViewController: WCTokenSearchFieldDelegate {
+    
+    func tokenSearchFieldDidPressEnter(_ textField: WCTokenSearchField, _ tokens: [WCToken]?) {
+        if let tokens = tokens {
+            for token in tokens {
+                print("key: \(token.key ?? "nil"), value: \(token.value ?? "nil")")
+            }
+        }
     }
 }
 

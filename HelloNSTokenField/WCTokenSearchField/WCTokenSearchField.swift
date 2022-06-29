@@ -7,7 +7,13 @@
 
 import Cocoa
 
+protocol WCTokenSearchFieldDelegate {
+    func tokenSearchFieldDidPressEnter(_ textField: WCTokenSearchField, _ tokenStrings: [String]?)
+}
+
 class WCTokenSearchField: NSTextField {
+    
+    var tokenSearchDelegate: WCTokenSearchFieldDelegate?
     
     required init?(coder decoder: NSCoder) {
         super.init(coder: decoder)
@@ -21,6 +27,7 @@ class WCTokenSearchField: NSTextField {
         layer?.borderWidth = 1
         layer?.cornerRadius = 5
         
+        // Step 1: add icon
         // https://stackoverflow.com/questions/29172719/drawing-fixed-symbol-inside-nstextfield
         let magnifierIcon: NSImage? = NSImage.init(systemSymbolName: "magnifyingglass", accessibilityDescription: "Search")
         if let icon = magnifierIcon {
@@ -39,6 +46,18 @@ class WCTokenSearchField: NSTextField {
             else {
                 print("\(WCTokenSearchField.self)'cell should be \(NSStringFromClass(WCTokenSearchFieldCell.self))")
                 fatalError("\(WCTokenSearchField.self)'cell should be \(NSStringFromClass(WCTokenSearchFieldCell.self))")
+            }
+        }
+        
+        if let tokenCell = cell as? WCTokenSearchFieldCell {
+            let textView = tokenCell.fieldEditor(for: self)
+            NotificationCenter.default.addObserver(forName: NSNotification.Name.init(rawValue: "WCTokenTextViewDidEndEditing"), object: textView, queue: OperationQueue.main) { notification in
+                print("receive notification from \(String(describing: notification.object))")
+                
+                if let delegate = self.tokenSearchDelegate {                    
+                    let tokenStrings = notification.userInfo?["tokenStrings"]
+                    delegate.tokenSearchFieldDidPressEnter(self, tokenStrings as? [String])
+                }
             }
         }
     }

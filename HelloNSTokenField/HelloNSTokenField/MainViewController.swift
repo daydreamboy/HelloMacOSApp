@@ -7,16 +7,16 @@
 
 import Cocoa
 
-class MainViewController: NSViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+class MainViewController: NSViewController, NSTextFieldDelegate, WCTokenSearchFieldDelegate {
+    func tokenSearchFieldDidPressEnter(_ textField: WCTokenSearchField, _ tokenStrings: [String]?) {
+        print(tokenStrings!)
     }
 
-    override var representedObject: Any? {
-        didSet {
-        // Update the view, if already loaded.
-        }
+    @IBOutlet weak var tokenSearchField: WCTokenSearchField!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tokenSearchField.tokenSearchDelegate = self
     }
 }
 

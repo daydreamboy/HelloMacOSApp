@@ -730,7 +730,7 @@
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ztM-Z9-AIJ" customClass="WCTokenSearchField" customModule="HelloNSTokenField" customModuleProvider="target">
                                 <rect key="frame" x="20" y="145" width="440" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Search" drawsBackground="YES" id="QhL-1Z-DfH" customClass="WCTokenSearchFieldCell" customModule="HelloNSTokenField" customModuleProvider="target">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Search" drawsBackground="YES" id="QhL-1Z-DfH" customClass="WCTokenSearchFieldCell" customModule="HelloNSTokenField" customModuleProvider="target">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -752,6 +752,9 @@
                             </textField>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="tokenSearchField" destination="ztM-Z9-AIJ" id="Ws5-iv-ePR"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

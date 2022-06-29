@@ -20,6 +20,15 @@ class WCTokenSearchFieldCell: NSTextFieldCell {
     }
 
     override func fieldEditor(for controlView: NSView) -> NSTextView? {
-        return tokenTextView
+        if self.isHighlighted {
+            return tokenTextView
+        }
+        else {
+            return nil
+        }
+    }
+    
+    override func endEditing(_ textObj: NSText) {
+        print("")
     }
 }

@@ -36,6 +36,26 @@ class WCTokenTextView: NSTextView {
     
     let tokenizingCharacterSet: CharacterSet = CharacterSet.newlines
     
+    override var isHidden: Bool {
+            get {
+                super.isHidden
+            }
+            set {
+                super.isHidden = newValue
+                if newValue == true {
+                    print("to hide")
+                }
+            }
+        }
+    
+    override func viewDidHide() {
+        print("hit")
+    }
+    
+    override func removeFromSuperview() {
+        print("hit")
+    }
+    
     // MARK: Override
     
     override func keyDown(with event: NSEvent) {
@@ -54,6 +74,7 @@ class WCTokenTextView: NSTextView {
             // Note: when press key which can tokenize the previous chars
             if tokenizingCharacterSet.contains(scalar) {
                 makeTokens(with: event)
+                notifyEndEditing()
             } else {
                 super.keyDown(with: event)
             }
@@ -67,6 +88,25 @@ class WCTokenTextView: NSTextView {
     }
     
     // MARK: -
+    
+    fileprivate func notifyEndEditing() {
+        var tokenStrings: [String] = []
+        textStorage?.enumerateAttribute(NSAttributedString.Key.attachment, in: NSMakeRange(0, textStorage!.length), using: { (value, range, stop) in
+            if value is NSTextAttachment {
+               let attachment: NSTextAttachment? = (value as? NSTextAttachment)
+
+                if let textAttachmentCell = attachment?.attachmentCell, textAttachmentCell is WCTokenAttachmentCell {
+                    tokenStrings.append((textAttachmentCell as! WCTokenAttachmentCell).stringValue)
+                }
+            }
+        })
+        
+        let userInfo: [String: Any] = [
+            "tokenStrings": tokenStrings
+        ]
+        
+        NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "WCTokenTextViewDidEndEditing"), object: self, userInfo: userInfo)
+    }
 
     func insertToken(attachment: NSTextAttachment, range: NSRange) {
         let replacementString: NSAttributedString = NSAttributedString(attachment: attachment)

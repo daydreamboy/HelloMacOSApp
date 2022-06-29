@@ -79,32 +79,33 @@ class WCTokenTextView: NSTextView {
     }
 
     func setHighlightedAtRanges(_ ranges: [NSValue], newHighlight: Bool) {
-      guard let textStorage = self.textStorage else {
-        return
-      }
-
-      for range in ranges {
-          let intersection = NSIntersectionRange(NSMakeRange(0, textStorage.length), range.rangeValue)
-
-        // if range is already deleted
-        if (intersection.length == 0) {
-          continue
+        guard let textStorage = self.textStorage else {
+            return
         }
 
-          textStorage.enumerateAttribute(NSAttributedString.Key.attachment,
-                                        in: intersection,
-                                        options: NSAttributedString.EnumerationOptions(),
-                                        using: { (value: Any?, range: NSRange, stop: UnsafeMutablePointer<ObjCBool>) in
-                                          if let cell = (value as? NSTextAttachment)?.attachmentCell {
-                                            if let tokenSearchField = (cell.attachment?.attachmentCell as? WCTokenAttachmentCell) {
-                                              tokenSearchField.isHighlighted = newHighlight
-                                            }
-                                          }
-        })
-      }
+        for range in ranges {
+            let intersection = NSIntersectionRange(NSMakeRange(0, textStorage.length), range.rangeValue)
+
+            // if range is already deleted
+            if (intersection.length == 0) {
+                continue
+            }
+
+            textStorage.enumerateAttribute(NSAttributedString.Key.attachment,
+                                          in: intersection,
+                                          options: NSAttributedString.EnumerationOptions(),
+                                          using: { (value: Any?, range: NSRange, stop: UnsafeMutablePointer<ObjCBool>) in
+                if let cell = (value as? NSTextAttachment)?.attachmentCell {
+                    if let tokenSearchField = (cell.attachment?.attachmentCell as? WCTokenAttachmentCell) {
+                        tokenSearchField.isHighlighted = newHighlight
+                    }
+                }
+            })
+        }
     }
 
-    func tokenComponents(string: String) -> (stem: String?, value: String?) {
+    /// Make token into small components: title and value parts
+    private func tokenComponents(string: String) -> (stem: String?, value: String?) {
         switch mode {
         case .default:
             return (nil, string)
@@ -189,7 +190,7 @@ class WCTokenTextView: NSTextView {
 
                     tokenString.addAttributes([
                         NSAttributedString.Key.font: NSFont.systemFont(ofSize: 13)
-                      ], range: NSRange(location: 0, length: tokenString.length))
+                    ], range: NSRange(location: 0, length: tokenString.length))
 
                     textStorage?.replaceCharacters(in: tokenRange, with: tokenString)
 

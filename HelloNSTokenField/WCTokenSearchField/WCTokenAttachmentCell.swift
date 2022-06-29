@@ -11,10 +11,12 @@ class WCTokenAttachmentCell: NSTextAttachmentCell {
 
     let cellMarginSide: CGFloat = 4.0
     let cellDivider: CGFloat = 0.5
-    var cellTitleString: String
+    var cellTitleString: String?
 
-    init(cellTitle: String, cellValue: String) {
-        cellTitleString = cellTitle.uppercased()
+    init(cellTitle: String?, cellValue: String) {
+        if let cellTitle = cellTitle {
+            cellTitleString = cellTitle.uppercased()
+        }
         super.init(textCell: cellValue)
     }
 
@@ -102,14 +104,16 @@ class WCTokenAttachmentCell: NSTextAttachmentCell {
         let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineBreakMode = NSLineBreakMode.byClipping
 
-        cellTitleString.draw(at: CGPoint(
-            x: cellFrame.origin.x + cellMarginSide,
-            y: cellFrame.origin.y + 2),
-          withAttributes: [
-            NSAttributedString.Key.font: NSFont.systemFont(ofSize: 9, weight: NSFont.Weight.medium),
-            NSAttributedString.Key.foregroundColor: textColor,
-            NSAttributedString.Key.paragraphStyle: paragraphStyle
-        ])
+        if let cellTitleString = cellTitleString {
+            cellTitleString.draw(at: CGPoint(
+                x: cellFrame.origin.x + cellMarginSide,
+                y: cellFrame.origin.y + 2),
+              withAttributes: [
+                NSAttributedString.Key.font: NSFont.systemFont(ofSize: 9, weight: NSFont.Weight.medium),
+                NSAttributedString.Key.foregroundColor: textColor,
+                NSAttributedString.Key.paragraphStyle: paragraphStyle
+            ])
+        }
 
         stringValue.draw(at: CGPoint(
             x: cellFrame.origin.x + cellTitleSize().width + 0.5 + cellMarginSide,
@@ -154,16 +158,21 @@ class WCTokenAttachmentCell: NSTextAttachmentCell {
     // MARK: -
 
     func cellTitleSize() -> NSSize {
-        let font: NSFont = NSFont.systemFont(ofSize: 9.0, weight: NSFont.Weight.medium)
+        if let cellTitleString = cellTitleString {
+            let font: NSFont = NSFont.systemFont(ofSize: 9.0, weight: NSFont.Weight.medium)
 
-        let titleStringSize: NSSize = cellTitleString.size(withAttributes: [
-            NSAttributedString.Key.font: font
-        ])
+            let titleStringSize: NSSize = cellTitleString.size(withAttributes: [
+                NSAttributedString.Key.font: font
+            ])
 
-        return NSSize(
-            width: titleStringSize.width + (cellMarginSide * 2),
-            height: titleStringSize.height
-        )
+            return NSSize(
+                width: titleStringSize.width + (cellMarginSide * 2),
+                height: titleStringSize.height
+            )
+        }
+        else {
+            return NSSize.zero
+        }
     }
 
     func cellValueSize() -> NSSize {

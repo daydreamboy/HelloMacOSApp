@@ -14,10 +14,6 @@ class WCTokenSearchField: NSTextField {
         setupSearchField()
     }
     
-    class func leftPadding() -> Double {
-        return 4 + 22 + 4
-    }
-    
     private func setupSearchField() {
         wantsLayer = true
         layer?.backgroundColor = NSColor.white.cgColor
@@ -28,10 +24,22 @@ class WCTokenSearchField: NSTextField {
         // https://stackoverflow.com/questions/29172719/drawing-fixed-symbol-inside-nstextfield
         let magnifierIcon: NSImage? = NSImage.init(systemSymbolName: "magnifyingglass", accessibilityDescription: "Search")
         if let icon = magnifierIcon {
-            let imageView: NSImageView = NSImageView.init(image: icon)
             let side = self.frame.size.height
-            imageView.frame = NSMakeRect(4, 0, side, side)
+            let marginL: CGFloat = 4.0
+            let marginR: CGFloat = 2.0
+            
+            let imageView: NSImageView = NSImageView.init(image: icon)
+            imageView.frame = NSMakeRect(marginL, 0, side, side)
             self.addSubview(imageView)
+            
+            // @see https://stackoverflow.com/questions/24091882/checking-if-an-object-is-a-given-type-in-swift
+            if let tokenCell = cell as? WCTokenSearchFieldCell {
+                tokenCell.leftPadding = marginL + side + marginR
+            }
+            else {
+                print("\(WCTokenSearchField.self)'cell should be \(NSStringFromClass(WCTokenSearchFieldCell.self))")
+                fatalError("\(WCTokenSearchField.self)'cell should be \(NSStringFromClass(WCTokenSearchFieldCell.self))")
+            }
         }
     }
 }

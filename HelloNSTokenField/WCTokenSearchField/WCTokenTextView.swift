@@ -26,6 +26,14 @@ struct TokenSearchTypes {
 }
 
 class WCTokenTextView: NSTextView {
+    
+    enum TokenMode {
+        case `default`
+        case stem
+    }
+    
+    public var mode: TokenMode = .default
+    
     let tokenizingCharacterSet: CharacterSet = CharacterSet.newlines
     
     // MARK: Override
@@ -45,7 +53,7 @@ class WCTokenTextView: NSTextView {
 
             // Note: when press key which can tokenize the previous chars
             if tokenizingCharacterSet.contains(scalar) {
-                makeToken(with: event)
+                makeTokens(with: event)
             } else {
                 super.keyDown(with: event)
             }
@@ -97,56 +105,98 @@ class WCTokenTextView: NSTextView {
     }
 
     func tokenComponents(string: String) -> (stem: String?, value: String?) {
+        switch mode {
+        case .default:
+            return (nil, string)
+        case .stem:
+            let stringComponents: [String] = string.split(separator: ":").flatMap(String.init)
 
-          let stringComponents: [String] = string.split(separator: ":").flatMap(String.init)
+            let tokenStem: String? = stringComponents.first?.trimmingCharacters(in: .whitespaces)
+            let tokenValue: String? = stringComponents.last?.trimmingCharacters(in: .whitespaces)
 
-        let tokenStem: String? = stringComponents.first?.trimmingCharacters(in: .whitespaces)
-        let tokenValue: String? = stringComponents.last?.trimmingCharacters(in: .whitespaces)
-
-        return (tokenStem, tokenValue)
+            return (tokenStem, tokenValue)
+        }
     }
 
-    func rangeOfTokenString(string: String) -> NSRange? {
+    private func rangesOfTokenableString(string: String) -> [NSRange]? {
         let string: NSString = string as NSString
 
-        for (stem) in TokenSearchTypes.tokenizbleStemWords {
-          let stemRange: NSRange = string.range(of: stem)
-          if stemRange.location != NSNotFound {
-            return NSRange(
-              location: stemRange.location,
-              length: string.length - stemRange.location
-            )
-          }
+        switch mode {
+        case .default:
+            var ranges: [NSRange] = []
+            var isTokenStart = false
+            
+            // Note: token range: [tokenStartIndex, tokenEndIndex)
+            var tokenStartIndex = 0
+            var tokenEndIndex = 0
+            let OBJUnicodeChar = "\u{fffc}"
+            
+            string.enumerateSubstrings(in: NSMakeRange(0, string.length), options: NSString.EnumerationOptions.byComposedCharacterSequences) { substring, substringRange, range, stop in
+                
+                // Note: the first char is not OBJ, treat it as token start
+                if (substring != OBJUnicodeChar && !isTokenStart) {
+                    isTokenStart = true
+                    tokenStartIndex = substringRange.location
+                }
+                // Note: the first char is OBJ, treat is as token end
+                else if (substring == OBJUnicodeChar && isTokenStart) {
+                    isTokenStart = false
+                    tokenEndIndex = substringRange.location
+                    
+                    let tokenRange = NSMakeRange(tokenStartIndex, tokenEndIndex - tokenStartIndex)
+                    ranges.append(tokenRange)
+                }
+            }
+            
+            if isTokenStart {
+                tokenEndIndex = string.length
+                let tokenRange = NSMakeRange(tokenStartIndex, tokenEndIndex - tokenStartIndex)
+                ranges.append(tokenRange)
+            }
+            
+            return ranges
+        case .stem:
+//            // TOOD: return array
+//            for (stem) in TokenSearchTypes.tokenizbleStemWords {
+//                let stemRange: NSRange = string.range(of: stem)
+//                if stemRange.location != NSNotFound {
+//                    return NSRange(
+//                        location: stemRange.location,
+//                        length: string.length - stemRange.location
+//                    )
+//                }
+//            }
+            return nil
         }
-        
-        return nil
     }
 
-    func makeToken(with event: NSEvent) {
+    private func makeTokens(with event: NSEvent) {
         if let textString: String = textStorage?.string {
-            if let tokenRange: NSRange = rangeOfTokenString(string: textString) {
+            if let tokenRanges: [NSRange] = rangesOfTokenableString(string: textString) {
+                
+                for tokenRange in tokenRanges {
+                    let textStringNew: NSString = textString as NSString
 
-              let textStringNew: NSString = textString as NSString
+                    let subString: String = textStringNew.substring(with: tokenRange)
 
-              let subString: String = textStringNew.substring(with: tokenRange)
+                    let (cellTitle, cellValue) = tokenComponents(string: subString)
 
-              let (cellTitle, cellValue) = tokenComponents(string: subString)
+                    let attachment: NSTextAttachment = NSTextAttachment()
+                    attachment.attachmentCell = WCTokenAttachmentCell(cellTitle: cellTitle, cellValue: cellValue!)
 
-              let attachment: NSTextAttachment = NSTextAttachment()
-              attachment.attachmentCell = WCTokenAttachmentCell(cellTitle: cellTitle!, cellValue: cellValue!)
+                    let string: NSAttributedString = NSAttributedString(attachment: attachment)
+                    let tokenString: NSMutableAttributedString = NSMutableAttributedString(attributedString: string)
 
-              let string: NSAttributedString = NSAttributedString(attachment: attachment)
-              let tokenString: NSMutableAttributedString = NSMutableAttributedString(attributedString: string)
+                    tokenString.addAttributes([
+                        NSAttributedString.Key.font: NSFont.systemFont(ofSize: 13)
+                      ], range: NSRange(location: 0, length: tokenString.length))
 
-              tokenString.addAttributes([
-                  NSAttributedString.Key.font: NSFont.systemFont(ofSize: 13)
-                ], range: NSRange(location: 0, length: tokenString.length))
+                    textStorage?.replaceCharacters(in: tokenRange, with: tokenString)
 
-              textStorage?.replaceCharacters(in: tokenRange, with: tokenString)
-
-      //        typingAttributes = [
-      //          NSFontAttributeName: NSFont.systemFont(ofSize: 14)
-      //        ]
+            //        typingAttributes = [
+            //          NSFontAttributeName: NSFont.systemFont(ofSize: 14)
+            //        ]
+                }
             }
         }
     }

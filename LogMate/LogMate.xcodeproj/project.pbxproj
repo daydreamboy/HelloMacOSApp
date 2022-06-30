@@ -60,6 +60,7 @@
 		2B446B372864549600991153 /* LogMate */ = {
 			isa = PBXGroup;
 			children = (
+				4F162167286DC66C00CFCA29 /* WCLineLogParser */,
 				2B446B45286455CD00991153 /* Classes */,
 				2B446B46286455D600991153 /* UI */,
 				2B446B382864549600991153 /* AppDelegate.swift */,
@@ -74,9 +75,6 @@
 			isa = PBXGroup;
 			children = (
 				2B446B492864560F00991153 /* MainWindowController.swift */,
-				4F85AF752869F2F50023713A /* WCStringStreamReader.swift */,
-				4F162163286D377900CFCA29 /* WCLineMessage.swift */,
-				4F162165286D550500CFCA29 /* WCLineLogParser.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -87,6 +85,16 @@
 				2B446B4A2864560F00991153 /* LogMate.MainWindowController.xib */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		4F162167286DC66C00CFCA29 /* WCLineLogParser */ = {
+			isa = PBXGroup;
+			children = (
+				4F85AF752869F2F50023713A /* WCStringStreamReader.swift */,
+				4F162163286D377900CFCA29 /* WCLineMessage.swift */,
+				4F162165286D550500CFCA29 /* WCLineLogParser.swift */,
+			);
+			path = WCLineLogParser;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

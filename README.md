@@ -61,6 +61,12 @@ https://medium.com/bpxl-craft/styling-nstextfield-a-guide-for-designers-8280da79
 
 
 
+Interface Builder 
+
+cocoa coordinate
+
+https://stackoverflow.com/questions/9474943/what-does-the-origin-control-do-in-interface-builder
+
 
 
 ### (2) 常用UI组件

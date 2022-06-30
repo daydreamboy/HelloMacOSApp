@@ -12,10 +12,12 @@ class WCLineLogParser: NSObject {
     var filePathList: [URL] = []
     var timeStringFormat: String
     var timeStringRange: NSRange?
+    var delimiter: String
     
-    init(timeFormat: String, timeRange: NSRange?) {
+    init(timeFormat: String, timeRange: NSRange?, delimiter: String = "\r\n") {
         self.timeStringFormat = timeFormat
         self.timeStringRange = timeRange
+        self.delimiter = delimiter
     }
     
     func parseLogFiles(fileURLs: [URL]) -> [WCLineMessage] {
@@ -32,7 +34,7 @@ class WCLineLogParser: NSObject {
         var firstLinesOfEachFile: [URL: Date] = [:]
         
         for fileURL in fileURLs {
-            if let aStreamReader = WCStringStreamReader(path: fileURL.path, delimiter: "\r\n") {
+            if let aStreamReader = WCStringStreamReader(path: fileURL.path, delimiter: self.delimiter) {
                 defer {
                     aStreamReader.close()
                 }
@@ -74,7 +76,7 @@ class WCLineLogParser: NSObject {
     func readLinesWithFilePath(filePath: String) -> [WCLineMessage] {
         var lines: [WCLineMessage] = []
         
-        if let aStreamReader = WCStringStreamReader(path: filePath) {
+        if let aStreamReader = WCStringStreamReader(path: filePath, delimiter: self.delimiter) {
             defer {
                 aStreamReader.close()
             }
@@ -83,7 +85,7 @@ class WCLineLogParser: NSObject {
             while let line = aStreamReader.nextLine() {
                 let trimmedLine = line.trimmingCharacters(in: .whitespacesAndNewlines)
                 if (trimmedLine.isEmpty == false) {
-                    lines.append(WCLineMessage.init(message: line, timeFormat: self.timeStringFormat))
+                    lines.append(WCLineMessage.init(message: line, timeFormat: self.timeStringFormat, timeRange: self.timeStringRange))
                 }
             }
         }
@@ -117,6 +119,7 @@ class WCLineLogParser: NSObject {
         let pattern: String = WCLineLogParser.convertTimeFormatToPattern(timeFormat: timeFormat)
         let range: Range<String.Index>?
         if (timeStringRange != nil) {
+            // @see https://stackoverflow.com/a/30404532
             range = Range.init(timeStringRange!, in: message)
         } else {
             range = message.range(of: pattern, options: String.CompareOptions.regularExpression)

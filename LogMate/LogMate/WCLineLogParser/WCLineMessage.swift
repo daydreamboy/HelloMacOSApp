@@ -8,35 +8,45 @@
 import Cocoa
 
 class WCLineMessage: NSObject {
-    var timestamp: TimeInterval
-    
-    public var time: String
+    public var time: String = ""
     public var content: String
-    var message: String
-    var timeFormat: String
+    public var timestamp: TimeInterval = 0.0
+    public var message: String
     
-    init(message: String, timeFormat: String) {
+    var timeFormat: String
+    var timeRange: NSRange?
+    
+    init(message: String, timeFormat: String, timeRange: NSRange?) {
         self.message = message
+        self.content = message
         self.timeFormat = timeFormat
+        self.timeRange = timeRange
         
-        let pattern: String = WCLineLogParser.convertTimeFormatToPattern(timeFormat: self.timeFormat)
-        let range: Range? = self.message.range(of: pattern, options: String.CompareOptions.regularExpression)
-        
-        if let range = range {
-            // @see https://stackoverflow.com/a/58913649
-            self.time = String(self.message[range.lowerBound..<range.upperBound])
-            self.content = String(self.message[range.upperBound...])
-            
-            let formatter = DateFormatter()
-            formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale
-            formatter.dateFormat = self.timeFormat
-             
-            self.timestamp = formatter.date(from: self.time)!.timeIntervalSince1970
+        var range: Range<String.Index>?
+        if let timeRange = self.timeRange {
+            range = Range.init(timeRange, in: self.message)
         }
         else {
-            self.timestamp = 0.0
-            self.time = ""
-            self.content = self.message
+            let pattern: String = WCLineLogParser.convertTimeFormatToPattern(timeFormat: self.timeFormat)
+            range = self.message.range(of: pattern, options: String.CompareOptions.regularExpression)
+        }
+        
+        if let range = range {
+            // @see https://stackoverflow.com/a/39553998
+            let isRangeSafe = range.clamped(to: self.message.startIndex..<self.message.endIndex) == range
+            if isRangeSafe {
+                // @see https://stackoverflow.com/a/58913649
+                self.time = String(self.message[range.lowerBound..<range.upperBound])
+                self.content = String(self.message[range.upperBound...])
+                
+                let formatter = DateFormatter()
+                formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale
+                formatter.dateFormat = self.timeFormat
+                 
+                if let date = formatter.date(from: self.time) {
+                    self.timestamp = date.timeIntervalSince1970
+                }
+            }
         }
         
         // Note: call super init, must be at the end

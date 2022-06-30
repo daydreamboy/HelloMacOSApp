@@ -12,6 +12,7 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
     
     @objc @IBOutlet private dynamic var recordArrayController: NSArrayController?
     
+    @IBOutlet weak var tableView: NSTableView!
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet var messageDetailView: NSTextView!
     
@@ -20,9 +21,10 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
         static let MessageCell = "MessageCell"
     }
     
-    var regexString: String?
-    var recordList: [String] = []
-
+    var recordList: [WCLineMessage] = []
+    
+    var timeFormatString: String = "YYYY-MM-dd HH:mm:ss.SSS"
+    
     convenience init() {
         self.init(sender: nil)
     }
@@ -31,21 +33,6 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
         // Note: NSNibName alias for String
         //  NSNib.Name alias for String
         self.init(windowNibName: NSNib.Name(NSStringFromClass(type(of: self))))
-        
-        self.recordList = [
-            "1 abc",
-            "2 d",
-            "3 d",
-            "4 d",
-            "5 d",
-            "6 d",
-            "7 d",
-            "8 d",
-            "9 d",
-            "10 d",
-        ]
-        
-        self.regexString = "[0-9]+[0-9]+[0-9]+[0-9]+-[0-9]+[0-9]+-[0-9]+[0-9]+ [0-9]+[0-9]+:[0-9]+[0-9]+:[0-9]+[0-9]+.[0-9]+[0-9]+[0-9]+"
     }
     
     override func windowDidLoad() {
@@ -64,13 +51,13 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
             return nil
         }
         
-        let text = self.recordList[row]
-        let parts:[String] = text .components(separatedBy: " ")
+        let line = self.recordList[row]
+        //let parts:[String] = text.components(separatedBy: " ")
         
         if (tableColumn?.identifier)!.rawValue == CellIdentifiers.TimeCell {
-            cell.textField?.stringValue = parts.first!
+            cell.textField?.stringValue = line.time
         } else if (tableColumn?.identifier)!.rawValue == CellIdentifiers.MessageCell {
-            cell.textField?.stringValue = parts.last!
+            cell.textField?.stringValue = line.content
         }
         
         return cell
@@ -112,50 +99,26 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
     @IBAction func openFiles(_ sender: Any) {
         let dialog = NSOpenPanel();
 
-        dialog.title                   = "选择一个或多个文本文件";
-        dialog.showsResizeIndicator    = true;
-        dialog.showsHiddenFiles        = false;
-        dialog.canChooseDirectories    = false;
+        dialog.title = "选择一个或多个文本文件";
+        dialog.showsResizeIndicator = true;
+        dialog.showsHiddenFiles = false;
+        dialog.canChooseDirectories = false;
         dialog.allowsMultipleSelection = true;
 
         if (dialog.runModal() == NSApplication.ModalResponse.OK) {
-            self.recordList = readFiles(fileURLs: dialog.urls)
-            print(self.recordList)
+            let fileURLs = dialog.urls
+            
+//            DispatchQueue.global().async {
+//                let logParser = WCLineLogParser.init(timeFormat: self.timeFormatString)
+//                self.recordList = logParser.parseLogFiles(fileURLs: fileURLs)
+//
+//                DispatchQueue.main.async {
+//                    self.tableView.reloadData()
+//                }
+//            }
         } else {
             return
         }
     }
-    
-    func readFiles(fileURLs: [URL]) -> [String] {
-        // TODO: order files' contents
-        var totalLines: [String] = []
-        var eachLinesOfFile: [String: Array<String>] = [:]
-        
-        for fileURL in fileURLs {
-            print("You selected path: \(fileURL.path)")
-            var lines = readLines(filePath: fileURL.path)
-            
-            totalLines.append(contentsOf: lines)
-        }
-        
-        return totalLines
-    }
-    
-    func readLines(filePath: String) -> [String] {
-        var lines: [String] = []
-        
-        if let aStreamReader = WCStringStreamReader(path: filePath) {
-            defer {
-                aStreamReader.close()
-            }
-            
-            // Example 1: use nextLine func
-            while let line = aStreamReader.nextLine() {
-                //print("line\(aStreamReader.numberOfLines): \(line)")
-                lines.append(line)
-            }
-        }
-        
-        return lines
-    }
+
 }

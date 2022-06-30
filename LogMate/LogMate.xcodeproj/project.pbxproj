@@ -12,6 +12,8 @@
 		2B446B3E2864549800991153 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B446B3C2864549800991153 /* MainMenu.xib */; };
 		2B446B4B2864560F00991153 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B446B492864560F00991153 /* MainWindowController.swift */; };
 		2B446B4C2864560F00991153 /* LogMate.MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B446B4A2864560F00991153 /* LogMate.MainWindowController.xib */; };
+		4F162164286D377900CFCA29 /* WCLineMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F162163286D377900CFCA29 /* WCLineMessage.swift */; };
+		4F162166286D550500CFCA29 /* WCLineLogParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F162165286D550500CFCA29 /* WCLineLogParser.swift */; };
 		4F85AF762869F2F50023713A /* WCStringStreamReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F85AF752869F2F50023713A /* WCStringStreamReader.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +25,8 @@
 		2B446B3F2864549800991153 /* LogMate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LogMate.entitlements; sourceTree = "<group>"; };
 		2B446B492864560F00991153 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		2B446B4A2864560F00991153 /* LogMate.MainWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogMate.MainWindowController.xib; sourceTree = "<group>"; };
+		4F162163286D377900CFCA29 /* WCLineMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCLineMessage.swift; sourceTree = "<group>"; };
+		4F162165286D550500CFCA29 /* WCLineLogParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCLineLogParser.swift; sourceTree = "<group>"; };
 		4F85AF752869F2F50023713A /* WCStringStreamReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCStringStreamReader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -71,6 +75,8 @@
 			children = (
 				2B446B492864560F00991153 /* MainWindowController.swift */,
 				4F85AF752869F2F50023713A /* WCStringStreamReader.swift */,
+				4F162163286D377900CFCA29 /* WCLineMessage.swift */,
+				4F162165286D550500CFCA29 /* WCLineLogParser.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -155,6 +161,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F85AF762869F2F50023713A /* WCStringStreamReader.swift in Sources */,
+				4F162164286D377900CFCA29 /* WCLineMessage.swift in Sources */,
+				4F162166286D550500CFCA29 /* WCLineLogParser.swift in Sources */,
 				2B446B4B2864560F00991153 /* MainWindowController.swift in Sources */,
 				2B446B392864549600991153 /* AppDelegate.swift in Sources */,
 			);

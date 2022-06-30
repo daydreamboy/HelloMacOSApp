@@ -24,9 +24,11 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
     var recordList: [WCLineMessage] = []
     
     var timeFormatString: String = "YYYY-MM-dd HH:mm:ss.SSS"
+    var timeRange: NSRange?
     
     convenience init() {
         self.init(sender: nil)
+        self.timeRange = NSMakeRange(0, self.timeFormatString.count)
     }
     
     convenience init(sender: String?) {
@@ -52,7 +54,6 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
         }
         
         let line = self.recordList[row]
-        //let parts:[String] = text.components(separatedBy: " ")
         
         if (tableColumn?.identifier)!.rawValue == CellIdentifiers.TimeCell {
             cell.textField?.stringValue = line.time
@@ -88,8 +89,12 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
     
     func tableViewSelectionDidChange(_ notification: Notification) {
         print("did change")
-        //let text = self.recordList[row]
-        //self.messageDetailView.textStorage = NSTextStorage.init(string: text)
+        let line = self.recordList[self.tableView.selectedRow]
+        print("\(line.message)")
+        print("---")
+        print("\(line.content)")
+        
+        self.messageDetailView.string = line.content
     }
     
     func tableView(_ tableView: NSTableView, didClick tableColumn: NSTableColumn) {
@@ -108,14 +113,17 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
         if (dialog.runModal() == NSApplication.ModalResponse.OK) {
             let fileURLs = dialog.urls
             
-//            DispatchQueue.global().async {
-//                let logParser = WCLineLogParser.init(timeFormat: self.timeFormatString)
-//                self.recordList = logParser.parseLogFiles(fileURLs: fileURLs)
-//
-//                DispatchQueue.main.async {
-//                    self.tableView.reloadData()
-//                }
-//            }
+            DispatchQueue.global().async {
+                let timeStart = Date.init().timeIntervalSince1970
+                let logParser = WCLineLogParser.init(timeFormat: self.timeFormatString, timeRange: self.timeRange)
+                self.recordList = logParser.parseLogFiles(fileURLs: fileURLs)
+                let timeEnd = Date.init().timeIntervalSince1970
+                print("duration: \(timeEnd - timeStart)")
+
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
         } else {
             return
         }

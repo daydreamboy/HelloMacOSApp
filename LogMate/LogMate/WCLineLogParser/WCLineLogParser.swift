@@ -10,10 +10,12 @@ import Cocoa
 class WCLineLogParser: NSObject {
     
     var filePathList: [URL] = []
-    var timeFormatString: String
+    var timeStringFormat: String
+    var timeStringRange: NSRange?
     
-    init(timeFormat: String) {
-        self.timeFormatString = timeFormat
+    init(timeFormat: String, timeRange: NSRange?) {
+        self.timeStringFormat = timeFormat
+        self.timeStringRange = timeRange
     }
     
     func parseLogFiles(fileURLs: [URL]) -> [WCLineMessage] {
@@ -43,7 +45,7 @@ class WCLineLogParser: NSObject {
                     }
                 }
                 
-                if let firstLine = firstLine, let date = WCLineLogParser.getTimestampDate(timeFormat: timeFormatString, message: firstLine) {
+                if let firstLine = firstLine, let date = WCLineLogParser.getTimestampDate(timeFormat: timeStringFormat, message: firstLine, timeStringRange: timeStringRange) {
                     firstLinesOfEachFile[fileURL] = date
                 }
             }
@@ -81,7 +83,7 @@ class WCLineLogParser: NSObject {
             while let line = aStreamReader.nextLine() {
                 let trimmedLine = line.trimmingCharacters(in: .whitespacesAndNewlines)
                 if (trimmedLine.isEmpty == false) {
-                    lines.append(WCLineMessage.init(message: line, timeFormat: self.timeFormatString))
+                    lines.append(WCLineMessage.init(message: line, timeFormat: self.timeStringFormat))
                 }
             }
         }
@@ -111,9 +113,14 @@ class WCLineLogParser: NSObject {
         return pattern
     }
     
-    static public func getTimestampDate(timeFormat: String, message: String) -> Date? {
+    static public func getTimestampDate(timeFormat: String, message: String, timeStringRange: NSRange?) -> Date? {
         let pattern: String = WCLineLogParser.convertTimeFormatToPattern(timeFormat: timeFormat)
-        let range: Range? = message.range(of: pattern, options: String.CompareOptions.regularExpression)
+        let range: Range<String.Index>?
+        if (timeStringRange != nil) {
+            range = Range.init(timeStringRange!, in: message)
+        } else {
+            range = message.range(of: pattern, options: String.CompareOptions.regularExpression)
+        }
         
         if let range = range {
             // @see https://stackoverflow.com/a/58913649

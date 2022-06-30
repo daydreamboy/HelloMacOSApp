@@ -39,13 +39,14 @@ class WCLineMessage: NSObject {
                 self.time = String(self.message[range.lowerBound..<range.upperBound])
                 self.content = String(self.message[range.upperBound...])
                 
-                let formatter = DateFormatter()
-                formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale
-                formatter.dateFormat = self.timeFormat
-                 
-                if let date = formatter.date(from: self.time) {
-                    self.timestamp = date.timeIntervalSince1970
-                }
+                // TOOD: too time cost
+//                let formatter = DateFormatter()
+//                formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale
+//                formatter.dateFormat = self.timeFormat
+//
+//                if let date = formatter.date(from: self.time) {
+//                    self.timestamp = date.timeIntervalSince1970
+//                }
             }
         }
         

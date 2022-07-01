@@ -12,6 +12,22 @@ class MainViewController: NSViewController, NSTextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tokenSearchField.tokenMode = .stemRestricted
+        tokenSearchField.restrictedSteamWords = [
+            "from",
+            "to",
+            "subject",
+            "label",
+            "has",
+            "list",
+            "filename",
+            "in",
+            "has",
+            "cc",
+            "after",
+            "before",
+            "newer_than"
+        ]
         tokenSearchField.tokenSearchDelegate = self
     }
 }

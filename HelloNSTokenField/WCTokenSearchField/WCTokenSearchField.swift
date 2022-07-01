@@ -9,7 +9,8 @@ import Cocoa
 
 enum WCTokenMode {
     case `default`
-    case stem
+    case stemFree
+    case stemRestricted
 }
 
 class WCToken: NSObject {
@@ -30,6 +31,8 @@ protocol WCTokenSearchFieldDelegate {
 class WCTokenSearchField: NSTextField {
     
     public var tokenSearchDelegate: WCTokenSearchFieldDelegate?
+    public var tokenMode: WCTokenMode?
+    public var restrictedSteamWords: [String]?
     
     required init?(coder decoder: NSCoder) {
         super.init(coder: decoder)

@@ -10,6 +10,7 @@ import Cocoa
 class WCTokenTextView: NSTextView {
         
     public var mode: WCTokenMode = .default
+    public var restrictedSteamWords: [String]?
     
     let tokenizingCharacterSet: CharacterSet = CharacterSet.newlines
     
@@ -112,7 +113,7 @@ class WCTokenTextView: NSTextView {
         switch mode {
         case .default:
             return (nil, string)
-        case .stem:
+        case .stemFree, .stemRestricted:
             let stringComponents: [String] = string.components(separatedBy: ":").filter({ !$0.isEmpty })
             
             let tokenKey: String? = stringComponents.first?.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -160,7 +161,7 @@ class WCTokenTextView: NSTextView {
             }
             
             return ranges
-        case .stem:
+        case .stemFree:
             // Note: stem mode example string: key:value\U0000fffcsomeOtherThing
             var ranges: [NSRange] = []
             var isTokenStart = false
@@ -203,6 +204,56 @@ class WCTokenTextView: NSTextView {
             }
             
             ranges = ranges.filter { !rangesToRemove.contains($0) }
+            
+            return ranges
+            
+        case .stemRestricted:
+            // Note: stem mode example string: restricted_key:value\U0000fffcsomeOtherThing
+            var candidatedRanges: [NSRange] = []
+            var isTokenStart = false
+            
+            // Note: token range: [tokenStartIndex, tokenEndIndex)
+            var tokenStartIndex = 0
+            var tokenEndIndex = 0
+            let OBJUnicodeChar = "\u{fffc}"
+            
+            string.enumerateSubstrings(in: NSMakeRange(0, string.length), options: NSString.EnumerationOptions.byComposedCharacterSequences) { substring, substringRange, range, stop in
+                
+                // Note: the first char is not OBJ, treat it as token start
+                if (substring != OBJUnicodeChar && !isTokenStart) {
+                    isTokenStart = true
+                    tokenStartIndex = substringRange.location
+                }
+                // Note: the first char is OBJ, treat is as token end
+                else if (substring == OBJUnicodeChar && isTokenStart) {
+                    isTokenStart = false
+                    tokenEndIndex = substringRange.location
+                    
+                    let tokenRange = NSMakeRange(tokenStartIndex, tokenEndIndex - tokenStartIndex)
+                    candidatedRanges.append(tokenRange)
+                }
+            }
+            
+            if isTokenStart {
+                tokenEndIndex = string.length
+                let tokenRange = NSMakeRange(tokenStartIndex, tokenEndIndex - tokenStartIndex)
+                candidatedRanges.append(tokenRange)
+            }
+            
+            // Note: check candidated token ranges which should contain a `restricted_key:value`
+            var ranges: [NSRange] = []
+            for range in candidatedRanges {
+                let substring = string.substring(with: range) as NSString
+                
+                for stemWord in self.restrictedSteamWords! {
+                    let checkWord = "\(stemWord):"
+                    let rangeOfCheckWord = substring.range(of: checkWord)
+                    if rangeOfCheckWord.location != NSNotFound {
+                        let newRange = NSMakeRange(rangeOfCheckWord.location + range.location, substring.length - rangeOfCheckWord.location)
+                        ranges.append(newRange)
+                    }
+                }
+            }
             
             return ranges
         }

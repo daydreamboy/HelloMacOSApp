@@ -10,7 +10,7 @@ import Cocoa
 // TODO:  Configure: Set this class to the NSTextFieldCell object's custom class
 class WCTokenSearchFieldCell: NSTextFieldCell {
     public var leftPadding: CGFloat = 0.0
-    private var tokenTextView: WCTokenTextView = WCTokenTextView()
+    public var tokenTextView: WCTokenTextView = WCTokenTextView()
     
     // MARK: Override
     
@@ -21,6 +21,23 @@ class WCTokenSearchFieldCell: NSTextFieldCell {
     }
 
     override func fieldEditor(for controlView: NSView) -> NSTextView? {
+        let field = controlView as! WCTokenSearchField
+        // Note: configure token mode and stem words
+        if let tokenMode = field.tokenMode {
+            if tokenMode != .stemRestricted {
+                tokenTextView.mode = tokenMode
+            }
+            else {
+                if let restrictedSteamWords = field.restrictedSteamWords, restrictedSteamWords.count > 0 {
+                    tokenTextView.mode = tokenMode
+                    tokenTextView.restrictedSteamWords = restrictedSteamWords
+                }
+                else {
+                    tokenTextView.mode = .default
+                }
+            }
+        }
+        
         return tokenTextView
     }
     

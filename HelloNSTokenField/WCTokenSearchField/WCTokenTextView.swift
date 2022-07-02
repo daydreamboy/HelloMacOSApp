@@ -309,7 +309,7 @@ class WCTokenTextView: NSTextView {
                     tokenStrings.append(tokenString)
                 }
                 
-                if textStorage != nil {
+                if textStorage != nil && tokenStrings.isEmpty == false {
                     var replacementRanges: [NSRange]?
                     if let newTextStorage = WCAttributedStringTool.replaceCharactersInRangesWithString(textStorage!, tokenRanges, tokenStrings, &replacementRanges) {
                         textStorage?.replaceCharacters(in: NSMakeRange(0, textStorage!.length), with: newTextStorage)

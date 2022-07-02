@@ -160,21 +160,21 @@
                                                     <visualEffectView blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="SLg-K4-2wi">
                                                         <rect key="frame" x="0.0" y="759" width="1099" height="40"/>
                                                         <subviews>
-                                                            <searchField wantsLayer="YES" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tm9-1J-HSQ">
+                                                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cq9-xB-if2" customClass="WCTokenSearchField" customModule="LogMate" customModuleProvider="target">
                                                                 <rect key="frame" x="10" y="5" width="1079" height="30"/>
-                                                                <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="v2c-39-8MB">
-                                                                    <font key="font" metaFont="system"/>
+                                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="example: filter:&lt;search world&gt;" drawsBackground="YES" id="pXz-YP-4WG" customClass="WCTokenSearchFieldCell" customModule="LogMate" customModuleProvider="target">
+                                                                    <font key="font" usesAppearanceFont="YES"/>
                                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                                </searchFieldCell>
-                                                            </searchField>
+                                                                </textFieldCell>
+                                                            </textField>
                                                         </subviews>
                                                         <constraints>
-                                                            <constraint firstAttribute="bottom" secondItem="tm9-1J-HSQ" secondAttribute="bottom" constant="5" id="6J1-Gx-Gxn"/>
+                                                            <constraint firstAttribute="trailing" secondItem="cq9-xB-if2" secondAttribute="trailing" constant="10" id="4QC-ut-fIQ"/>
+                                                            <constraint firstItem="cq9-xB-if2" firstAttribute="top" secondItem="SLg-K4-2wi" secondAttribute="top" constant="5" id="4vZ-VO-brg"/>
                                                             <constraint firstAttribute="height" constant="40" id="C2h-R1-ROP"/>
-                                                            <constraint firstItem="tm9-1J-HSQ" firstAttribute="top" secondItem="SLg-K4-2wi" secondAttribute="top" constant="5" id="DuY-l9-4tZ"/>
-                                                            <constraint firstAttribute="trailing" secondItem="tm9-1J-HSQ" secondAttribute="trailing" constant="10" id="k41-Ze-iSY"/>
-                                                            <constraint firstItem="tm9-1J-HSQ" firstAttribute="leading" secondItem="SLg-K4-2wi" secondAttribute="leading" constant="10" id="vGv-nG-nUi"/>
+                                                            <constraint firstAttribute="bottom" secondItem="cq9-xB-if2" secondAttribute="bottom" constant="5" id="N3i-8K-mbz"/>
+                                                            <constraint firstItem="cq9-xB-if2" firstAttribute="leading" secondItem="SLg-K4-2wi" secondAttribute="leading" constant="10" id="naw-tg-3Ly"/>
                                                         </constraints>
                                                     </visualEffectView>
                                                 </subviews>
@@ -393,5 +393,15 @@
             <point key="canvasLocation" x="138.5" y="165"/>
         </window>
         <customObject id="CgW-On-EIF" userLabel="messages" customClass="NSArrayController"/>
+        <searchField wantsLayer="YES" verticalHuggingPriority="750" textCompletion="NO" id="tm9-1J-HSQ">
+            <rect key="frame" x="0.0" y="0.0" width="1079" height="30"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="v2c-39-8MB">
+                <font key="font" metaFont="system"/>
+                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+            </searchFieldCell>
+            <point key="canvasLocation" x="105" y="-368"/>
+        </searchField>
     </objects>
 </document>

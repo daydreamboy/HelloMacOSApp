@@ -14,6 +14,11 @@
 		2B446B4C2864560F00991153 /* LogMate.MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B446B4A2864560F00991153 /* LogMate.MainWindowController.xib */; };
 		4F162164286D377900CFCA29 /* WCLineMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F162163286D377900CFCA29 /* WCLineMessage.swift */; };
 		4F162166286D550500CFCA29 /* WCLineLogParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F162165286D550500CFCA29 /* WCLineLogParser.swift */; };
+		4F1F386B28708C2200CB61AE /* WCAttributedStringTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1F386628708C2200CB61AE /* WCAttributedStringTool.swift */; };
+		4F1F386C28708C2200CB61AE /* WCTokenSearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1F386728708C2200CB61AE /* WCTokenSearchField.swift */; };
+		4F1F386D28708C2200CB61AE /* WCTokenTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1F386828708C2200CB61AE /* WCTokenTextView.swift */; };
+		4F1F386E28708C2200CB61AE /* WCTokenSearchFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1F386928708C2200CB61AE /* WCTokenSearchFieldCell.swift */; };
+		4F1F386F28708C2200CB61AE /* WCTokenAttachmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1F386A28708C2200CB61AE /* WCTokenAttachmentCell.swift */; };
 		4F85AF762869F2F50023713A /* WCStringStreamReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F85AF752869F2F50023713A /* WCStringStreamReader.swift */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +32,11 @@
 		2B446B4A2864560F00991153 /* LogMate.MainWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogMate.MainWindowController.xib; sourceTree = "<group>"; };
 		4F162163286D377900CFCA29 /* WCLineMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCLineMessage.swift; sourceTree = "<group>"; };
 		4F162165286D550500CFCA29 /* WCLineLogParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCLineLogParser.swift; sourceTree = "<group>"; };
+		4F1F386628708C2200CB61AE /* WCAttributedStringTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCAttributedStringTool.swift; sourceTree = "<group>"; };
+		4F1F386728708C2200CB61AE /* WCTokenSearchField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCTokenSearchField.swift; sourceTree = "<group>"; };
+		4F1F386828708C2200CB61AE /* WCTokenTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCTokenTextView.swift; sourceTree = "<group>"; };
+		4F1F386928708C2200CB61AE /* WCTokenSearchFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCTokenSearchFieldCell.swift; sourceTree = "<group>"; };
+		4F1F386A28708C2200CB61AE /* WCTokenAttachmentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCTokenAttachmentCell.swift; sourceTree = "<group>"; };
 		4F85AF752869F2F50023713A /* WCStringStreamReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCStringStreamReader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -60,6 +70,7 @@
 		2B446B372864549600991153 /* LogMate */ = {
 			isa = PBXGroup;
 			children = (
+				4F1F386428708C2200CB61AE /* WCTokenSearchField */,
 				4F162167286DC66C00CFCA29 /* WCLineLogParser */,
 				2B446B45286455CD00991153 /* Classes */,
 				2B446B46286455D600991153 /* UI */,
@@ -95,6 +106,27 @@
 				4F162165286D550500CFCA29 /* WCLineLogParser.swift */,
 			);
 			path = WCLineLogParser;
+			sourceTree = "<group>";
+		};
+		4F1F386428708C2200CB61AE /* WCTokenSearchField */ = {
+			isa = PBXGroup;
+			children = (
+				4F1F386528708C2200CB61AE /* Tools */,
+				4F1F386728708C2200CB61AE /* WCTokenSearchField.swift */,
+				4F1F386828708C2200CB61AE /* WCTokenTextView.swift */,
+				4F1F386928708C2200CB61AE /* WCTokenSearchFieldCell.swift */,
+				4F1F386A28708C2200CB61AE /* WCTokenAttachmentCell.swift */,
+			);
+			name = WCTokenSearchField;
+			path = ../../HelloNSTokenField/WCTokenSearchField;
+			sourceTree = "<group>";
+		};
+		4F1F386528708C2200CB61AE /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				4F1F386628708C2200CB61AE /* WCAttributedStringTool.swift */,
+			);
+			path = Tools;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,7 +201,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F85AF762869F2F50023713A /* WCStringStreamReader.swift in Sources */,
+				4F1F386E28708C2200CB61AE /* WCTokenSearchFieldCell.swift in Sources */,
 				4F162164286D377900CFCA29 /* WCLineMessage.swift in Sources */,
+				4F1F386B28708C2200CB61AE /* WCAttributedStringTool.swift in Sources */,
+				4F1F386F28708C2200CB61AE /* WCTokenAttachmentCell.swift in Sources */,
+				4F1F386D28708C2200CB61AE /* WCTokenTextView.swift in Sources */,
+				4F1F386C28708C2200CB61AE /* WCTokenSearchField.swift in Sources */,
 				4F162166286D550500CFCA29 /* WCLineLogParser.swift in Sources */,
 				2B446B4B2864560F00991153 /* MainWindowController.swift in Sources */,
 				2B446B392864549600991153 /* AppDelegate.swift in Sources */,

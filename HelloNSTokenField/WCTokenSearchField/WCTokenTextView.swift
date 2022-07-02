@@ -7,10 +7,32 @@
 
 import Cocoa
 
+// @see https://stackoverflow.com/a/35014912
+extension Array where Element:Equatable {
+    func uniqued() -> [Element] {
+        var result = [Element]()
+
+        for value in self {
+            if result.contains(value) == false {
+                result.append(value)
+            }
+        }
+
+        return result
+    }
+}
+
 class WCTokenTextView: NSTextView {
         
     public var mode: WCTokenMode = .default
-    public var restrictedSteamWords: [String]?
+    public var restrictedSteamWords: [String]? {
+        // @see https://stackoverflow.com/a/24334029
+        didSet {
+            if restrictedSteamWords != nil {
+                restrictedSteamWords = restrictedSteamWords!.uniqued()
+            }
+        }
+    }
     
     let tokenizingCharacterSet: CharacterSet = CharacterSet.newlines
     
@@ -263,6 +285,7 @@ class WCTokenTextView: NSTextView {
         if let textString: String = textStorage?.string {
             if let tokenRanges: [NSRange] = rangesOfTokenableString(string: textString) {
                 
+                var tokenStrings: [NSMutableAttributedString] = []
                 for tokenRange in tokenRanges {
                     let textStringNew: NSString = textString as NSString
 
@@ -283,12 +306,14 @@ class WCTokenTextView: NSTextView {
                     ], range: NSRange(location: 0, length: tokenString.length))
                      */
 
-                    // TODO: not safe
-                    textStorage?.replaceCharacters(in: tokenRange, with: tokenString)
-
-            //        typingAttributes = [
-            //          NSFontAttributeName: NSFont.systemFont(ofSize: 14)
-            //        ]
+                    tokenStrings.append(tokenString)
+                }
+                
+                if textStorage != nil {
+                    var replacementRanges: [NSRange]?
+                    if let newTextStorage = WCAttributedStringTool.replaceCharactersInRangesWithString(textStorage!, tokenRanges, tokenStrings, &replacementRanges) {
+                        textStorage?.replaceCharacters(in: NSMakeRange(0, textStorage!.length), with: newTextStorage)
+                    }
                 }
             }
         }

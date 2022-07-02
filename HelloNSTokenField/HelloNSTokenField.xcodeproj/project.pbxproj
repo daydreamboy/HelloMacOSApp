@@ -11,6 +11,7 @@
 		4F1F30E9286B08C20069A852 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1F30E8286B08C20069A852 /* MainViewController.swift */; };
 		4F1F30EB286B08C30069A852 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F1F30EA286B08C30069A852 /* Assets.xcassets */; };
 		4F1F30EE286B08C30069A852 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F1F30EC286B08C30069A852 /* Main.storyboard */; };
+		4F1F38342870731500CB61AE /* WCAttributedStringTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1F38332870731500CB61AE /* WCAttributedStringTool.swift */; };
 		4F5486E6286B40DD0002A872 /* WCTokenSearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5486E5286B40DD0002A872 /* WCTokenSearchField.swift */; };
 		4F5486E8286B42880002A872 /* WCTokenAttachmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5486E7286B42880002A872 /* WCTokenAttachmentCell.swift */; };
 		4F5486EA286B454D0002A872 /* WCTokenSearchFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5486E9286B454D0002A872 /* WCTokenSearchFieldCell.swift */; };
@@ -24,6 +25,7 @@
 		4F1F30EA286B08C30069A852 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4F1F30ED286B08C30069A852 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F1F30EF286B08C30069A852 /* HelloNSTokenField.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HelloNSTokenField.entitlements; sourceTree = "<group>"; };
+		4F1F38332870731500CB61AE /* WCAttributedStringTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCAttributedStringTool.swift; sourceTree = "<group>"; };
 		4F5486E5286B40DD0002A872 /* WCTokenSearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCTokenSearchField.swift; sourceTree = "<group>"; };
 		4F5486E7286B42880002A872 /* WCTokenAttachmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCTokenAttachmentCell.swift; sourceTree = "<group>"; };
 		4F5486E9286B454D0002A872 /* WCTokenSearchFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCTokenSearchFieldCell.swift; sourceTree = "<group>"; };
@@ -70,9 +72,18 @@
 			path = HelloNSTokenField;
 			sourceTree = "<group>";
 		};
+		4F1F38322870731500CB61AE /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				4F1F38332870731500CB61AE /* WCAttributedStringTool.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
 		4F5486E4286B40B10002A872 /* WCTokenSearchField */ = {
 			isa = PBXGroup;
 			children = (
+				4F1F38322870731500CB61AE /* Tools */,
 				4F5486E5286B40DD0002A872 /* WCTokenSearchField.swift */,
 				4F5486E9286B454D0002A872 /* WCTokenSearchFieldCell.swift */,
 				4F5486E7286B42880002A872 /* WCTokenAttachmentCell.swift */,
@@ -151,6 +162,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F1F38342870731500CB61AE /* WCAttributedStringTool.swift in Sources */,
 				4F1F30E9286B08C20069A852 /* MainViewController.swift in Sources */,
 				4F5486EC286B45C90002A872 /* WCTokenTextView.swift in Sources */,
 				4F5486EA286B454D0002A872 /* WCTokenSearchFieldCell.swift in Sources */,

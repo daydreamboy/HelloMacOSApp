@@ -32,8 +32,8 @@ class WCTokenAttachmentCell: NSTextAttachmentCell {
     var cellTitleString: String?
     
     let cellMarginSide: CGFloat = 4.0
-    let cellTrailingSpace: CGFloat = 8
-    let cellDividerWidth: CGFloat = 1
+    let cellTrailingSpace: CGFloat = 8.0
+    let cellDividerWidth: CGFloat = 1.0
     let radius: CGFloat = 2.0
     let titleFont: NSFont = NSFont.systemFont(ofSize: 9.0, weight: NSFont.Weight.medium)
     let valueFont: NSFont = NSFont.systemFont(ofSize: 13)
@@ -151,7 +151,7 @@ class WCTokenAttachmentCell: NSTextAttachmentCell {
             ])
             
             stringValue.draw(at: CGPoint(
-                x: cellFrame.origin.x + cellTitleSize().width + 0.5 + cellMarginSide * 2,
+                x: cellFrame.origin.x + cellTitleSize().width + 0.5 + cellMarginSide,
                 y: cellFrame.origin.y - 1),
               withAttributes: [
                 NSAttributedString.Key.font: valueFont,
@@ -210,8 +210,8 @@ class WCTokenAttachmentCell: NSTextAttachmentCell {
             ])
 
             return NSSize(
-                width: titleStringSize.width + (cellMarginSide * 2),
-                height: titleStringSize.height
+                width: ceil(titleStringSize.width + (cellMarginSide * 2)),
+                height: ceil(titleStringSize.height)
             )
         }
         else {
@@ -221,12 +221,12 @@ class WCTokenAttachmentCell: NSTextAttachmentCell {
 
     func cellValueSize() -> NSSize {
         let valueStringSize: NSSize = stringValue.size(withAttributes: [
-            NSAttributedString.Key.font: font!
+            NSAttributedString.Key.font: valueFont
         ])
 
         return NSSize(
-            width: valueStringSize.width + (cellMarginSide * 3),
-            height: valueStringSize.height
+            width: ceil(valueStringSize.width + (cellMarginSide * 2)),
+            height: ceil(valueStringSize.height)
         )
     }
 

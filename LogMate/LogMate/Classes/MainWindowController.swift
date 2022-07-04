@@ -15,6 +15,9 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
     @IBOutlet weak var tableView: NSTableView!
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet var messageDetailView: NSTextView!
+    @IBOutlet weak var tokenSearchField: WCTokenSearchField!
+    
+    var logParser: WCLineLogParser?
     
     fileprivate enum CellIdentifiers {
         static let TimeCell = "TimeCell"
@@ -39,6 +42,12 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
     
     override func windowDidLoad() {
         super.windowDidLoad()
+        self.tokenSearchField.tokenSearchDelegate = self
+        self.tokenSearchField.tokenMode = .stemRestricted
+        self.tokenSearchField.restrictedSteamWords = [
+            "filter",
+            "filter-node",
+        ]
     }
     
     // MARK: NSTableViewDataSource
@@ -88,18 +97,15 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
     }
     
     func tableViewSelectionDidChange(_ notification: Notification) {
-        print("did change")
         let line = self.recordList[self.tableView.selectedRow]
-        print("\(line.message)")
-        print("---")
-        print("\(line.content)")
-        
-        self.messageDetailView.string = line.content
+        self.messageDetailView.string = line.message
     }
     
     func tableView(_ tableView: NSTableView, didClick tableColumn: NSTableColumn) {
         print("didClick \(tableColumn.identifier.rawValue)")
     }
+    
+    // MARK: IBAction
     
     @IBAction func openFiles(_ sender: Any) {
         let dialog = NSOpenPanel();
@@ -115,10 +121,14 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
             
             DispatchQueue.global().async {
                 let timeStart = Date.init().timeIntervalSince1970
-                let logParser = WCLineLogParser.init(timeFormat: self.timeFormatString, timeRange: self.timeRange)
-                self.recordList = logParser.parseLogFiles(fileURLs: fileURLs)
+                self.logParser = WCLineLogParser.init(timeFormat: self.timeFormatString, timeRange: self.timeRange)
+                if let logParser = self.logParser {
+                    self.recordList = logParser.parseLogFiles(fileURLs: fileURLs)
+                }
                 let timeEnd = Date.init().timeIntervalSince1970
+                #if DEBUG
                 print("duration: \(timeEnd - timeStart)")
+                #endif
 
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
@@ -129,4 +139,35 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
         }
     }
 
+}
+
+extension MainWindowController: WCTokenSearchFieldDelegate {
+    func tokenSearchFieldDidPressEnter(_ textField: WCTokenSearchField, _ tokens: [WCToken]) {
+        if logParser?.storedLineMessages != nil {
+            if tokens.count > 0 {
+                DispatchQueue.global().async {
+                    var tokenStrings: [String] = []
+                    for token in tokens {
+                        if let string = token.value {
+                            tokenStrings.append(string)
+                        }
+                    }
+
+                    if let logParser = self.logParser, tokenStrings.count > 0 {
+                        self.recordList = logParser.filterWithTokens(tokens: tokenStrings)
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                }
+            }
+            else {
+                self.recordList = (logParser?.storedLineMessages)!
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
 }

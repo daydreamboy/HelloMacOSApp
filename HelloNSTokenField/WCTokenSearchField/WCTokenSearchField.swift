@@ -24,7 +24,7 @@ class WCToken: NSObject {
 }
 
 protocol WCTokenSearchFieldDelegate {
-    func tokenSearchFieldDidPressEnter(_ textField: WCTokenSearchField, _ tokens: [WCToken]?)
+    func tokenSearchFieldDidPressEnter(_ textField: WCTokenSearchField, _ tokens: [WCToken])
 }
 
 // TODO: Set this class to the NSTextField object's custom class
@@ -76,8 +76,8 @@ class WCTokenSearchField: NSTextField {
                 //print("receive notification from \(String(describing: notification.object))")
                 
                 if let delegate = self.tokenSearchDelegate {                    
-                    let tokens = notification.userInfo?["tokens"]
-                    delegate.tokenSearchFieldDidPressEnter(self, tokens as? [WCToken])
+                    let tokens: [WCToken]? = notification.userInfo?["tokens"] as? [WCToken]
+                    delegate.tokenSearchFieldDidPressEnter(self, tokens ?? [])
                 }
             }
         }

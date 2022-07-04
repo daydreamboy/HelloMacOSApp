@@ -7,12 +7,26 @@
 
 import Cocoa
 
+extension String {
+    // @see https://www.hackingwithswift.com/example-code/strings/how-to-remove-a-prefix-from-a-string
+    func deletePrefix(_ prefix: String) -> String {
+        guard self.hasPrefix(prefix) else { return self }
+        return String(self.dropFirst(prefix.count))
+    }
+    
+    func deleteSuffix(_ suffix: String) -> String {
+        guard self.hasSuffix(suffix) else { return self }
+        return String(self.dropLast(suffix.count))
+    }
+}
+
 class WCLineLogParser: NSObject {
     
     var filePathList: [URL] = []
     var timeStringFormat: String
     var timeStringRange: NSRange?
     var delimiter: String
+    var storedLineMessages: [WCLineMessage]?
     
     init(timeFormat: String, timeRange: NSRange?, delimiter: String = "\r\n") {
         self.timeStringFormat = timeFormat
@@ -20,16 +34,59 @@ class WCLineLogParser: NSObject {
         self.delimiter = delimiter
     }
     
-    func parseLogFiles(fileURLs: [URL]) -> [WCLineMessage] {
+    public func parseLogFiles(fileURLs: [URL], tokens: [String] = []) -> [WCLineMessage] {
         // Step1: order files
         filePathList = orderedFileURLs(fileURLs: fileURLs)
         
         // Step2: lines to models
-        let totalLines: [WCLineMessage] = readLinesWithFileURLs(fileURLs: filePathList)
+        let totalLines: [WCLineMessage] = readLinesWithFileURLs(fileURLs: filePathList, filter: nil)
+        
+        /*
+         { message in
+             for token in tokens {
+                 if token.hasPrefix("/") && token.hasSuffix("/") && token.count > 3 {
+                     let regex = token.deletePrefix("/").deleteSuffix("/")
+                     let result: Bool = message.content.range(of: regex, options: String.CompareOptions.regularExpression) != nil
+                     return result
+                 }
+                 else {
+                     let result: Bool = message.content.contains(token)
+                     return result
+                 }
+             }
+         }
+         */
+        
+        self.storedLineMessages = totalLines
+        
         return totalLines
     }
     
-    func orderedFileURLs(fileURLs: [URL]) -> [URL] {
+    public func filterWithTokens(tokens: [String]) -> [WCLineMessage] {
+        if self.storedLineMessages != nil {
+            var filteredLineMessages: [WCLineMessage] = []
+            filteredLineMessages.append(contentsOf: self.storedLineMessages!)
+            
+            for token in tokens {
+                if token.hasPrefix("/") && token.hasSuffix("/") && token.count > 3 {
+                    let regex = token.deletePrefix("/").deleteSuffix("/")
+                    // @see https://stackoverflow.com/a/57869961
+                    filteredLineMessages = filteredLineMessages.filter() { $0.content.range(of: regex, options: String.CompareOptions.regularExpression) != nil }
+                }
+                else {
+                    // @see https://stackoverflow.com/a/31330465
+                    filteredLineMessages = filteredLineMessages.filter() { $0.content.localizedCaseInsensitiveContains(token) }
+                }
+            }
+            
+            return filteredLineMessages
+        }
+        else {
+            return []
+        }
+    }
+    
+    private func orderedFileURLs(fileURLs: [URL]) -> [URL] {
         var sortedFileURLs: [URL] = []
         var firstLinesOfEachFile: [URL: Date] = [:]
         
@@ -61,11 +118,11 @@ class WCLineLogParser: NSObject {
         return sortedFileURLs
     }
     
-    func readLinesWithFileURLs(fileURLs: [URL]) -> [WCLineMessage] {
+    private func readLinesWithFileURLs(fileURLs: [URL], filter: ((WCLineMessage) -> Bool)?) -> [WCLineMessage] {
         var totalLines: [WCLineMessage] = []
         
         for fileURL in fileURLs {
-            let lines = readLinesWithFilePath(filePath: fileURL.path)
+            let lines = readLinesWithFilePath(filePath: fileURL.path, filter: filter)
             
             totalLines.append(contentsOf: lines)
         }
@@ -73,7 +130,8 @@ class WCLineLogParser: NSObject {
         return totalLines
     }
     
-    func readLinesWithFilePath(filePath: String) -> [WCLineMessage] {
+    // https://stackoverflow.com/a/40026952
+    private func readLinesWithFilePath(filePath: String, filter: ((WCLineMessage) -> Bool)?) -> [WCLineMessage] {
         var lines: [WCLineMessage] = []
         
         if let aStreamReader = WCStringStreamReader(path: filePath, delimiter: self.delimiter) {
@@ -81,12 +139,15 @@ class WCLineLogParser: NSObject {
                 aStreamReader.close()
             }
             
-            // Example 1: use nextLine func
             while let line = aStreamReader.nextLine() {
                 let trimmedLine = line.trimmingCharacters(in: .whitespacesAndNewlines)
                 if (trimmedLine.isEmpty == false) {
                     lines.append(WCLineMessage.init(message: line, timeFormat: self.timeStringFormat, timeRange: self.timeStringRange))
                 }
+            }
+            
+            if let filter = filter {
+                lines = lines.filter({ return filter($0) })
             }
         }
         

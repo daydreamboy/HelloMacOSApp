@@ -57,6 +57,9 @@ class WCTokenTextView: NSTextView {
                 notifyEndEditing()
             } else {
                 super.keyDown(with: event)
+                if event.charactersIgnoringModifiers == String(Character(UnicodeScalar(NSDeleteCharacter)!)) {
+                    notifyEndEditing()
+                }
             }
         }
     }

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- https://stackoverflow.com/a/71167934 -->
+  <title>Flow Chart</title>
+</head>
+
+<body>
+    <script>
+        console.log("test log");
+    </script>
+  <h2>FlowChart</h2>
+  <script src="./mermaid.min.js"></script>
+  <div class="mermaid">
+    graph TB
+    A -- text --> B --> Stackoverflow -- msg --> myLabel2 --> anotherLabel --> nextLabel
+    click Stackoverflow "https://stackoverflow.com/" "some desc when mouse hover" _blank
+    click myLabel2 "https://stackoverflow.com/" "some desc when mouse hover"
+  </div>
+  <hr />
+
+  <script>
+    console.log("initialize");
+    mermaid.initialize({
+      logLevel: 'debug',
+      securityLevel: 'loose',
+    });
+      console.log(mermaid);
+
+    function myFunc(arg) {
+      console.log(arg)
+    }
+  </script>
+</body>
+
+</html>

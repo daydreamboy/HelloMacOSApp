@@ -20,6 +20,7 @@
 		4F1F386E28708C2200CB61AE /* WCTokenSearchFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1F386928708C2200CB61AE /* WCTokenSearchFieldCell.swift */; };
 		4F1F386F28708C2200CB61AE /* WCTokenAttachmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1F386A28708C2200CB61AE /* WCTokenAttachmentCell.swift */; };
 		4F85AF762869F2F50023713A /* WCStringStreamReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F85AF752869F2F50023713A /* WCStringStreamReader.swift */; };
+		4FB21B642874342E00DB8547 /* WebPage in Resources */ = {isa = PBXBuildFile; fileRef = 4FB21B632874342D00DB8547 /* WebPage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		4F1F386928708C2200CB61AE /* WCTokenSearchFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCTokenSearchFieldCell.swift; sourceTree = "<group>"; };
 		4F1F386A28708C2200CB61AE /* WCTokenAttachmentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCTokenAttachmentCell.swift; sourceTree = "<group>"; };
 		4F85AF752869F2F50023713A /* WCStringStreamReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCStringStreamReader.swift; sourceTree = "<group>"; };
+		4FB21B632874342D00DB8547 /* WebPage */ = {isa = PBXFileReference; lastKnownFileType = folder; path = WebPage; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 		2B446B372864549600991153 /* LogMate */ = {
 			isa = PBXGroup;
 			children = (
+				4FB21B632874342D00DB8547 /* WebPage */,
 				4F1F386428708C2200CB61AE /* WCTokenSearchField */,
 				4F162167286DC66C00CFCA29 /* WCLineLogParser */,
 				2B446B45286455CD00991153 /* Classes */,
@@ -188,6 +191,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B446B3B2864549800991153 /* Assets.xcassets in Resources */,
+				4FB21B642874342E00DB8547 /* WebPage in Resources */,
 				2B446B4C2864560F00991153 /* LogMate.MainWindowController.xib in Resources */,
 				2B446B3E2864549800991153 /* MainMenu.xib in Resources */,
 			);

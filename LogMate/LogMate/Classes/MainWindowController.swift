@@ -51,6 +51,12 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
             "filter",
             "filter-node",
         ]
+        
+        let filePath = Bundle.main.path(forResource: "WebPage/flow_chart", ofType: "html")
+        if let filePath = filePath {
+            let fileURL = NSURL.fileURL(withPath: filePath)
+            self.webView.loadFileURL(fileURL, allowingReadAccessTo: fileURL)
+        }
     }
     
     // MARK: NSTableViewDataSource

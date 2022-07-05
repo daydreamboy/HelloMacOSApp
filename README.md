@@ -102,6 +102,16 @@ https://stackoverflow.com/a/17245860
 
 
 
+Console报错提示，如下
+
+```
+networkd_settings_read_from_file Sandbox is preventing this process from reading networkd settings file at "/Library/Preferences/com.apple.networkd.plist", please add an exception.
+```
+
+
+
+
+
 
 
 ### (2)  NSProgressIndicator显示没有动画

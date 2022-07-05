@@ -125,8 +125,8 @@ class WCTokenTextView: NSTextView {
                                           options: NSAttributedString.EnumerationOptions(),
                                           using: { (value: Any?, range: NSRange, stop: UnsafeMutablePointer<ObjCBool>) in
                 if let cell = (value as? NSTextAttachment)?.attachmentCell {
-                    if let tokenSearchField = (cell.attachment?.attachmentCell as? WCTokenAttachmentCell) {
-                        tokenSearchField.isHighlighted = newHighlight
+                    if let attachmentCell = (cell.attachment?.attachmentCell as? WCTokenAttachmentCell) {
+                        attachmentCell.isHighlighted = newHighlight
                     }
                 }
             })

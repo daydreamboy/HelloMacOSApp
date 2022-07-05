@@ -71,7 +71,16 @@ class WCLineLogParser: NSObject {
                 if token.hasPrefix("/") && token.hasSuffix("/") && token.count > 3 {
                     let regex = token.deletePrefix("/").deleteSuffix("/")
                     // @see https://stackoverflow.com/a/57869961
-                    filteredLineMessages = filteredLineMessages.filter() { $0.content.range(of: regex, options: String.CompareOptions.regularExpression) != nil }
+                    filteredLineMessages = filteredLineMessages.filter() {
+                        let string: NSString = $0.content as NSString
+                        let range: NSRange = string.range(of: regex, options: NSString.CompareOptions.regularExpression, range: NSMakeRange(0, string.length))
+                        if range.location != NSNotFound && range.length > 0 {
+                            return true
+                        }
+                        else {
+                            return false
+                        }
+                    }
                 }
                 else {
                     // @see https://stackoverflow.com/a/31330465

@@ -105,23 +105,39 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
     
     func tableView(_ tableView: NSTableView, didClick tableColumn: NSTableColumn) {
         if tableColumn.identifier.rawValue == CellIdentifiers.TimeCell {
-            self.recordList = self.recordList.reversed()
-            self.tableView.reloadData()
-            
             self.reversed = !self.reversed
-            
-            changeTabColIndicator()
+            self.reloadTableViewData(listData: self.recordList)
         }
         print("didClick \(tableColumn.identifier.rawValue)")
     }
     
     // MARK: -
     
-    fileprivate func changeTabColIndicator() {
-        // @see https://stackoverflow.com/a/2038688
-        if let image = self.reversed ? NSImage.init(named: "NSDescendingSortIndicator") : NSImage.init(named: "NSAscendingSortIndicator"),
-           let tableColumn = self.tableView.tableColumn(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: CellIdentifiers.TimeCell)) {
-            self.tableView.setIndicatorImage(image, in: tableColumn)
+    fileprivate func reloadTableViewData(listData: [WCLineMessage]) {
+        let handler: () -> Void = { () -> Void in
+            // @see https://stackoverflow.com/a/2038688
+            if let image = self.reversed ? NSImage.init(named: "NSDescendingSortIndicator") : NSImage.init(named: "NSAscendingSortIndicator"),
+               let tableColumn = self.tableView.tableColumn(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: CellIdentifiers.TimeCell)) {
+                self.tableView.setIndicatorImage(image, in: tableColumn)
+            }
+            
+            if self.reversed {
+                self.recordList = listData.reversed()
+            }
+            else {
+                self.recordList = listData
+            }
+            
+            self.tableView.reloadData()
+        }
+        
+        if Thread.isMainThread {
+            handler()
+        }
+        else {
+            DispatchQueue.main.async {
+                handler()
+            }
         }
     }
     
@@ -140,21 +156,18 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
             let fileURLs = dialog.urls
             
             DispatchQueue.global().async {
+                self.reversed = false
+                
                 let timeStart = Date.init().timeIntervalSince1970
                 self.logParser = WCLineLogParser.init(timeFormat: self.timeFormatString, timeRange: self.timeRange)
                 if let logParser = self.logParser {
                     self.recordList = logParser.parseLogFiles(fileURLs: fileURLs)
+                    self.reloadTableViewData(listData: self.recordList)
                 }
                 let timeEnd = Date.init().timeIntervalSince1970
                 #if DEBUG
                 print("duration: \(timeEnd - timeStart)")
                 #endif
-
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                    self.reversed = false
-                    self.changeTabColIndicator()
-                }
             }
         } else {
             return
@@ -177,18 +190,13 @@ extension MainWindowController: WCTokenSearchFieldDelegate {
 
                     if let logParser = self.logParser, tokenStrings.count > 0 {
                         self.recordList = logParser.filterWithTokens(tokens: tokenStrings)
-                    }
-                    
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
+                        self.reloadTableViewData(listData: self.recordList)
                     }
                 }
             }
             else {
                 self.recordList = (logParser?.storedLineMessages)!
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
+                self.reloadTableViewData(listData: self.recordList)
             }
         }
     }

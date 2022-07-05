@@ -120,10 +120,12 @@ class WCLineLogParser: NSObject {
     
     private func readLinesWithFileURLs(fileURLs: [URL], filter: ((WCLineMessage) -> Bool)?) -> [WCLineMessage] {
         var totalLines: [WCLineMessage] = []
+        var countOfLines: Int = 0
         
         for fileURL in fileURLs {
-            let lines = readLinesWithFilePath(filePath: fileURL.path, filter: filter)
+            let lines = readLinesWithFilePath(filePath: fileURL.path, startOrder: countOfLines, filter: filter)
             
+            countOfLines += lines.count
             totalLines.append(contentsOf: lines)
         }
         
@@ -131,7 +133,7 @@ class WCLineLogParser: NSObject {
     }
     
     // https://stackoverflow.com/a/40026952
-    private func readLinesWithFilePath(filePath: String, filter: ((WCLineMessage) -> Bool)?) -> [WCLineMessage] {
+    private func readLinesWithFilePath(filePath: String, startOrder: Int = 0, filter: ((WCLineMessage) -> Bool)?) -> [WCLineMessage] {
         var lines: [WCLineMessage] = []
         
         if let aStreamReader = WCStringStreamReader(path: filePath, delimiter: self.delimiter) {
@@ -139,10 +141,14 @@ class WCLineLogParser: NSObject {
                 aStreamReader.close()
             }
             
+            var count: Int = startOrder
             while let line = aStreamReader.nextLine() {
                 let trimmedLine = line.trimmingCharacters(in: .whitespacesAndNewlines)
                 if (trimmedLine.isEmpty == false) {
-                    lines.append(WCLineMessage.init(message: line, timeFormat: self.timeStringFormat, timeRange: self.timeStringRange))
+                    let lineMessage = WCLineMessage.init(message: line, timeFormat: self.timeStringFormat, timeRange: self.timeStringRange)
+                    lineMessage.order = count
+                    count += 1
+                    lines.append(lineMessage)
                 }
             }
             

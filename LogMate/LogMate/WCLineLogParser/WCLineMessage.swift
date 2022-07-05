@@ -12,6 +12,7 @@ class WCLineMessage: NSObject {
     public var content: String
     public var timestamp: TimeInterval = 0.0
     public var message: String
+    public var order: Int = 0
     
     var timeFormat: String
     var timeRange: NSRange?

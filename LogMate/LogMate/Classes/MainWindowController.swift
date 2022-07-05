@@ -25,6 +25,7 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
     }
     
     var recordList: [WCLineMessage] = []
+    var reversed: Bool = false
     
     var timeFormatString: String = "YYYY-MM-dd HH:mm:ss.SSS"
     var timeRange: NSRange?
@@ -42,6 +43,7 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
     
     override func windowDidLoad() {
         super.windowDidLoad()
+        
         self.tokenSearchField.tokenSearchDelegate = self
         self.tokenSearchField.tokenMode = .stemRestricted
         self.tokenSearchField.restrictedSteamWords = [
@@ -102,7 +104,25 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
     }
     
     func tableView(_ tableView: NSTableView, didClick tableColumn: NSTableColumn) {
+        if tableColumn.identifier.rawValue == CellIdentifiers.TimeCell {
+            self.recordList = self.recordList.reversed()
+            self.tableView.reloadData()
+            
+            self.reversed = !self.reversed
+            
+            changeTabColIndicator()
+        }
         print("didClick \(tableColumn.identifier.rawValue)")
+    }
+    
+    // MARK: -
+    
+    fileprivate func changeTabColIndicator() {
+        // @see https://stackoverflow.com/a/2038688
+        if let image = self.reversed ? NSImage.init(named: "NSDescendingSortIndicator") : NSImage.init(named: "NSAscendingSortIndicator"),
+           let tableColumn = self.tableView.tableColumn(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: CellIdentifiers.TimeCell)) {
+            self.tableView.setIndicatorImage(image, in: tableColumn)
+        }
     }
     
     // MARK: IBAction
@@ -132,6 +152,8 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
 
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
+                    self.reversed = false
+                    self.changeTabColIndicator()
                 }
             }
         } else {

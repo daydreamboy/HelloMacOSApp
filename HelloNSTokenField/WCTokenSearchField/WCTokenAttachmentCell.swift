@@ -36,7 +36,7 @@ class WCTokenAttachmentCell: NSTextAttachmentCell {
     let cellDividerWidth: CGFloat = 1.0
     let radius: CGFloat = 2.0
     let titleFont: NSFont = NSFont.systemFont(ofSize: 9.0, weight: NSFont.Weight.medium)
-    let valueFont: NSFont = NSFont.systemFont(ofSize: 13)
+    let valueFont: NSFont = NSFont.systemFont(ofSize: 13.0)
     
     init(cellTitle: String?, cellValue: String) {
         if let cellTitle = cellTitle {

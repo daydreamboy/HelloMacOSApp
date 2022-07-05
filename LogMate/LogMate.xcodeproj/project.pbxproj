@@ -38,6 +38,7 @@
 		4F1F386828708C2200CB61AE /* WCTokenTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCTokenTextView.swift; sourceTree = "<group>"; };
 		4F1F386928708C2200CB61AE /* WCTokenSearchFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCTokenSearchFieldCell.swift; sourceTree = "<group>"; };
 		4F1F386A28708C2200CB61AE /* WCTokenAttachmentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCTokenAttachmentCell.swift; sourceTree = "<group>"; };
+		4F1F6D1A28747E81009E54B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4F85AF752869F2F50023713A /* WCStringStreamReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCStringStreamReader.swift; sourceTree = "<group>"; };
 		4FB21B632874342D00DB8547 /* WebPage */ = {isa = PBXFileReference; lastKnownFileType = folder; path = WebPage; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -72,6 +73,7 @@
 		2B446B372864549600991153 /* LogMate */ = {
 			isa = PBXGroup;
 			children = (
+				4F1F6D1A28747E81009E54B6 /* Info.plist */,
 				4FB21B632874342D00DB8547 /* WebPage */,
 				4F1F386428708C2200CB61AE /* WCTokenSearchField */,
 				4F162167286DC66C00CFCA29 /* WCLineLogParser */,
@@ -356,6 +358,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LogMate/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -381,6 +384,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LogMate/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;

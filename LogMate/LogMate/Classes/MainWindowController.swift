@@ -52,10 +52,19 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
             "filter-node",
         ]
         
-        let filePath = Bundle.main.path(forResource: "WebPage/flow_chart", ofType: "html")
-        if let filePath = filePath {
-            let fileURL = NSURL.fileURL(withPath: filePath)
-            self.webView.loadFileURL(fileURL, allowingReadAccessTo: fileURL)
+        self.webView.navigationDelegate = self
+        self.webView.uiDelegate = self
+        //self.webView.configuration.preferences.setValue("1", forKey: "allowFileAccessFromFileURLs")
+        
+//        if let fileURL = Bundle.main.url(forResource: "flow_chart", withExtension: "html", subdirectory: "WebPage") {
+//            self.webView.loadFileURL(fileURL, allowingReadAccessTo: fileURL.deletingLastPathComponent())
+//            let request = URLRequest(url: fileURL)
+//            self.webView.load(request)
+//        }
+        
+        if let filePath = Bundle.main.path(forResource: "WebPage/flow_chart", ofType: "html") {
+            let fileURL = URL.init(fileURLWithPath: filePath)
+            self.webView.loadFileURL(fileURL, allowingReadAccessTo: fileURL.deletingLastPathComponent())
         }
     }
     
@@ -178,6 +187,16 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
                 #if DEBUG
                 print("duration: \(timeEnd - timeStart)")
                 #endif
+                
+                DispatchQueue.main.async {
+                    let request = URLRequest.init(url: URL.init(string: "https://www.baidu.com/")!)
+                    self.webView.load(request)
+//                    let filePath = Bundle.main.path(forResource: "WebPage/use_console_log", ofType: "html")
+//                    if let filePath = filePath {
+//                        let fileURL = NSURL.fileURL(withPath: filePath)
+//                        self.webView.loadFileURL(fileURL, allowingReadAccessTo: fileURL)
+//                    }
+                }
             }
         } else {
             return
@@ -209,5 +228,23 @@ extension MainWindowController: WCTokenSearchFieldDelegate {
                 self.reloadTableViewData(listData: self.recordList)
             }
         }
+    }
+}
+
+extension MainWindowController: WKNavigationDelegate, WKUIDelegate {
+    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+        print("didCommit")
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        print("didFinish")
+    }
+    
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        print("error: \(error)")
+    }
+    
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        print("error: \(error)")
     }
 }

@@ -12,7 +12,7 @@
                 <outlet property="recordArrayController" destination="CgW-On-EIF" id="xxY-pi-Tum"/>
                 <outlet property="tableView" destination="Zdy-es-bsY" id="fT1-CH-1aF"/>
                 <outlet property="tokenSearchField" destination="cq9-xB-if2" id="RCN-F8-UV6"/>
-                <outlet property="webView" destination="TbD-tL-krK" id="psR-ao-TfQ"/>
+                <outlet property="webView" destination="Doy-qZ-KVM" id="srd-WG-PVZ"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -34,8 +34,8 @@
                             <visualEffectView appearanceType="vibrantDark" blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="VsO-sY-giw" userLabel="LeftPanel">
                                 <rect key="frame" x="0.0" y="0.0" width="300" height="900"/>
                                 <subviews>
-                                    <wkWebView wantsLayer="YES" alphaValue="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="TbD-tL-krK">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="840"/>
+                                    <wkWebView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Doy-qZ-KVM">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="860"/>
                                         <wkWebViewConfiguration key="configuration">
                                             <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                             <wkPreferences key="preferences"/>
@@ -43,11 +43,11 @@
                                     </wkWebView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="TbD-tL-krK" firstAttribute="centerX" secondItem="VsO-sY-giw" secondAttribute="centerX" id="8B3-fI-qTL"/>
-                                    <constraint firstItem="TbD-tL-krK" firstAttribute="centerY" secondItem="VsO-sY-giw" secondAttribute="centerY" constant="30" id="AyS-Yp-iPQ"/>
-                                    <constraint firstItem="TbD-tL-krK" firstAttribute="height" secondItem="VsO-sY-giw" secondAttribute="height" constant="-60" id="ECp-3x-Tau"/>
-                                    <constraint firstItem="TbD-tL-krK" firstAttribute="width" secondItem="VsO-sY-giw" secondAttribute="width" id="ioO-b6-VOC"/>
+                                    <constraint firstItem="Doy-qZ-KVM" firstAttribute="leading" secondItem="VsO-sY-giw" secondAttribute="leading" id="5zE-2I-Qr1"/>
+                                    <constraint firstItem="Doy-qZ-KVM" firstAttribute="top" secondItem="VsO-sY-giw" secondAttribute="top" constant="40" id="FZM-nP-HFY"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="pxa-J8-07Y"/>
+                                    <constraint firstAttribute="bottom" secondItem="Doy-qZ-KVM" secondAttribute="bottom" id="slC-oW-78E"/>
+                                    <constraint firstAttribute="trailing" secondItem="Doy-qZ-KVM" secondAttribute="trailing" id="yND-kS-ozA"/>
                                 </constraints>
                             </visualEffectView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="umM-3u-GdZ" userLabel="RightPanel">
@@ -295,7 +295,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="138.5" y="165"/>
+            <point key="canvasLocation" x="138" y="165"/>
         </window>
         <customObject id="CgW-On-EIF" userLabel="messages" customClass="NSArrayController"/>
     </objects>

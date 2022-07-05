@@ -22,6 +22,7 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
     fileprivate enum CellIdentifiers {
         static let TimeCell = "TimeCell"
         static let MessageCell = "MessageCell"
+        static let OrderCell = "OrderCell"
     }
     
     var recordList: [WCLineMessage] = []
@@ -70,6 +71,9 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
             cell.textField?.stringValue = line.time
         } else if (tableColumn?.identifier)!.rawValue == CellIdentifiers.MessageCell {
             cell.textField?.stringValue = line.content
+        }
+        else if (tableColumn?.identifier)!.rawValue == CellIdentifiers.OrderCell {
+            cell.textField?.stringValue = "\(line.order)"
         }
         
         return cell

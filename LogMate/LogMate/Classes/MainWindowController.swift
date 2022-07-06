@@ -60,10 +60,10 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
             self.webView.configuration.userContentController.addUserScript(userScript)
         }
         
-        if let filePath = Bundle.main.path(forResource: "FrontResources/test", ofType: "html") {
-            let fileURL = URL.init(fileURLWithPath: filePath)
-            self.webView.loadFileURL(fileURL, allowingReadAccessTo: fileURL.deletingLastPathComponent())
-        }
+//        if let filePath = Bundle.main.path(forResource: "FrontResources/test", ofType: "html") {
+//            let fileURL = URL.init(fileURLWithPath: filePath)
+//            self.webView.loadFileURL(fileURL, allowingReadAccessTo: fileURL.deletingLastPathComponent())
+//        }
     }
     
     // MARK: NSTableViewDataSource
@@ -82,7 +82,8 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
         
         if (tableColumn?.identifier)!.rawValue == CellIdentifiers.TimeCell {
             cell.textField?.stringValue = line.time
-        } else if (tableColumn?.identifier)!.rawValue == CellIdentifiers.MessageCell {
+        }
+        else if (tableColumn?.identifier)!.rawValue == CellIdentifiers.MessageCell {
             cell.textField?.stringValue = line.content
         }
         else if (tableColumn?.identifier)!.rawValue == CellIdentifiers.OrderCell {
@@ -125,7 +126,9 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
             self.reversed = !self.reversed
             self.reloadTableViewData(listData: self.recordList)
         }
+        #if DEBUG
         print("didClick \(tableColumn.identifier.rawValue)")
+        #endif
     }
     
     // MARK: -
@@ -158,6 +161,24 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
         }
     }
     
+    fileprivate func createMermaidString() -> String {
+        let mermaidString = """
+        graph TB
+        A -- text --> B --> Stackoverflow -- msg --> myLabel2 --> anotherLabel --> nextLabel
+        click Stackoverflow "https://stackoverflow.com/" "some desc when mouse hover" _blank
+        click myLabel2 "https://stackoverflow.com/" "some desc when mouse hover"
+        """
+        
+        if let templateString = WCStringTool.stringWithFileName(fileName: "FrontResources/template.html") {
+            let content = templateString.replacingOccurrences(of: "%@", with: mermaidString)
+            if let fileURL = WCStringTool.writeStringToTempFolder(string: content, ext: "html") {
+                self.webView.loadFileURL(fileURL, allowingReadAccessTo: fileURL.deletingLastPathComponent())
+            }
+        }
+        
+        return mermaidString
+    }
+    
     // MARK: IBAction
     
     @IBAction func openFiles(_ sender: Any) {
@@ -187,8 +208,8 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
                 #endif
                 
                 DispatchQueue.main.async {
-                    let request = URLRequest.init(url: URL.init(string: "https://www.baidu.com/")!)
-                    self.webView.load(request)
+//                    let request = URLRequest.init(url: URL.init(string: "https://www.baidu.com/")!)
+//                    self.webView.load(request)
 //                    let filePath = Bundle.main.path(forResource: "WebPage/use_console_log", ofType: "html")
 //                    if let filePath = filePath {
 //                        let fileURL = NSURL.fileURL(withPath: filePath)

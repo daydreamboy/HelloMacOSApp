@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Test for mermaid</title>
+</head>
+
+<body>
+  <h2>Test for mermaid</h2>
+  <div class="mermaid">
+    graph TB
+    A -- text --> B --> Stackoverflow -- msg --> myLabel2 --> anotherLabel --> nextLabel
+    click Stackoverflow "https://stackoverflow.com/" "some desc when mouse hover" _blank
+    click myLabel2 "https://stackoverflow.com/" "some desc when mouse hover"
+  </div>
+  <hr />
+
+  <script>
+    mermaid.initialize({
+      logLevel: 'debug',
+      securityLevel: 'loose',
+    });
+  </script>
+</body>
+
+</html>

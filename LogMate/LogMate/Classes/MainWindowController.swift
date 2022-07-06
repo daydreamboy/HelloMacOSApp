@@ -52,17 +52,15 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
             "filter-node",
         ]
         
+        // @see https://stackoverflow.com/a/40267954
+        //self.webView.setValue(false, forKey: "drawsBackground")
         self.webView.navigationDelegate = self
         self.webView.uiDelegate = self
-        //self.webView.configuration.preferences.setValue("1", forKey: "allowFileAccessFromFileURLs")
+        if let userScript = WCWebViewTool.createUserScript(fileName: "FrontResources/mermaid.min.js") {
+            self.webView.configuration.userContentController.addUserScript(userScript)
+        }
         
-//        if let fileURL = Bundle.main.url(forResource: "flow_chart", withExtension: "html", subdirectory: "WebPage") {
-//            self.webView.loadFileURL(fileURL, allowingReadAccessTo: fileURL.deletingLastPathComponent())
-//            let request = URLRequest(url: fileURL)
-//            self.webView.load(request)
-//        }
-        
-        if let filePath = Bundle.main.path(forResource: "WebPage/flow_chart", ofType: "html") {
+        if let filePath = Bundle.main.path(forResource: "FrontResources/test", ofType: "html") {
             let fileURL = URL.init(fileURLWithPath: filePath)
             self.webView.loadFileURL(fileURL, allowingReadAccessTo: fileURL.deletingLastPathComponent())
         }

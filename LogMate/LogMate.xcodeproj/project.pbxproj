@@ -20,7 +20,8 @@
 		4F1F386E28708C2200CB61AE /* WCTokenSearchFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1F386928708C2200CB61AE /* WCTokenSearchFieldCell.swift */; };
 		4F1F386F28708C2200CB61AE /* WCTokenAttachmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1F386A28708C2200CB61AE /* WCTokenAttachmentCell.swift */; };
 		4F85AF762869F2F50023713A /* WCStringStreamReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F85AF752869F2F50023713A /* WCStringStreamReader.swift */; };
-		4FB21B642874342E00DB8547 /* WebPage in Resources */ = {isa = PBXBuildFile; fileRef = 4FB21B632874342D00DB8547 /* WebPage */; };
+		4FB21B642874342E00DB8547 /* FrontResources in Resources */ = {isa = PBXBuildFile; fileRef = 4FB21B632874342D00DB8547 /* FrontResources */; };
+		4FF328512875492E00744DDB /* WCWebViewTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF328502875492E00744DDB /* WCWebViewTool.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,7 +41,8 @@
 		4F1F386A28708C2200CB61AE /* WCTokenAttachmentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCTokenAttachmentCell.swift; sourceTree = "<group>"; };
 		4F1F6D1A28747E81009E54B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4F85AF752869F2F50023713A /* WCStringStreamReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCStringStreamReader.swift; sourceTree = "<group>"; };
-		4FB21B632874342D00DB8547 /* WebPage */ = {isa = PBXFileReference; lastKnownFileType = folder; path = WebPage; sourceTree = "<group>"; };
+		4FB21B632874342D00DB8547 /* FrontResources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = FrontResources; sourceTree = "<group>"; };
+		4FF328502875492E00744DDB /* WCWebViewTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCWebViewTool.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,8 +75,9 @@
 		2B446B372864549600991153 /* LogMate */ = {
 			isa = PBXGroup;
 			children = (
+				4FF3284F2875491900744DDB /* Tools */,
 				4F1F6D1A28747E81009E54B6 /* Info.plist */,
-				4FB21B632874342D00DB8547 /* WebPage */,
+				4FB21B632874342D00DB8547 /* FrontResources */,
 				4F1F386428708C2200CB61AE /* WCTokenSearchField */,
 				4F162167286DC66C00CFCA29 /* WCLineLogParser */,
 				2B446B45286455CD00991153 /* Classes */,
@@ -130,6 +133,14 @@
 			isa = PBXGroup;
 			children = (
 				4F1F386628708C2200CB61AE /* WCAttributedStringTool.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		4FF3284F2875491900744DDB /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				4FF328502875492E00744DDB /* WCWebViewTool.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -193,7 +204,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B446B3B2864549800991153 /* Assets.xcassets in Resources */,
-				4FB21B642874342E00DB8547 /* WebPage in Resources */,
+				4FB21B642874342E00DB8547 /* FrontResources in Resources */,
 				2B446B4C2864560F00991153 /* LogMate.MainWindowController.xib in Resources */,
 				2B446B3E2864549800991153 /* MainMenu.xib in Resources */,
 			);
@@ -208,6 +219,7 @@
 			files = (
 				4F85AF762869F2F50023713A /* WCStringStreamReader.swift in Sources */,
 				4F1F386E28708C2200CB61AE /* WCTokenSearchFieldCell.swift in Sources */,
+				4FF328512875492E00744DDB /* WCWebViewTool.swift in Sources */,
 				4F162164286D377900CFCA29 /* WCLineMessage.swift in Sources */,
 				4F1F386B28708C2200CB61AE /* WCAttributedStringTool.swift in Sources */,
 				4F1F386F28708C2200CB61AE /* WCTokenAttachmentCell.swift in Sources */,

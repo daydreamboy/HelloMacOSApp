@@ -7,20 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F1F6D1F287483B1009E54B6 /* use_console_log.html in Resources */ = {isa = PBXBuildFile; fileRef = 4F1F6D1C287483B1009E54B6 /* use_console_log.html */; };
+		4F1F6D20287483B1009E54B6 /* example.html in Resources */ = {isa = PBXBuildFile; fileRef = 4F1F6D1D287483B1009E54B6 /* example.html */; };
+		4F1F6D21287483B1009E54B6 /* flow_chart.html in Resources */ = {isa = PBXBuildFile; fileRef = 4F1F6D1E287483B1009E54B6 /* flow_chart.html */; };
+		4F1F6D24287484CA009E54B6 /* LocalFiles in Resources */ = {isa = PBXBuildFile; fileRef = 4F1F6D23287484CA009E54B6 /* LocalFiles */; };
 		4F4B4C332874737D006E246F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4B4C322874737D006E246F /* AppDelegate.swift */; };
 		4F4B4C352874737D006E246F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4B4C342874737D006E246F /* ViewController.swift */; };
 		4F4B4C372874737F006E246F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F4B4C362874737F006E246F /* Assets.xcassets */; };
 		4F4B4C3A2874737F006E246F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F4B4C382874737F006E246F /* Main.storyboard */; };
+		4FF328472875364800744DDB /* mermaid.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 4FF328462875364800744DDB /* mermaid.min.js */; };
+		4FF3284A2875382600744DDB /* WCWebViewTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF328492875382600744DDB /* WCWebViewTool.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4F1F6D1928747C4E009E54B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4F1F6D1C287483B1009E54B6 /* use_console_log.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = use_console_log.html; sourceTree = "<group>"; };
+		4F1F6D1D287483B1009E54B6 /* example.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = example.html; sourceTree = "<group>"; };
+		4F1F6D1E287483B1009E54B6 /* flow_chart.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = flow_chart.html; sourceTree = "<group>"; };
+		4F1F6D23287484CA009E54B6 /* LocalFiles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = LocalFiles; sourceTree = "<group>"; };
 		4F4B4C2F2874737D006E246F /* HelloWKWebView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloWKWebView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F4B4C322874737D006E246F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4F4B4C342874737D006E246F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4F4B4C362874737F006E246F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4F4B4C392874737F006E246F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F4B4C3B2874737F006E246F /* HelloWKWebView.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HelloWKWebView.entitlements; sourceTree = "<group>"; };
+		4FF328462875364800744DDB /* mermaid.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = mermaid.min.js; sourceTree = "<group>"; };
+		4FF328492875382600744DDB /* WCWebViewTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCWebViewTool.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,9 +46,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F1F6D1B287483B1009E54B6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4FF328462875364800744DDB /* mermaid.min.js */,
+				4F1F6D1C287483B1009E54B6 /* use_console_log.html */,
+				4F1F6D1D287483B1009E54B6 /* example.html */,
+				4F1F6D1E287483B1009E54B6 /* flow_chart.html */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		4F4B4C262874737D006E246F = {
 			isa = PBXGroup;
 			children = (
+				4FF328482875381100744DDB /* WCWebViewTool */,
 				4F4B4C312874737D006E246F /* HelloWKWebView */,
 				4F4B4C302874737D006E246F /* Products */,
 			);
@@ -53,6 +77,8 @@
 		4F4B4C312874737D006E246F /* HelloWKWebView */ = {
 			isa = PBXGroup;
 			children = (
+				4F1F6D23287484CA009E54B6 /* LocalFiles */,
+				4F1F6D1B287483B1009E54B6 /* Resources */,
 				4F1F6D1928747C4E009E54B6 /* Info.plist */,
 				4F4B4C322874737D006E246F /* AppDelegate.swift */,
 				4F4B4C342874737D006E246F /* ViewController.swift */,
@@ -61,6 +87,14 @@
 				4F4B4C3B2874737F006E246F /* HelloWKWebView.entitlements */,
 			);
 			path = HelloWKWebView;
+			sourceTree = "<group>";
+		};
+		4FF328482875381100744DDB /* WCWebViewTool */ = {
+			isa = PBXGroup;
+			children = (
+				4FF328492875382600744DDB /* WCWebViewTool.swift */,
+			);
+			path = WCWebViewTool;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -121,8 +155,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F1F6D24287484CA009E54B6 /* LocalFiles in Resources */,
 				4F4B4C372874737F006E246F /* Assets.xcassets in Resources */,
 				4F4B4C3A2874737F006E246F /* Main.storyboard in Resources */,
+				4F1F6D1F287483B1009E54B6 /* use_console_log.html in Resources */,
+				4F1F6D20287483B1009E54B6 /* example.html in Resources */,
+				4FF328472875364800744DDB /* mermaid.min.js in Resources */,
+				4F1F6D21287483B1009E54B6 /* flow_chart.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,6 +172,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FF3284A2875382600744DDB /* WCWebViewTool.swift in Sources */,
 				4F4B4C352874737D006E246F /* ViewController.swift in Sources */,
 				4F4B4C332874737D006E246F /* AppDelegate.swift in Sources */,
 			);

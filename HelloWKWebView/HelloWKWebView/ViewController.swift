@@ -18,8 +18,17 @@ class ViewController: NSViewController {
         self.webView.navigationDelegate = self
         self.webView.uiDelegate = self
         
-        let request = URLRequest.init(url: URL.init(string: "https://www.baidu.com/")!)
-        self.webView.load(request)
+        if let userScript = WCWebViewTool.createUserScript(fileName: "mermaid.min.js") {
+            self.webView.configuration.userContentController.addUserScript(userScript)
+        }
+
+//        let request = URLRequest.init(url: URL.init(string: "https://www.baidu.com/")!)
+//        self.webView.load(request)
+        
+        if let filePath = Bundle.main.path(forResource: "LocalFiles/flow_chart", ofType: "html") {
+            let fileURL = URL.init(fileURLWithPath: filePath)
+            self.webView.loadFileURL(fileURL, allowingReadAccessTo: fileURL.deletingLastPathComponent())
+        }
     }
 }
 

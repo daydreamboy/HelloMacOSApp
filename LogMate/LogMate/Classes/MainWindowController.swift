@@ -124,7 +124,8 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
     func tableView(_ tableView: NSTableView, didClick tableColumn: NSTableColumn) {
         if tableColumn.identifier.rawValue == CellIdentifiers.TimeCell {
             self.reversed = !self.reversed
-            self.reloadTableViewData(listData: self.recordList)
+            self.recordList = self.recordList.reversed()
+            self.reloadTableViewData()
         }
         #if DEBUG
         print("didClick \(tableColumn.identifier.rawValue)")
@@ -133,19 +134,12 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
     
     // MARK: -
     
-    fileprivate func reloadTableViewData(listData: [WCLineMessage]) {
+    fileprivate func reloadTableViewData() {
         let handler: () -> Void = { () -> Void in
             // @see https://stackoverflow.com/a/2038688
             if let image = self.reversed ? NSImage.init(named: "NSDescendingSortIndicator") : NSImage.init(named: "NSAscendingSortIndicator"),
                let tableColumn = self.tableView.tableColumn(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: CellIdentifiers.TimeCell)) {
                 self.tableView.setIndicatorImage(image, in: tableColumn)
-            }
-            
-            if self.reversed {
-                self.recordList = listData.reversed()
-            }
-            else {
-                self.recordList = listData
             }
             
             self.tableView.reloadData()
@@ -160,23 +154,55 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
             }
         }
     }
-    
-    fileprivate func createMermaidString() -> String {
-        let mermaidString = """
-        graph TB
-        A -- text --> B --> Stackoverflow -- msg --> myLabel2 --> anotherLabel --> nextLabel
-        click Stackoverflow "https://stackoverflow.com/" "some desc when mouse hover" _blank
-        click myLabel2 "https://stackoverflow.com/" "some desc when mouse hover"
-        """
         
-        if let templateString = WCStringTool.stringWithFileName(fileName: "FrontResources/template.html") {
-            let content = templateString.replacingOccurrences(of: "%@", with: mermaidString)
-            if let fileURL = WCStringTool.writeStringToTempFolder(string: content, ext: "html") {
-                self.webView.loadFileURL(fileURL, allowingReadAccessTo: fileURL.deletingLastPathComponent())
+    fileprivate func reloadWebView(fileURL: URL) {
+        self.webView.loadFileURL(fileURL, allowingReadAccessTo: fileURL.deletingLastPathComponent())
+    }
+    
+    fileprivate func createLocalHTMLFile(lines: [WCLineMessage]) -> URL? {
+        var graphicalLines = lines.filter({
+            for filter in $0.filters {
+                if filter.tag == "filter-node" {
+                    return true
+                }
+            }
+            
+            return false
+        })
+        
+        if graphicalLines.count > 0 {
+            let mermaidString: String
+            let firstLine = graphicalLines.first!
+            let initialString = """
+            graph TB\nid\(firstLine.order)["\(firstLine.message)"]
+            """
+            graphicalLines.removeFirst()
+            
+            if graphicalLines.count > 0 {
+                mermaidString = graphicalLines.reduce(initialString) { previousString, line in
+                    "\(previousString) --> id\(line.order)[\"\(line.message)\"]"
+                }
+            }
+            else {
+                mermaidString = initialString
+            }
+            
+            if let templateString = WCStringTool.stringWithFileName(fileName: "FrontResources/template.html") {
+                let content = templateString.replacingOccurrences(of: "%@", with: mermaidString)
+                let fileURL = WCStringTool.writeStringToTempFolder(string: content, ext: "html")
+                if fileURL != nil {
+                    return fileURL
+                }
             }
         }
         
-        return mermaidString
+//        let mermaidString = """
+//        graph TB
+//        A -- text --> B --> Stackoverflow -- msg --> myLabel2 --> anotherLabel --> nextLabel
+//        click Stackoverflow "https://stackoverflow.com/" "some desc when mouse hover" _blank
+//        click myLabel2 "https://stackoverflow.com/" "some desc when mouse hover"
+//        """
+        return nil
     }
     
     // MARK: IBAction
@@ -200,7 +226,10 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
                 self.logParser = WCLineLogParser.init(timeFormat: self.timeFormatString, timeRange: self.timeRange)
                 if let logParser = self.logParser {
                     self.recordList = logParser.parseLogFiles(fileURLs: fileURLs)
-                    self.reloadTableViewData(listData: self.recordList)
+                    if self.reversed {
+                        self.recordList = self.recordList.reversed()
+                    }
+                    self.reloadTableViewData()
                 }
                 let timeEnd = Date.init().timeIntervalSince1970
                 #if DEBUG
@@ -235,12 +264,18 @@ extension MainWindowController: WCTokenSearchFieldDelegate {
                             filters.append(WCLineFilter.init(token: string, tag: token.key))
                         }
                     }
-
+                    
                     if let logParser = self.logParser, filters.count > 0 {
                         logParser.applyFilters(filters: filters) { filters, lines in
+                            let listData: [WCLineMessage] = self.reversed ? lines.reversed() : lines
+                            let fileURL = self.createLocalHTMLFile(lines: listData)
+                            
                             DispatchQueue.main.async {
-                                self.recordList = lines
-                                self.reloadTableViewData(listData: self.recordList)
+                                self.recordList = listData
+                                self.reloadTableViewData()
+                                if let fileURL = fileURL {
+                                    self.reloadWebView(fileURL: fileURL)
+                                }
                             }
                         }
                     }
@@ -248,7 +283,10 @@ extension MainWindowController: WCTokenSearchFieldDelegate {
             }
             else {
                 self.recordList = (logParser?.storedLineMessages)!
-                self.reloadTableViewData(listData: self.recordList)
+                if self.reversed {
+                    self.recordList = self.recordList.reversed()
+                }
+                self.reloadTableViewData()
             }
         }
     }

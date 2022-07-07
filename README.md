@@ -114,12 +114,6 @@ https://www.jianshu.com/p/d7e96597bd1f
 
 
 
-
-
-
-
-
-
 ### (2)  NSProgressIndicator显示没有动画
 
 解决方法：将Drawing勾选Hidden[^2]，如下
@@ -138,6 +132,22 @@ https://www.jianshu.com/p/d7e96597bd1f
     [progressBar startAnimation:nil];
 }
 ```
+
+
+
+### (3) 使用NSOpenPanel出现crash
+
+使用NSOpenPanel出现crash，如下
+
+```
+[OpenSavePanels] ERROR: Unable to display open panel: your app is missing the User Selected File Read app sandbox entitlement. Please ensure that your app's target capabilities include the proper entitlements.
+```
+
+
+
+解决方法
+
+在entitlements文件中设置`com.apple.security.files.user-selected.read-only`为YES
 
 
 

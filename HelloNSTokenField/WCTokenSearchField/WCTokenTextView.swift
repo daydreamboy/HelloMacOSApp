@@ -82,7 +82,7 @@ class WCTokenTextView: NSTextView {
                     let token = WCToken.init()
                     token.mode = self.mode
                     token.stringValue = (textAttachmentCell as! WCTokenAttachmentCell).stringValue
-                    token.key = (textAttachmentCell as! WCTokenAttachmentCell).cellTitleString
+                    token.key = (textAttachmentCell as! WCTokenAttachmentCell).cellTitle
                     token.value = (textAttachmentCell as! WCTokenAttachmentCell).stringValue
                     
                     tokens.append(token)

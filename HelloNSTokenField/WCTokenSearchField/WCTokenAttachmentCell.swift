@@ -29,6 +29,7 @@ extension NSColor {
 
 class WCTokenAttachmentCell: NSTextAttachmentCell {
 
+    var cellTitle: String?
     var cellTitleString: String?
     
     let cellMarginSide: CGFloat = 4.0
@@ -40,7 +41,8 @@ class WCTokenAttachmentCell: NSTextAttachmentCell {
     
     init(cellTitle: String?, cellValue: String) {
         if let cellTitle = cellTitle {
-            cellTitleString = cellTitle.uppercased()
+            self.cellTitle = cellTitle
+            self.cellTitleString = cellTitle.uppercased()
         }
         super.init(textCell: cellValue)
     }

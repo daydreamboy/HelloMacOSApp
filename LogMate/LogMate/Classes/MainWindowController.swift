@@ -229,16 +229,20 @@ extension MainWindowController: WCTokenSearchFieldDelegate {
         if logParser?.storedLineMessages != nil {
             if tokens.count > 0 {
                 DispatchQueue.global().async {
-                    var tokenStrings: [String] = []
+                    var filters: [WCLineFilter] = []
                     for token in tokens {
                         if let string = token.value {
-                            tokenStrings.append(string)
+                            filters.append(WCLineFilter.init(token: string, tag: token.key))
                         }
                     }
 
-                    if let logParser = self.logParser, tokenStrings.count > 0 {
-                        self.recordList = logParser.filterWithTokens(tokens: tokenStrings)
-                        self.reloadTableViewData(listData: self.recordList)
+                    if let logParser = self.logParser, filters.count > 0 {
+                        logParser.applyFilters(filters: filters) { filters, lines in
+                            DispatchQueue.main.async {
+                                self.recordList = lines
+                                self.reloadTableViewData(listData: self.recordList)
+                            }
+                        }
                     }
                 }
             }

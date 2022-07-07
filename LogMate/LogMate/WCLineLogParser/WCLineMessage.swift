@@ -7,12 +7,23 @@
 
 import Cocoa
 
+class WCLineFilter: NSObject {
+    var token: String
+    var tag: String?
+    
+    init(token: String, tag: String?) {
+        self.token = token
+        self.tag = tag
+    }
+}
+
 class WCLineMessage: NSObject {
     public var time: String = ""
     public var content: String
     public var timestamp: TimeInterval = 0.0
     public var message: String
     public var order: Int = 0
+    public var filters: [WCLineFilter] = []
     
     var timeFormat: String
     var timeRange: NSRange?

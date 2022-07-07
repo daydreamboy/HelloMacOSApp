@@ -27,6 +27,7 @@ class WCLineLogParser: NSObject {
     var timeStringRange: NSRange?
     var delimiter: String
     var storedLineMessages: [WCLineMessage]?
+    let parseQueue: DispatchQueue = DispatchQueue.init(label: "com.wc.LineLogParser")
     
     init(timeFormat: String, timeRange: NSRange?, delimiter: String = "\r\n") {
         self.timeStringFormat = timeFormat
@@ -62,48 +63,66 @@ class WCLineLogParser: NSObject {
         return totalLines
     }
     
-    public func filterWithTokens(tokens: [String]) -> [WCLineMessage] {
-        if self.storedLineMessages != nil {
-            var filteredLineMessages: [WCLineMessage] = []
-            filteredLineMessages.append(contentsOf: self.storedLineMessages!)
-            
-            var count: Int = 0
-            for token in tokens {
-                if token.hasPrefix("/") && token.hasSuffix("/") && token.count > 3 {
-                    let regex = token.deletePrefix("/").deleteSuffix("/")
-                    // @see https://stackoverflow.com/a/57869961
-                    filteredLineMessages = filteredLineMessages.filter() {
-                        let string: NSString = $0.content as NSString
-                        let range: NSRange = string.range(of: regex, options: NSString.CompareOptions.regularExpression, range: NSMakeRange(0, string.length))
-                        if range.location != NSNotFound && range.length > 0 {
-                            $0.order = count
-                            count += 1
-                            return true
+    // @see https://stackoverflow.com/questions/59784963/swift-escaping-closure-captures-non-escaping-parameter-oncompletion
+    // Error: escaping closure captures non-escaping parameter 'completion'
+    public func applyFilters(filters: [WCLineFilter], completion: @escaping (_ filters: [WCLineFilter], _ lines: [WCLineMessage]) -> Void) {
+        parseQueue.async {
+            if self.storedLineMessages != nil {
+                var filteredLineMessages: [WCLineMessage] = []
+                filteredLineMessages.append(contentsOf: self.storedLineMessages!)
+                // @see https://stackoverflow.com/a/34269544
+                filteredLineMessages.forEach({ $0.filters.removeAll() })
+                
+                for (index, filter) in filters.enumerated() {
+                    // Note: only when use the last filter, need to count
+                    let needCount: Bool = index == filters.count - 1
+                    var count: Int = 0
+                    
+                    let token = filter.token
+                    if token.hasPrefix("/") && token.hasSuffix("/") && token.count > 3 {
+                        let regex = token.deletePrefix("/").deleteSuffix("/")
+                        // @see https://stackoverflow.com/a/57869961
+                        filteredLineMessages = filteredLineMessages.filter() {
+                            let string: NSString = $0.content as NSString
+                            let range: NSRange = string.range(of: regex, options: NSString.CompareOptions.regularExpression, range: NSMakeRange(0, string.length))
+                            if range.location != NSNotFound && range.length > 0 {
+                                $0.filters.append(filter)
+                                if needCount {
+                                    $0.order = count
+                                    count += 1
+                                }
+                                return true
+                            }
+                            else {
+                                return false
+                            }
                         }
-                        else {
-                            return false
+                    }
+                    else {
+                        // @see https://stackoverflow.com/a/31330465
+                        filteredLineMessages = filteredLineMessages.filter() {
+                            let result: Bool = $0.content.localizedCaseInsensitiveContains(token)
+                            if result == true {
+                                $0.filters.append(filter)
+                                if needCount {
+                                    $0.order = count
+                                    count += 1
+                                }
+                            }
+                            return result
                         }
                     }
                 }
-                else {
-                    // @see https://stackoverflow.com/a/31330465
-                    filteredLineMessages = filteredLineMessages.filter() {
-                        let result: Bool = $0.content.localizedCaseInsensitiveContains(token)
-                        if result == true {
-                            $0.order = count
-                            count += 1
-                        }
-                        return result
-                    }
-                }
+                
+                completion(filters, filteredLineMessages)
             }
-            
-            return filteredLineMessages
-        }
-        else {
-            return []
+            else {
+                completion(filters, [])
+            }
         }
     }
+    
+    // MARK: -
     
     private func orderedFileURLs(fileURLs: [URL]) -> [URL] {
         var sortedFileURLs: [URL] = []
@@ -178,6 +197,8 @@ class WCLineLogParser: NSObject {
         
         return lines
     }
+    
+    // MARK: - Class Methods
     
     static public func convertTimeFormatToPattern(timeFormat: String) -> String {
         let digitChars: [String] = [

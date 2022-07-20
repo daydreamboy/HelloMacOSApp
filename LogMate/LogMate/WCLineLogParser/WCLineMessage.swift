@@ -66,4 +66,8 @@ class WCLineMessage: NSObject {
         // @see https://stackoverflow.com/a/24114372
         super.init()
     }
+    
+    override var description: String {
+        return "<\(type(of: self)): \(Unmanaged.passUnretained(self).toOpaque()), order = \(order), timestamp = \(timestamp), time = \(time), content = \(content)>"
+    }
 }

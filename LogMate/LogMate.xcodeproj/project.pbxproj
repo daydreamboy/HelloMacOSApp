@@ -19,6 +19,7 @@
 		4F1F386D28708C2200CB61AE /* WCTokenTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1F386828708C2200CB61AE /* WCTokenTextView.swift */; };
 		4F1F386E28708C2200CB61AE /* WCTokenSearchFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1F386928708C2200CB61AE /* WCTokenSearchFieldCell.swift */; };
 		4F1F386F28708C2200CB61AE /* WCTokenAttachmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1F386A28708C2200CB61AE /* WCTokenAttachmentCell.swift */; };
+		4F46A1E9288661960084CE32 /* WCGanttDiagramDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F46A1E8288661960084CE32 /* WCGanttDiagramDataParser.swift */; };
 		4F85AF762869F2F50023713A /* WCStringStreamReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F85AF752869F2F50023713A /* WCStringStreamReader.swift */; };
 		4FB21B642874342E00DB8547 /* FrontResources in Resources */ = {isa = PBXBuildFile; fileRef = 4FB21B632874342D00DB8547 /* FrontResources */; };
 		4FF328512875492E00744DDB /* WCWebViewTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF328502875492E00744DDB /* WCWebViewTool.swift */; };
@@ -41,6 +42,7 @@
 		4F1F386928708C2200CB61AE /* WCTokenSearchFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCTokenSearchFieldCell.swift; sourceTree = "<group>"; };
 		4F1F386A28708C2200CB61AE /* WCTokenAttachmentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCTokenAttachmentCell.swift; sourceTree = "<group>"; };
 		4F1F6D1A28747E81009E54B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4F46A1E8288661960084CE32 /* WCGanttDiagramDataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCGanttDiagramDataParser.swift; sourceTree = "<group>"; };
 		4F85AF752869F2F50023713A /* WCStringStreamReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCStringStreamReader.swift; sourceTree = "<group>"; };
 		4FB21B632874342D00DB8547 /* FrontResources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = FrontResources; sourceTree = "<group>"; };
 		4FF328502875492E00744DDB /* WCWebViewTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCWebViewTool.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 		4F162167286DC66C00CFCA29 /* WCLineLogParser */ = {
 			isa = PBXGroup;
 			children = (
+				4F46A1E72886616F0084CE32 /* DataParsers */,
 				4F85AF752869F2F50023713A /* WCStringStreamReader.swift */,
 				4F162163286D377900CFCA29 /* WCLineMessage.swift */,
 				4F162165286D550500CFCA29 /* WCLineLogParser.swift */,
@@ -137,6 +140,14 @@
 				4F1F386628708C2200CB61AE /* WCAttributedStringTool.swift */,
 			);
 			path = Tools;
+			sourceTree = "<group>";
+		};
+		4F46A1E72886616F0084CE32 /* DataParsers */ = {
+			isa = PBXGroup;
+			children = (
+				4F46A1E8288661960084CE32 /* WCGanttDiagramDataParser.swift */,
+			);
+			path = DataParsers;
 			sourceTree = "<group>";
 		};
 		4FF3284F2875491900744DDB /* Tools */ = {
@@ -232,6 +243,7 @@
 				4F162166286D550500CFCA29 /* WCLineLogParser.swift in Sources */,
 				2B446B4B2864560F00991153 /* MainWindowController.swift in Sources */,
 				2B446B392864549600991153 /* AppDelegate.swift in Sources */,
+				4F46A1E9288661960084CE32 /* WCGanttDiagramDataParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

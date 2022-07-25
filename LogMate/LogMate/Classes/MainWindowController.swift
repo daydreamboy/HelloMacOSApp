@@ -243,6 +243,14 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
                 let ganttParser = WCGanttDiagramDataParser.init(taskStartPattern: WCGanttDiagramTaskStartPattern.init(pairStartPattern: "\\[vcAppear\\]", descriptionPattern: "\\[vcAppear\\] (.+)"), taskEndPattern: WCGanttDiagramTaskEndPattern.init(pairEndPattern: "\\[vcDisAppear\\]", descriptionPattern: "\\[vcDisAppear\\]  (.+)"))
                 let tasks: [WCGanttDiagramTask] = ganttParser.parseLineMessages(lines: self.recordList)
                 
+                print("-----------------------")
+                var syntaxString: String = ""
+                for (index, task) in tasks.enumerated() {
+                    let line = "\(task.desc)  :a\(index), \(task.startLine.time), \(Int(task.duration))s\n"
+                    syntaxString.append(line)
+                }
+                print(syntaxString)
+                
                 DispatchQueue.main.async {
 //                    let request = URLRequest.init(url: URL.init(string: "https://www.baidu.com/")!)
 //                    self.webView.load(request)

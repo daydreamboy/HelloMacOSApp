@@ -16,12 +16,12 @@ class WCGanttDiagramTask: NSObject {
     var startLine: WCLineMessage
     var endLine: WCLineMessage
     
-    static var formatter: DateFormatter {
+    // @see https://stackoverflow.com/a/28511412
+    private static let formatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale
-        
         return formatter
-    }
+    }()
     
     init(desc: String, startLine: WCLineMessage, endLine: WCLineMessage) {
         self.desc = desc
@@ -40,7 +40,8 @@ class WCGanttDiagramTask: NSObject {
             self.endDate = date
         }
         
-        self.duration = endLine.timestamp - startLine.timestamp
+        // Note: mermaid gantt diagram need integer duration
+        self.duration = round(endLine.timestamp - startLine.timestamp)
     }
 }
 

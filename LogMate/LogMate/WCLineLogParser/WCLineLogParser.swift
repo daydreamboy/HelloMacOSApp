@@ -25,39 +25,34 @@ class WCLineLogParser: NSObject {
     var filePathList: [URL] = []
     var timeStringFormat: String
     var timeStringRange: NSRange?
-    var delimiter: String
+    var delimiter: String?
+    public let defaultDelimiter: String = "\r\n"
+    
     var storedLineMessages: [WCLineMessage]?
     let parseQueue: DispatchQueue = DispatchQueue.init(label: "com.wc.LineLogParser")
     
-    init(timeFormat: String, timeRange: NSRange?, delimiter: String = "\r\n") {
+    init(timeFormat: String, timeRange: NSRange?, delimiter: String?) {
         self.timeStringFormat = timeFormat
         self.timeStringRange = timeRange
         self.delimiter = delimiter
     }
     
     public func parseLogFiles(fileURLs: [URL], tokens: [String] = []) -> [WCLineMessage] {
-        // Step1: order files
+        // Step1: detect delimiter if needed
+        if let fileURL = fileURLs.first {
+            if self.delimiter == nil {
+                self.delimiter = detectDelimiterWithFileURL(fileURL: fileURL) ?? self.defaultDelimiter
+            }
+        }
+        else {
+            self.delimiter = self.defaultDelimiter
+        }
+        
+        // Step2: order files
         filePathList = orderedFileURLs(fileURLs: fileURLs)
         
-        // Step2: lines to models
+        // Step3: lines to models
         let totalLines: [WCLineMessage] = readLinesWithFileURLs(fileURLs: filePathList, filter: nil)
-        
-        /*
-         { message in
-             for token in tokens {
-                 if token.hasPrefix("/") && token.hasSuffix("/") && token.count > 3 {
-                     let regex = token.deletePrefix("/").deleteSuffix("/")
-                     let result: Bool = message.content.range(of: regex, options: String.CompareOptions.regularExpression) != nil
-                     return result
-                 }
-                 else {
-                     let result: Bool = message.content.contains(token)
-                     return result
-                 }
-             }
-         }
-         */
-        
         self.storedLineMessages = totalLines
         
         return totalLines
@@ -119,12 +114,38 @@ class WCLineLogParser: NSObject {
     
     // MARK: -
     
+    private func detectDelimiterWithFileURL(fileURL: URL) -> String? {
+        guard let fileHandle = FileHandle(forReadingAtPath: fileURL.path) else {
+            return nil
+        }
+        
+        let chunkSize = 1024
+        let tmpData = fileHandle.readData(ofLength: chunkSize)
+        if tmpData.count <= 0 {
+            return nil
+        }
+        
+        let supposedDelimiters: [String] = [
+            "\n",
+            "\r\n",
+            "\n\r",
+        ]
+        
+        for delimiter in supposedDelimiters {
+            if let delimData = delimiter.data(using: .utf8), tmpData.range(of: delimData) != nil {
+                return delimiter
+            }
+        }
+        
+        return nil
+    }
+    
     private func orderedFileURLs(fileURLs: [URL]) -> [URL] {
         var sortedFileURLs: [URL] = []
         var firstLinesOfEachFile: [URL: Date] = [:]
         
         for fileURL in fileURLs {
-            if let aStreamReader = WCStringStreamReader(path: fileURL.path, delimiter: self.delimiter) {
+            if let aStreamReader = WCStringStreamReader(path: fileURL.path, delimiter: self.delimiter!) {
                 defer {
                     aStreamReader.close()
                 }
@@ -169,7 +190,7 @@ class WCLineLogParser: NSObject {
     private func readLinesWithFilePath(filePath: String, startOrder: Int = 0, filter: ((WCLineMessage) -> Bool)?) -> [WCLineMessage] {
         var lines: [WCLineMessage] = []
         
-        if let aStreamReader = WCStringStreamReader(path: filePath, delimiter: self.delimiter) {
+        if let aStreamReader = WCStringStreamReader(path: filePath, delimiter: self.delimiter!) {
             defer {
                 aStreamReader.close()
             }

@@ -228,7 +228,7 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
                 self.reversed = false
                 
                 let timeStart = Date.init().timeIntervalSince1970
-                self.logParser = WCLineLogParser.init(timeFormat: self.timeFormatString, timeRange: self.timeRange)
+                self.logParser = WCLineLogParser.init(timeFormat: self.timeFormatString, timeRange: self.timeRange, delimiter: nil)
                 if let logParser = self.logParser {
                     self.recordList = logParser.parseLogFiles(fileURLs: fileURLs)
                     if self.reversed {

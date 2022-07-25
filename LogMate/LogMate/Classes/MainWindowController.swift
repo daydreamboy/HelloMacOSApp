@@ -273,37 +273,29 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
 extension MainWindowController: WCTokenSearchFieldDelegate {
     func tokenSearchFieldDidPressEnter(_ textField: WCTokenSearchField, _ tokens: [WCToken]) {
         if logParser?.storedLineMessages != nil {
-            if tokens.count > 0 {
-                DispatchQueue.global().async {
-                    var filters: [WCLineFilter] = []
-                    for token in tokens {
-                        if let string = token.value {
-                            filters.append(WCLineFilter.init(token: string, tag: token.key))
-                        }
+            var filters: [WCLineFilter] = []
+            
+            DispatchQueue.global().async {
+                for token in tokens {
+                    if let string = token.value {
+                        filters.append(WCLineFilter.init(token: string, tag: token.key))
                     }
-                    
-                    if let logParser = self.logParser, filters.count > 0 {
-                        logParser.applyFilters(filters: filters) { filters, lines in
-                            let listData: [WCLineMessage] = self.reversed ? lines.reversed() : lines
-                            let fileURL = self.createLocalHTMLFile(lines: listData)
-                            
-                            DispatchQueue.main.async {
-                                self.recordList = listData
-                                self.reloadTableViewData()
-                                if let fileURL = fileURL {
-                                    self.reloadWebView(fileURL: fileURL)
-                                }
+                }
+                
+                if let logParser = self.logParser {
+                    logParser.applyFilters(filters: filters) { filters, lines in
+                        let listData: [WCLineMessage] = self.reversed ? lines.reversed() : lines
+                        let fileURL = self.createLocalHTMLFile(lines: listData)
+                        
+                        DispatchQueue.main.async {
+                            self.recordList = listData
+                            self.reloadTableViewData()
+                            if let fileURL = fileURL {
+                                self.reloadWebView(fileURL: fileURL)
                             }
                         }
                     }
                 }
-            }
-            else {
-                self.recordList = (logParser?.storedLineMessages)!
-                if self.reversed {
-                    self.recordList = self.recordList.reversed()
-                }
-                self.reloadTableViewData()
             }
         }
     }

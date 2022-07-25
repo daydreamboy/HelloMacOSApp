@@ -82,42 +82,29 @@ class WCLineLogParser: NSObject {
                     var count: Int = 0
                     
                     let token = filter.token
+                    var pattern = token
+                    var options: String.CompareOptions = .caseInsensitive
                     if token.hasPrefix("/") && token.hasSuffix("/") && token.count > 3 {
                         let regex = token.deletePrefix("/").deleteSuffix("/")
-                        // @see https://stackoverflow.com/a/57869961
-                        filteredLineMessages = filteredLineMessages.filter() {
-                            let attrString: AttributedString = AttributedString.init($0.content)
-                            if let range = attrString.range(of: regex, options: .regularExpression, locale: nil) {
-                                $0.filters.append(filter)
-                                
-                                if $0.attributedContent == nil {
-                                    $0.attributedContent = attrString
-                                }
-                                $0.attributedContent![range].backgroundColor = NSColor.yellow
-                                
-                                if needCount {
-                                    $0.order = count
-                                    count += 1
-                                }
-                                return true
-                            }
-                            else {
-                                return false
-                            }
-                        }
+                        pattern = regex
+                        options = .regularExpression
                     }
-                    else {
-                        // @see https://stackoverflow.com/a/31330465
-                        filteredLineMessages = filteredLineMessages.filter() {
-                            let result: Bool = $0.content.localizedCaseInsensitiveContains(token)
-                            if result == true {
-                                $0.filters.append(filter)
-                                if needCount {
-                                    $0.order = count
-                                    count += 1
-                                }
+                    
+                    // @see https://stackoverflow.com/a/57869961
+                    filteredLineMessages = filteredLineMessages.filter() {
+                        let attrString: AttributedString = AttributedString.init($0.content)
+                        if let range = attrString.range(of: pattern, options: options, locale: nil) {
+                            $0.filters.append(filter)
+                            $0.attributedContent![range].backgroundColor = NSColor.yellow
+                            
+                            if needCount {
+                                $0.order = count
+                                count += 1
                             }
-                            return result
+                            return true
+                        }
+                        else {
+                            return false
                         }
                     }
                 }

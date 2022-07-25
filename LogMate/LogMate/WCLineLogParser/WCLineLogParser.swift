@@ -71,7 +71,10 @@ class WCLineLogParser: NSObject {
                 var filteredLineMessages: [WCLineMessage] = []
                 filteredLineMessages.append(contentsOf: self.storedLineMessages!)
                 // @see https://stackoverflow.com/a/34269544
-                filteredLineMessages.forEach({ $0.filters.removeAll() })
+                filteredLineMessages.forEach({
+                    $0.filters.removeAll()
+                    $0.attributedContent = AttributedString.init($0.content)
+                })
                 
                 for (index, filter) in filters.enumerated() {
                     // Note: only when use the last filter, need to count
@@ -84,6 +87,26 @@ class WCLineLogParser: NSObject {
                         // @see https://stackoverflow.com/a/57869961
                         filteredLineMessages = filteredLineMessages.filter() {
                             let string: NSString = $0.content as NSString
+                            let attrString: AttributedString = AttributedString.init($0.content)
+                            if let range = attrString.range(of: regex, options: .regularExpression, locale: nil) {
+                                $0.filters.append(filter)
+                                
+                                if $0.attributedContent == nil {
+                                    $0.attributedContent = attrString
+                                }
+                                $0.attributedContent![range].backgroundColor = NSColor.yellow
+                                
+                                if needCount {
+                                    $0.order = count
+                                    count += 1
+                                }
+                                return true
+                            }
+                            else {
+                                return false
+                            }
+                            
+                            /*
                             let range: NSRange = string.range(of: regex, options: NSString.CompareOptions.regularExpression, range: NSMakeRange(0, string.length))
                             if range.location != NSNotFound && range.length > 0 {
                                 $0.filters.append(filter)
@@ -96,6 +119,7 @@ class WCLineLogParser: NSObject {
                             else {
                                 return false
                             }
+                             */
                         }
                     }
                     else {
@@ -249,4 +273,17 @@ class WCLineLogParser: NSObject {
             return nil
         }
     }
+    
+    // MARK: Utility
+    
+    static func rangeFromNSRangeWithString(_ string: String, from nsRange: NSRange) -> Range<String.Index>? {
+        guard
+            let from16 = string.utf16.index(string.utf16.startIndex, offsetBy: nsRange.location, limitedBy: string.utf16.endIndex),
+            let to16 = string.utf16.index(string.utf16.startIndex, offsetBy: nsRange.location + nsRange.length, limitedBy: string.utf16.endIndex),
+            let from = from16.samePosition(in: string),
+            let to = to16.samePosition(in: string)
+            else { return nil }
+        return from ..< to
+    }
+    
 }

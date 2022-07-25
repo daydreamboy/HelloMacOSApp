@@ -18,8 +18,24 @@ class WCLineFilter: NSObject {
 }
 
 class WCLineMessage: NSObject {
-    public var time: String = ""
+    /**
+     time part which for date/time string
+     
+     - Note: If can't find date/time string with the timeFormat, this field will be nil
+     */
+    public var time: String?
+    /**
+     content part which the rest string exclude the time part
+     
+     - Note: If can't find date/time string with the timeFormat, this field will be the same as the message field
+     */
     public var content: String
+    /**
+     highlighted content
+     
+     - Note: If can't find date/time string with the timeFormat, this field will be the same as the message field
+     */
+    public var attributedContent: AttributedString?
     public var timestamp: TimeInterval = 0.0
     public var message: String
     public var order: Int = 0
@@ -50,6 +66,7 @@ class WCLineMessage: NSObject {
                 // @see https://stackoverflow.com/a/58913649
                 self.time = String(self.message[range.lowerBound..<range.upperBound])
                 self.content = String(self.message[range.upperBound...])
+                self.attributedContent = AttributedString.init(self.content)
                 
                 // TOOD: too time cost
 //                let formatter = DateFormatter()
@@ -68,6 +85,6 @@ class WCLineMessage: NSObject {
     }
     
     override var description: String {
-        return "<\(type(of: self)): \(Unmanaged.passUnretained(self).toOpaque()), order = \(order), timestamp = \(timestamp), time = \(time), content = \(content)>"
+        return "<\(type(of: self)): \(Unmanaged.passUnretained(self).toOpaque()), order = \(order), timestamp = \(timestamp), time = \(time ?? ""), content = \(content)>"
     }
 }

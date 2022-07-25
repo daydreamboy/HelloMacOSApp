@@ -81,10 +81,12 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
         let line = self.recordList[row]
         
         if (tableColumn?.identifier)!.rawValue == CellIdentifiers.TimeCell {
-            cell.textField?.stringValue = line.time
+            cell.textField?.stringValue = line.time ?? ""
+            //cell.textField?.attributedStringValue
         }
         else if (tableColumn?.identifier)!.rawValue == CellIdentifiers.MessageCell {
-            cell.textField?.stringValue = line.content
+            //cell.textField?.stringValue = line.content // @see https://developer.apple.com/forums/thread/682431
+            cell.textField?.attributedStringValue = NSAttributedString.init(line.attributedContent ?? "")
         }
         else if (tableColumn?.identifier)!.rawValue == CellIdentifiers.OrderCell {
             cell.textField?.stringValue = "\(line.order)"

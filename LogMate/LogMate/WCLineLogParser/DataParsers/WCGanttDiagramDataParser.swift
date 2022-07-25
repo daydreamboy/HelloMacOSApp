@@ -29,13 +29,13 @@ class WCGanttDiagramTask: NSObject {
         self.endLine = endLine
         
         WCGanttDiagramTask.formatter.dateFormat = startLine.timeFormat
-        if let date = WCGanttDiagramTask.formatter.date(from: startLine.time) {
+        if let time = startLine.time, let date = WCGanttDiagramTask.formatter.date(from: time) {
             startLine.timestamp = date.timeIntervalSince1970
             self.startDate = date
         }
         
         WCGanttDiagramTask.formatter.dateFormat = endLine.timeFormat
-        if let date = WCGanttDiagramTask.formatter.date(from: endLine.time) {
+        if let time = endLine.time, let date = WCGanttDiagramTask.formatter.date(from: time) {
             endLine.timestamp = date.timeIntervalSince1970
             self.endDate = date
         }

@@ -23,15 +23,21 @@ extension String {
 class WCLineLogParser: NSObject {
     
     var filePathList: [URL] = []
-    var timeStringFormat: String
+    var timeStringFormat: String?
     var timeStringRange: NSRange?
     var delimiter: String?
     public let defaultDelimiter: String = "\r\n"
+    public let defaultTimeFormat: String = "YYYY-MM-dd HH:mm:ss.SSS"
     
     var storedLineMessages: [WCLineMessage]?
     let parseQueue: DispatchQueue = DispatchQueue.init(label: "com.wc.LineLogParser")
     
-    init(timeFormat: String, timeRange: NSRange?, delimiter: String?) {
+    // Note: convenience keyword, @see https://stackoverflow.com/questions/31707916/swift-calling-an-init-from-another-init
+    convenience override init() {
+        self.init(timeFormat: nil, timeRange: nil, delimiter: nil)
+    }
+    
+    init(timeFormat: String?, timeRange: NSRange?, delimiter: String?) {
         self.timeStringFormat = timeFormat
         self.timeStringRange = timeRange
         self.delimiter = delimiter
@@ -39,13 +45,29 @@ class WCLineLogParser: NSObject {
     
     public func parseLogFiles(fileURLs: [URL], tokens: [String] = []) -> [WCLineMessage] {
         // Step1: detect delimiter if needed
-        if let fileURL = fileURLs.first {
-            if self.delimiter == nil {
+        if self.delimiter == nil {
+            if let fileURL = fileURLs.first {
                 self.delimiter = detectDelimiterWithFileURL(fileURL: fileURL) ?? self.defaultDelimiter
+            }
+            else {
+                self.delimiter = self.defaultDelimiter
+            }
+        }
+        
+        // Step2: detect time format if needed
+        if let timeStringFormat = self.timeStringFormat {
+            if self.timeStringRange == nil {
+                self.timeStringRange = NSMakeRange(0, timeStringFormat.count)
             }
         }
         else {
-            self.delimiter = self.defaultDelimiter
+            if let fileURL = fileURLs.first {
+                self.timeStringFormat = detectTimeFormatWithFileURL(fileURL: fileURL) ?? self.defaultTimeFormat
+            }
+            else {
+                self.timeStringFormat = self.defaultTimeFormat
+            }
+            self.timeStringRange = NSMakeRange(0, self.timeStringFormat!.count)
         }
         
         // Step2: order files
@@ -114,6 +136,36 @@ class WCLineLogParser: NSObject {
     
     // MARK: -
     
+    private func detectTimeFormatWithFileURL(fileURL: URL) -> String? {
+        if let aStreamReader = WCStringStreamReader(path: fileURL.path, delimiter: self.delimiter!) {
+            defer {
+                aStreamReader.close()
+            }
+            
+            var firstLine: String?
+            while let line = aStreamReader.nextLine() {
+                if line.isEmpty == false {
+                    firstLine = line
+                    break
+                }
+            }
+            // Note: format strings with date ordered first
+            let supposedTimeFormat: [String] = [
+                "YYYY-MM-dd HH:mm:ss.SSS",
+                "HH:mm:ss",
+            ]
+            
+            for supposedTimeFormat in supposedTimeFormat {
+                let timeStringRange = NSMakeRange(0, supposedTimeFormat.count)
+                if let firstLine = firstLine, WCLineLogParser.getTimestampDate(timeFormat: supposedTimeFormat, message: firstLine, timeStringRange: timeStringRange) != nil {
+                    return supposedTimeFormat
+                }
+            }
+        }
+        
+        return nil
+    }
+    
     private func detectDelimiterWithFileURL(fileURL: URL) -> String? {
         guard let fileHandle = FileHandle(forReadingAtPath: fileURL.path) else {
             return nil
@@ -125,10 +177,12 @@ class WCLineLogParser: NSObject {
             return nil
         }
         
+        // Note: longest delimiter ordered first
         let supposedDelimiters: [String] = [
-            "\n",
             "\r\n",
             "\n\r",
+            "\n",
+            "\r",
         ]
         
         for delimiter in supposedDelimiters {
@@ -158,7 +212,7 @@ class WCLineLogParser: NSObject {
                     }
                 }
                 
-                if let firstLine = firstLine, let date = WCLineLogParser.getTimestampDate(timeFormat: timeStringFormat, message: firstLine, timeStringRange: timeStringRange) {
+                if let firstLine = firstLine, let date = WCLineLogParser.getTimestampDate(timeFormat: self.timeStringFormat!, message: firstLine, timeStringRange: self.timeStringRange!) {
                     firstLinesOfEachFile[fileURL] = date
                 }
             }
@@ -199,7 +253,7 @@ class WCLineLogParser: NSObject {
             while let line = aStreamReader.nextLine() {
                 let trimmedLine = line.trimmingCharacters(in: .whitespacesAndNewlines)
                 if (trimmedLine.isEmpty == false) {
-                    let lineMessage = WCLineMessage.init(message: line, timeFormat: self.timeStringFormat, timeRange: self.timeStringRange)
+                    let lineMessage = WCLineMessage.init(message: line, timeFormat: self.timeStringFormat!, timeRange: self.timeStringRange!)
                     lineMessage.order = count
                     count += 1
                     lines.append(lineMessage)

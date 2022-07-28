@@ -1,0 +1,376 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4F485CB528922BF4007D9403 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F485CB428922BF4007D9403 /* AppDelegate.swift */; };
+		4F485CB728922BF6007D9403 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F485CB628922BF6007D9403 /* Assets.xcassets */; };
+		4F485CBA28922BF6007D9403 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F485CB828922BF6007D9403 /* MainMenu.xib */; };
+		4F485CC7289231B7007D9403 /* ContainerWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F485CC2289231B7007D9403 /* ContainerWindowController.swift */; };
+		4F485CCA289231B7007D9403 /* ContainerWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F485CC6289231B7007D9403 /* ContainerWindowController.xib */; };
+		4F485CCD28923550007D9403 /* Demo1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F485CCB28923550007D9403 /* Demo1ViewController.swift */; };
+		4F485CCE28923550007D9403 /* Demo1ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F485CCC28923550007D9403 /* Demo1ViewController.xib */; };
+		4F485CD128923561007D9403 /* Demo2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F485CCF28923561007D9403 /* Demo2ViewController.swift */; };
+		4F485CD228923561007D9403 /* Demo2ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F485CD028923561007D9403 /* Demo2ViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4F485CB128922BF4007D9403 /* HelloNSViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloNSViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F485CB428922BF4007D9403 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4F485CB628922BF6007D9403 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4F485CB928922BF6007D9403 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		4F485CBB28922BF6007D9403 /* HelloNSViewController.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HelloNSViewController.entitlements; sourceTree = "<group>"; };
+		4F485CC2289231B7007D9403 /* ContainerWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerWindowController.swift; sourceTree = "<group>"; };
+		4F485CC6289231B7007D9403 /* ContainerWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContainerWindowController.xib; sourceTree = "<group>"; };
+		4F485CCB28923550007D9403 /* Demo1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Demo1ViewController.swift; sourceTree = "<group>"; };
+		4F485CCC28923550007D9403 /* Demo1ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Demo1ViewController.xib; sourceTree = "<group>"; };
+		4F485CCF28923561007D9403 /* Demo2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Demo2ViewController.swift; sourceTree = "<group>"; };
+		4F485CD028923561007D9403 /* Demo2ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Demo2ViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4F485CAE28922BF4007D9403 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4F485CA828922BF4007D9403 = {
+			isa = PBXGroup;
+			children = (
+				4F485CB328922BF4007D9403 /* HelloNSViewController */,
+				4F485CB228922BF4007D9403 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4F485CB228922BF4007D9403 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4F485CB128922BF4007D9403 /* HelloNSViewController.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4F485CB328922BF4007D9403 /* HelloNSViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4F485CC1289231B7007D9403 /* Classes */,
+				4F485CC4289231B7007D9403 /* UI */,
+				4F485CB428922BF4007D9403 /* AppDelegate.swift */,
+				4F485CB628922BF6007D9403 /* Assets.xcassets */,
+				4F485CB828922BF6007D9403 /* MainMenu.xib */,
+				4F485CBB28922BF6007D9403 /* HelloNSViewController.entitlements */,
+			);
+			path = HelloNSViewController;
+			sourceTree = "<group>";
+		};
+		4F485CC1289231B7007D9403 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				4F485CC2289231B7007D9403 /* ContainerWindowController.swift */,
+				4F485CCB28923550007D9403 /* Demo1ViewController.swift */,
+				4F485CCF28923561007D9403 /* Demo2ViewController.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		4F485CC4289231B7007D9403 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				4F485CC6289231B7007D9403 /* ContainerWindowController.xib */,
+				4F485CCC28923550007D9403 /* Demo1ViewController.xib */,
+				4F485CD028923561007D9403 /* Demo2ViewController.xib */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4F485CB028922BF4007D9403 /* HelloNSViewController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4F485CBE28922BF6007D9403 /* Build configuration list for PBXNativeTarget "HelloNSViewController" */;
+			buildPhases = (
+				4F485CAD28922BF4007D9403 /* Sources */,
+				4F485CAE28922BF4007D9403 /* Frameworks */,
+				4F485CAF28922BF4007D9403 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HelloNSViewController;
+			productName = HelloNSViewController;
+			productReference = 4F485CB128922BF4007D9403 /* HelloNSViewController.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4F485CA928922BF4007D9403 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1330;
+				LastUpgradeCheck = 1330;
+				TargetAttributes = {
+					4F485CB028922BF4007D9403 = {
+						CreatedOnToolsVersion = 13.3;
+					};
+				};
+			};
+			buildConfigurationList = 4F485CAC28922BF4007D9403 /* Build configuration list for PBXProject "HelloNSViewController" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4F485CA828922BF4007D9403;
+			productRefGroup = 4F485CB228922BF4007D9403 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4F485CB028922BF4007D9403 /* HelloNSViewController */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4F485CAF28922BF4007D9403 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F485CCA289231B7007D9403 /* ContainerWindowController.xib in Resources */,
+				4F485CCE28923550007D9403 /* Demo1ViewController.xib in Resources */,
+				4F485CB728922BF6007D9403 /* Assets.xcassets in Resources */,
+				4F485CBA28922BF6007D9403 /* MainMenu.xib in Resources */,
+				4F485CD228923561007D9403 /* Demo2ViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4F485CAD28922BF4007D9403 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F485CCD28923550007D9403 /* Demo1ViewController.swift in Sources */,
+				4F485CC7289231B7007D9403 /* ContainerWindowController.swift in Sources */,
+				4F485CD128923561007D9403 /* Demo2ViewController.swift in Sources */,
+				4F485CB528922BF4007D9403 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		4F485CB828922BF6007D9403 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4F485CB928922BF6007D9403 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4F485CBC28922BF6007D9403 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4F485CBD28922BF6007D9403 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		4F485CBF28922BF6007D9403 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = HelloNSViewController/HelloNSViewController.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wc.HelloNSViewController;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		4F485CC028922BF6007D9403 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = HelloNSViewController/HelloNSViewController.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wc.HelloNSViewController;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4F485CAC28922BF4007D9403 /* Build configuration list for PBXProject "HelloNSViewController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F485CBC28922BF6007D9403 /* Debug */,
+				4F485CBD28922BF6007D9403 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4F485CBE28922BF6007D9403 /* Build configuration list for PBXNativeTarget "HelloNSViewController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F485CBF28922BF6007D9403 /* Debug */,
+				4F485CC028922BF6007D9403 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4F485CA928922BF4007D9403 /* Project object */;
+}

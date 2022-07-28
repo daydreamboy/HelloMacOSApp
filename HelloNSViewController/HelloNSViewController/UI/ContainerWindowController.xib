@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="ContainerWindowController" customModule="HelloNSViewController" customModuleProvider="target">
+            <connections>
+                <outlet property="hostView" destination="dA4-tQ-0gU" id="40l-qh-TZG"/>
+                <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="473" height="586"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1792" height="1095"/>
+            <view key="contentView" id="se5-gp-TjO">
+                <rect key="frame" x="0.0" y="0.0" width="473" height="586"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="dA4-tQ-0gU">
+                        <rect key="frame" x="20" y="133" width="433" height="433"/>
+                    </customView>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IW7-iR-btF">
+                        <rect key="frame" x="18" y="94" width="145" height="16"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" title="NSViewController Title:" id="uDl-fM-bo2">
+                            <font key="font" usesAppearanceFont="YES"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="E4y-ev-CPu">
+                        <rect key="frame" x="18" y="64" width="133" height="16"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" title="Number of Subviews:" id="vgL-17-SJw">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pT5-3x-hCZ">
+                        <rect key="frame" x="167" y="94" width="288" height="16"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="bUX-56-lUm">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <binding destination="-2" name="value" keyPath="self.currentViewController.title" id="6xp-dF-jPI"/>
+                        </connections>
+                    </textField>
+                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="p3g-mH-CC7">
+                        <rect key="frame" x="167" y="64" width="288" height="16"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="3ZQ-8z-qxj">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <binding destination="-2" name="value" keyPath="self.currentViewController.representedObject" id="ZSa-qc-REa"/>
+                        </connections>
+                    </textField>
+                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W4J-4a-i1W">
+                        <rect key="frame" x="285" y="32" width="172" height="25"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <popUpButtonCell key="cell" type="push" title="Demo1ViewController" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="tAk-KC-Zkz" id="PUw-Fs-0tS">
+                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="menu"/>
+                            <menu key="menu" id="MiW-to-1OU">
+                                <items>
+                                    <menuItem title="Demo1ViewController" state="on" identifier="Demo1ViewController" id="tAk-KC-Zkz"/>
+                                    <menuItem title="Demo2ViewController" identifier="Demo2ViewController" id="wQZ-oF-IhE"/>
+                                </items>
+                            </menu>
+                        </popUpButtonCell>
+                        <connections>
+                            <action selector="popupButtonChanged:" target="-2" id="QFK-FK-EOI"/>
+                        </connections>
+                    </popUpButton>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="E4y-ev-CPu" firstAttribute="top" secondItem="IW7-iR-btF" secondAttribute="bottom" constant="14" id="4Nd-9k-tD4"/>
+                    <constraint firstItem="dA4-tQ-0gU" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="8Se-kd-T2k"/>
+                    <constraint firstAttribute="trailing" secondItem="dA4-tQ-0gU" secondAttribute="trailing" constant="20" symbolic="YES" id="I2A-Ew-RJI"/>
+                    <constraint firstItem="IW7-iR-btF" firstAttribute="top" secondItem="dA4-tQ-0gU" secondAttribute="bottom" constant="23" id="InB-yg-OL7"/>
+                    <constraint firstItem="pT5-3x-hCZ" firstAttribute="top" secondItem="dA4-tQ-0gU" secondAttribute="bottom" constant="23" id="JTM-V6-xmX"/>
+                    <constraint firstItem="E4y-ev-CPu" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="L2p-fM-VFQ"/>
+                    <constraint firstItem="p3g-mH-CC7" firstAttribute="leading" secondItem="E4y-ev-CPu" secondAttribute="trailing" priority="750" constant="20" id="NNQ-tX-YCT"/>
+                    <constraint firstItem="p3g-mH-CC7" firstAttribute="leading" secondItem="E4y-ev-CPu" secondAttribute="trailing" constant="20" id="Oly-O5-qqn"/>
+                    <constraint firstAttribute="trailing" secondItem="pT5-3x-hCZ" secondAttribute="trailing" constant="20" id="Qgz-QV-e1r"/>
+                    <constraint firstAttribute="trailing" secondItem="p3g-mH-CC7" secondAttribute="trailing" constant="20" id="Xu5-sb-wgs"/>
+                    <constraint firstItem="IW7-iR-btF" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="e6K-BL-5QQ"/>
+                    <constraint firstItem="pT5-3x-hCZ" firstAttribute="leading" secondItem="IW7-iR-btF" secondAttribute="trailing" priority="750" constant="8" symbolic="YES" id="eF2-Do-Qme"/>
+                    <constraint firstItem="p3g-mH-CC7" firstAttribute="top" secondItem="pT5-3x-hCZ" secondAttribute="bottom" constant="14" id="hjp-Ya-eYb"/>
+                    <constraint firstAttribute="bottom" secondItem="E4y-ev-CPu" secondAttribute="bottom" constant="64" id="jFX-1s-TVx"/>
+                    <constraint firstItem="pT5-3x-hCZ" firstAttribute="leading" secondItem="IW7-iR-btF" secondAttribute="trailing" constant="8" symbolic="YES" id="moI-Q5-XTU"/>
+                    <constraint firstItem="dA4-tQ-0gU" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" symbolic="YES" id="nOI-jO-m0l"/>
+                    <constraint firstAttribute="bottom" secondItem="p3g-mH-CC7" secondAttribute="bottom" constant="64" id="tdX-RB-7Yw"/>
+                </constraints>
+            </view>
+            <connections>
+                <binding destination="-2" name="title" keyPath="currentViewController.title" id="JTy-be-0Zt"/>
+                <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
+            </connections>
+            <point key="canvasLocation" x="-280" y="276"/>
+        </window>
+        <userDefaultsController representsSharedInstance="YES" id="q3M-d8-qsf"/>
+    </objects>
+</document>

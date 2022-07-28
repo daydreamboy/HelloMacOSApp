@@ -10,7 +10,7 @@ import Cocoa
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    @objc private dynamic var mainWindowControllers: [ MainWindowController ] = []
+    @objc private dynamic var mainWindowControllers: [ NSWindowController ] = []
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         self.newDocument(nil)

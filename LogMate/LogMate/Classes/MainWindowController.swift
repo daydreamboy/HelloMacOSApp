@@ -32,14 +32,13 @@ class MainWindowController: NSWindowController, NSTableViewDataSource, NSTableVi
     var timeRange: NSRange?
     
     convenience init() {
-        self.init(sender: nil)
-        self.timeRange = NSMakeRange(0, self.timeFormatString.count)
-    }
-    
-    convenience init(sender: String?) {
         // Note: NSNibName alias for String
         //  NSNib.Name alias for String
         self.init(windowNibName: NSNib.Name(NSStringFromClass(type(of: self))))
+        
+        //self.init(windowNibName: NSNib.Name("Window"))
+        
+        self.timeRange = NSMakeRange(0, self.timeFormatString.count)
     }
     
     override func windowDidLoad() {

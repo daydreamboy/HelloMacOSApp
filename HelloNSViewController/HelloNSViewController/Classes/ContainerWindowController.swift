@@ -33,6 +33,8 @@ class ContainerWindowController: NSWindowController {
     }
     
     private func changeViewController(type: ViewControllerType) {
+        self.willChangeValue(forKey: "currentViewController")
+        
         if let currentViewController = currentViewController {
             currentViewController.view.removeFromSuperview()
         }
@@ -51,6 +53,8 @@ class ContainerWindowController: NSWindowController {
             currentViewController.view.frame = NSMakeRect(0, 0, self.hostView.bounds.size.width, self.hostView.bounds.size.height)
             currentViewController.representedObject = currentViewController.view.subviews.count
         }
+        
+        self.didChangeValue(forKey: "currentViewController")
     }
     
     @IBAction func popupButtonChanged(_ sender: Any) {

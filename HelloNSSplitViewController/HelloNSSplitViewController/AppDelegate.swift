@@ -13,7 +13,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc private dynamic var mainWindowControllers: [ NSWindowController ] = []
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        self.newDemo1Document(nil)
+        //self.newDemo1Document(nil)
+        self.newDemo2Document(nil)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -27,6 +28,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK:
     @IBAction func newDemo1Document(_ sender: Any?) {
         let controller = Demo1WindowController()
+        
+        self.mainWindowControllers.append(controller)
+        controller.window?.makeKeyAndOrderFront(sender)
+    }
+    
+    @IBAction func newDemo2Document(_ sender: Any?) {
+        let controller = Demo2WindowController()
         
         self.mainWindowControllers.append(controller)
         controller.window?.makeKeyAndOrderFront(sender)

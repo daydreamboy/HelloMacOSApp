@@ -11,7 +11,7 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="HelloNSSplitViewController" customModuleProvider="target"/>
+        <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="AppTestTemplateWithXIB" customModuleProvider="target"/>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
@@ -68,7 +68,11 @@
                                     <action selector="newDemo1Document:" target="Voe-Tx-rLC" id="QN9-qf-fOw"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="New Demo2" keyEquivalent="o" id="IAo-SY-fd9"/>
+                            <menuItem title="New Demo2" keyEquivalent="o" id="IAo-SY-fd9">
+                                <connections>
+                                    <action selector="newDemo2Document:" target="Voe-Tx-rLC" id="z7E-SU-UQX"/>
+                                </connections>
+                            </menuItem>
                             <menuItem title="Open Recent" id="tXI-mr-wws">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Open Recent" systemMenu="recentDocuments" id="oas-Oc-fiZ">

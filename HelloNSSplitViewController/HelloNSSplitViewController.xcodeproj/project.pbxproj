@@ -15,6 +15,10 @@
 		4F5BAFD328967585007B0AF7 /* LeftViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5BAFD128967585007B0AF7 /* LeftViewController.xib */; };
 		4F5BAFD628967598007B0AF7 /* RightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5BAFD428967598007B0AF7 /* RightViewController.swift */; };
 		4F5BAFD728967598007B0AF7 /* RightViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5BAFD528967598007B0AF7 /* RightViewController.xib */; };
+		4F5BAFD928967D1B007B0AF7 /* Demo2WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5BAFD828967D1B007B0AF7 /* Demo2WindowController.swift */; };
+		4F5BAFDD28967DAE007B0AF7 /* Demo2WindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5BAFDC28967DAE007B0AF7 /* Demo2WindowController.xib */; };
+		4F5BAFE128968072007B0AF7 /* AnotherSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5BAFDF28968072007B0AF7 /* AnotherSplitViewController.swift */; };
+		4F5BAFE228968072007B0AF7 /* AnotherSplitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5BAFE028968072007B0AF7 /* AnotherSplitViewController.xib */; };
 		4F97A0AD28915348001FBC74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F97A0AC28915348001FBC74 /* AppDelegate.swift */; };
 		4F97A0AF2891534A001FBC74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F97A0AE2891534A001FBC74 /* Assets.xcassets */; };
 		4F97A0B22891534A001FBC74 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F97A0B02891534A001FBC74 /* MainMenu.xib */; };
@@ -29,6 +33,10 @@
 		4F5BAFD128967585007B0AF7 /* LeftViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeftViewController.xib; sourceTree = "<group>"; };
 		4F5BAFD428967598007B0AF7 /* RightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightViewController.swift; sourceTree = "<group>"; };
 		4F5BAFD528967598007B0AF7 /* RightViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RightViewController.xib; sourceTree = "<group>"; };
+		4F5BAFD828967D1B007B0AF7 /* Demo2WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Demo2WindowController.swift; sourceTree = "<group>"; };
+		4F5BAFDC28967DAE007B0AF7 /* Demo2WindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Demo2WindowController.xib; sourceTree = "<group>"; };
+		4F5BAFDF28968072007B0AF7 /* AnotherSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherSplitViewController.swift; sourceTree = "<group>"; };
+		4F5BAFE028968072007B0AF7 /* AnotherSplitViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnotherSplitViewController.xib; sourceTree = "<group>"; };
 		4F97A0A928915348001FBC74 /* HelloNSSplitViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloNSSplitViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F97A0AC28915348001FBC74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4F97A0AE2891534A001FBC74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -47,17 +55,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4F5BAFC228967263007B0AF7 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				4F5BAFC328967263007B0AF7 /* Demo1WindowController.swift */,
-				4F5BAFCC2896733D007B0AF7 /* MySplitViewController.swift */,
-				4F5BAFD028967585007B0AF7 /* LeftViewController.swift */,
-				4F5BAFD428967598007B0AF7 /* RightViewController.swift */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
 		4F5BAFC528967263007B0AF7 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -65,6 +62,37 @@
 				4F5BAFCD2896733D007B0AF7 /* MySplitViewController.xib */,
 				4F5BAFD528967598007B0AF7 /* RightViewController.xib */,
 				4F5BAFC728967263007B0AF7 /* Demo1WindowController.xib */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		4F5BAFDA28967D1F007B0AF7 /* Demo1 */ = {
+			isa = PBXGroup;
+			children = (
+				4F5BAFC328967263007B0AF7 /* Demo1WindowController.swift */,
+				4F5BAFCC2896733D007B0AF7 /* MySplitViewController.swift */,
+				4F5BAFD028967585007B0AF7 /* LeftViewController.swift */,
+				4F5BAFD428967598007B0AF7 /* RightViewController.swift */,
+				4F5BAFC528967263007B0AF7 /* UI */,
+			);
+			path = Demo1;
+			sourceTree = "<group>";
+		};
+		4F5BAFDB28967D2F007B0AF7 /* Demo2 */ = {
+			isa = PBXGroup;
+			children = (
+				4F5BAFD828967D1B007B0AF7 /* Demo2WindowController.swift */,
+				4F5BAFDF28968072007B0AF7 /* AnotherSplitViewController.swift */,
+				4F5BAFDE28967DB3007B0AF7 /* UI */,
+			);
+			path = Demo2;
+			sourceTree = "<group>";
+		};
+		4F5BAFDE28967DB3007B0AF7 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				4F5BAFE028968072007B0AF7 /* AnotherSplitViewController.xib */,
+				4F5BAFDC28967DAE007B0AF7 /* Demo2WindowController.xib */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -88,8 +116,8 @@
 		4F97A0AB28915348001FBC74 /* HelloNSSplitViewController */ = {
 			isa = PBXGroup;
 			children = (
-				4F5BAFC228967263007B0AF7 /* Classes */,
-				4F5BAFC528967263007B0AF7 /* UI */,
+				4F5BAFDB28967D2F007B0AF7 /* Demo2 */,
+				4F5BAFDA28967D1F007B0AF7 /* Demo1 */,
 				4F97A0AC28915348001FBC74 /* AppDelegate.swift */,
 				4F97A0AE2891534A001FBC74 /* Assets.xcassets */,
 				4F97A0B02891534A001FBC74 /* MainMenu.xib */,
@@ -159,9 +187,11 @@
 				4F5BAFCB28967264007B0AF7 /* Demo1WindowController.xib in Resources */,
 				4F5BAFD728967598007B0AF7 /* RightViewController.xib in Resources */,
 				4F5BAFD328967585007B0AF7 /* LeftViewController.xib in Resources */,
+				4F5BAFE228968072007B0AF7 /* AnotherSplitViewController.xib in Resources */,
 				4F5BAFCF2896733D007B0AF7 /* MySplitViewController.xib in Resources */,
 				4F97A0AF2891534A001FBC74 /* Assets.xcassets in Resources */,
 				4F97A0B22891534A001FBC74 /* MainMenu.xib in Resources */,
+				4F5BAFDD28967DAE007B0AF7 /* Demo2WindowController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,7 +202,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F5BAFE128968072007B0AF7 /* AnotherSplitViewController.swift in Sources */,
 				4F5BAFC828967263007B0AF7 /* Demo1WindowController.swift in Sources */,
+				4F5BAFD928967D1B007B0AF7 /* Demo2WindowController.swift in Sources */,
 				4F97A0AD28915348001FBC74 /* AppDelegate.swift in Sources */,
 				4F5BAFD228967585007B0AF7 /* LeftViewController.swift in Sources */,
 				4F5BAFCE2896733D007B0AF7 /* MySplitViewController.swift in Sources */,

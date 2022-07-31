@@ -11,9 +11,6 @@ class Demo1WindowController: NSWindowController {
     let splitViewController: MySplitViewController = MySplitViewController()
     
     convenience init() {
-        //self.init(windowNibName: NSNib.Name(NSStringFromClass(type(of: self))))
-        
-        // Note: use https://stackoverflow.com/a/58706517
         self.init(windowNibName: NSNib.Name(String(describing: type(of: self))))
     }
     

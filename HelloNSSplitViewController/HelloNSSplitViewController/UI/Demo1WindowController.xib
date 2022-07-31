@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="Demo1WindowController" customModule="HelloNSSplitViewController" customModuleProvider="target">
+            <connections>
+                <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="637" height="449"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1792" height="1095"/>
+            <view key="contentView" id="se5-gp-TjO">
+                <rect key="frame" x="0.0" y="0.0" width="637" height="449"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AcK-sl-xKi">
+                        <rect key="frame" x="275" y="217" width="88" height="16"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" title="Hello, Demo1!" id="xqM-v2-vpp">
+                            <font key="font" usesAppearanceFont="YES"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="AcK-sl-xKi" firstAttribute="centerY" secondItem="se5-gp-TjO" secondAttribute="centerY" id="8G0-aE-I3u"/>
+                    <constraint firstItem="AcK-sl-xKi" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="kqH-js-PhC"/>
+                </constraints>
+            </view>
+            <toolbar key="toolbar" implicitIdentifier="E8E9C8C2-7E6F-43B1-B483-CB169D17166F" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="dDg-aI-iA8">
+                <allowedToolbarItems>
+                    <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="kOC-nP-2xo"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="CxY-yO-Tq8"/>
+                    <toolbarItem implicitItemIdentifier="40B194D4-4274-4022-AAF4-682C8D4CED98" label="Toolbar Item" paletteLabel="Toolbar Item" tag="-1" image="sidebar.right" catalog="system" bordered="YES" sizingBehavior="auto" id="MPY-YA-pGZ">
+                        <connections>
+                            <action selector="sidebarLeftItemClicked:" target="-2" id="Xd8-LA-N1O"/>
+                        </connections>
+                    </toolbarItem>
+                </allowedToolbarItems>
+                <defaultToolbarItems>
+                    <toolbarItem reference="MPY-YA-pGZ"/>
+                </defaultToolbarItems>
+            </toolbar>
+            <connections>
+                <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
+            </connections>
+            <point key="canvasLocation" x="31" y="209"/>
+        </window>
+    </objects>
+    <resources>
+        <image name="sidebar.right" catalog="system" width="18" height="14"/>
+    </resources>
+</document>

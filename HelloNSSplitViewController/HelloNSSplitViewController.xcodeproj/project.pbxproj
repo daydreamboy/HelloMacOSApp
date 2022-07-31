@@ -1,0 +1,384 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4F5BAFC828967263007B0AF7 /* Demo1WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5BAFC328967263007B0AF7 /* Demo1WindowController.swift */; };
+		4F5BAFCB28967264007B0AF7 /* Demo1WindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5BAFC728967263007B0AF7 /* Demo1WindowController.xib */; };
+		4F5BAFCE2896733D007B0AF7 /* MySplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5BAFCC2896733D007B0AF7 /* MySplitViewController.swift */; };
+		4F5BAFCF2896733D007B0AF7 /* MySplitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5BAFCD2896733D007B0AF7 /* MySplitViewController.xib */; };
+		4F5BAFD228967585007B0AF7 /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5BAFD028967585007B0AF7 /* LeftViewController.swift */; };
+		4F5BAFD328967585007B0AF7 /* LeftViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5BAFD128967585007B0AF7 /* LeftViewController.xib */; };
+		4F5BAFD628967598007B0AF7 /* RightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5BAFD428967598007B0AF7 /* RightViewController.swift */; };
+		4F5BAFD728967598007B0AF7 /* RightViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5BAFD528967598007B0AF7 /* RightViewController.xib */; };
+		4F97A0AD28915348001FBC74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F97A0AC28915348001FBC74 /* AppDelegate.swift */; };
+		4F97A0AF2891534A001FBC74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F97A0AE2891534A001FBC74 /* Assets.xcassets */; };
+		4F97A0B22891534A001FBC74 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F97A0B02891534A001FBC74 /* MainMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4F5BAFC328967263007B0AF7 /* Demo1WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Demo1WindowController.swift; sourceTree = "<group>"; };
+		4F5BAFC728967263007B0AF7 /* Demo1WindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Demo1WindowController.xib; sourceTree = "<group>"; };
+		4F5BAFCC2896733D007B0AF7 /* MySplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySplitViewController.swift; sourceTree = "<group>"; };
+		4F5BAFCD2896733D007B0AF7 /* MySplitViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MySplitViewController.xib; sourceTree = "<group>"; };
+		4F5BAFD028967585007B0AF7 /* LeftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
+		4F5BAFD128967585007B0AF7 /* LeftViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeftViewController.xib; sourceTree = "<group>"; };
+		4F5BAFD428967598007B0AF7 /* RightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightViewController.swift; sourceTree = "<group>"; };
+		4F5BAFD528967598007B0AF7 /* RightViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RightViewController.xib; sourceTree = "<group>"; };
+		4F97A0A928915348001FBC74 /* HelloNSSplitViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloNSSplitViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F97A0AC28915348001FBC74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4F97A0AE2891534A001FBC74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4F97A0B12891534A001FBC74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		4F97A0B32891534A001FBC74 /* HelloNSSplitViewController.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HelloNSSplitViewController.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4F97A0A628915348001FBC74 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4F5BAFC228967263007B0AF7 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				4F5BAFC328967263007B0AF7 /* Demo1WindowController.swift */,
+				4F5BAFCC2896733D007B0AF7 /* MySplitViewController.swift */,
+				4F5BAFD028967585007B0AF7 /* LeftViewController.swift */,
+				4F5BAFD428967598007B0AF7 /* RightViewController.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		4F5BAFC528967263007B0AF7 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				4F5BAFD128967585007B0AF7 /* LeftViewController.xib */,
+				4F5BAFCD2896733D007B0AF7 /* MySplitViewController.xib */,
+				4F5BAFD528967598007B0AF7 /* RightViewController.xib */,
+				4F5BAFC728967263007B0AF7 /* Demo1WindowController.xib */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		4F97A0A028915347001FBC74 = {
+			isa = PBXGroup;
+			children = (
+				4F97A0AB28915348001FBC74 /* HelloNSSplitViewController */,
+				4F97A0AA28915348001FBC74 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4F97A0AA28915348001FBC74 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4F97A0A928915348001FBC74 /* HelloNSSplitViewController.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4F97A0AB28915348001FBC74 /* HelloNSSplitViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4F5BAFC228967263007B0AF7 /* Classes */,
+				4F5BAFC528967263007B0AF7 /* UI */,
+				4F97A0AC28915348001FBC74 /* AppDelegate.swift */,
+				4F97A0AE2891534A001FBC74 /* Assets.xcassets */,
+				4F97A0B02891534A001FBC74 /* MainMenu.xib */,
+				4F97A0B32891534A001FBC74 /* HelloNSSplitViewController.entitlements */,
+			);
+			path = HelloNSSplitViewController;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4F97A0A828915348001FBC74 /* HelloNSSplitViewController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4F97A0B62891534A001FBC74 /* Build configuration list for PBXNativeTarget "HelloNSSplitViewController" */;
+			buildPhases = (
+				4F97A0A528915348001FBC74 /* Sources */,
+				4F97A0A628915348001FBC74 /* Frameworks */,
+				4F97A0A728915348001FBC74 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HelloNSSplitViewController;
+			productName = HelloNSSplitViewController;
+			productReference = 4F97A0A928915348001FBC74 /* HelloNSSplitViewController.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4F97A0A128915347001FBC74 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1330;
+				LastUpgradeCheck = 1330;
+				TargetAttributes = {
+					4F97A0A828915348001FBC74 = {
+						CreatedOnToolsVersion = 13.3;
+					};
+				};
+			};
+			buildConfigurationList = 4F97A0A428915347001FBC74 /* Build configuration list for PBXProject "HelloNSSplitViewController" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4F97A0A028915347001FBC74;
+			productRefGroup = 4F97A0AA28915348001FBC74 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4F97A0A828915348001FBC74 /* HelloNSSplitViewController */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4F97A0A728915348001FBC74 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F5BAFCB28967264007B0AF7 /* Demo1WindowController.xib in Resources */,
+				4F5BAFD728967598007B0AF7 /* RightViewController.xib in Resources */,
+				4F5BAFD328967585007B0AF7 /* LeftViewController.xib in Resources */,
+				4F5BAFCF2896733D007B0AF7 /* MySplitViewController.xib in Resources */,
+				4F97A0AF2891534A001FBC74 /* Assets.xcassets in Resources */,
+				4F97A0B22891534A001FBC74 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4F97A0A528915348001FBC74 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F5BAFC828967263007B0AF7 /* Demo1WindowController.swift in Sources */,
+				4F97A0AD28915348001FBC74 /* AppDelegate.swift in Sources */,
+				4F5BAFD228967585007B0AF7 /* LeftViewController.swift in Sources */,
+				4F5BAFCE2896733D007B0AF7 /* MySplitViewController.swift in Sources */,
+				4F5BAFD628967598007B0AF7 /* RightViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		4F97A0B02891534A001FBC74 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4F97A0B12891534A001FBC74 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4F97A0B42891534A001FBC74 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4F97A0B52891534A001FBC74 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		4F97A0B72891534A001FBC74 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = HelloNSSplitViewController/HelloNSSplitViewController.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wc.HelloNSSplitViewController;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		4F97A0B82891534A001FBC74 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = HelloNSSplitViewController/HelloNSSplitViewController.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wc.HelloNSSplitViewController;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4F97A0A428915347001FBC74 /* Build configuration list for PBXProject "HelloNSSplitViewController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F97A0B42891534A001FBC74 /* Debug */,
+				4F97A0B52891534A001FBC74 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4F97A0B62891534A001FBC74 /* Build configuration list for PBXNativeTarget "HelloNSSplitViewController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F97A0B72891534A001FBC74 /* Debug */,
+				4F97A0B82891534A001FBC74 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4F97A0A128915347001FBC74 /* Project object */;
+}

@@ -145,9 +145,47 @@ https://www.jianshu.com/p/d7e96597bd1f
 
 
 
-解决方法
+解决方法:
 
 在entitlements文件中设置`com.apple.security.files.user-selected.read-only`为YES
+
+
+
+### (4) 给toolbar添加item时出现warning
+
+给toolbar添加item时出现warning，如下
+
+```
+[NSToolbarItem] NSToolbarItem.minSize and NSToolbarItem.maxSize methods are deprecated. Usage may result in clipping of items. It is recommended to let the system measure the item automatically using constraints.
+```
+
+
+
+解决方法:
+
+选中toolbar item，在size Inspector中设置Size为Automatic[^3]
+
+
+
+### (5) 如何给NSViewController设置背景颜色[^4]
+
+示例代码，如下
+
+```swift
+override func viewDidLoad() {
+    super.viewDidLoad()
+    self.view.wantsLayer = true
+
+    if self.view.layer != nil {
+        let color : CGColor = CGColor(red: 1.0, green: 0, blue: 0, alpha: 1.0)
+        self.view.layer?.backgroundColor = color
+    }
+}
+```
+
+说明
+
+> Xcode13 + Swift 5
 
 
 
@@ -155,4 +193,7 @@ https://www.jianshu.com/p/d7e96597bd1f
 
 [^1]:https://stackoverflow.com/a/57292829
 [^2]:https://stackoverflow.com/questions/14861373/indeterminate-nsprogressindicator-will-not-animate
+
+[^3]:https://developer.apple.com/forums/thread/667695
+[^4]:https://stackoverflow.com/questions/26553444/swift-nsviewcontroller-background-color-mac-app
 

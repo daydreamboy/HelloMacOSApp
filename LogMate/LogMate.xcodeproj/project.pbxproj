@@ -20,6 +20,8 @@
 		4F1F386E28708C2200CB61AE /* WCTokenSearchFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1F386928708C2200CB61AE /* WCTokenSearchFieldCell.swift */; };
 		4F1F386F28708C2200CB61AE /* WCTokenAttachmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1F386A28708C2200CB61AE /* WCTokenAttachmentCell.swift */; };
 		4F46A1E9288661960084CE32 /* WCGanttDiagramDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F46A1E8288661960084CE32 /* WCGanttDiagramDataParser.swift */; };
+		4F5BAFE5289687CE007B0AF7 /* AnotherMainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5BAFE3289687CE007B0AF7 /* AnotherMainWindowController.swift */; };
+		4F5BAFE6289687CE007B0AF7 /* AnotherMainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5BAFE4289687CE007B0AF7 /* AnotherMainWindowController.xib */; };
 		4F85AF762869F2F50023713A /* WCStringStreamReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F85AF752869F2F50023713A /* WCStringStreamReader.swift */; };
 		4FB21B642874342E00DB8547 /* FrontResources in Resources */ = {isa = PBXBuildFile; fileRef = 4FB21B632874342D00DB8547 /* FrontResources */; };
 		4FF328512875492E00744DDB /* WCWebViewTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF328502875492E00744DDB /* WCWebViewTool.swift */; };
@@ -43,6 +45,8 @@
 		4F1F386A28708C2200CB61AE /* WCTokenAttachmentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCTokenAttachmentCell.swift; sourceTree = "<group>"; };
 		4F1F6D1A28747E81009E54B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4F46A1E8288661960084CE32 /* WCGanttDiagramDataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCGanttDiagramDataParser.swift; sourceTree = "<group>"; };
+		4F5BAFE3289687CE007B0AF7 /* AnotherMainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherMainWindowController.swift; sourceTree = "<group>"; };
+		4F5BAFE4289687CE007B0AF7 /* AnotherMainWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnotherMainWindowController.xib; sourceTree = "<group>"; };
 		4F85AF752869F2F50023713A /* WCStringStreamReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCStringStreamReader.swift; sourceTree = "<group>"; };
 		4FB21B632874342D00DB8547 /* FrontResources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = FrontResources; sourceTree = "<group>"; };
 		4FF328502875492E00744DDB /* WCWebViewTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCWebViewTool.swift; sourceTree = "<group>"; };
@@ -98,6 +102,8 @@
 			isa = PBXGroup;
 			children = (
 				2B446B492864560F00991153 /* MainWindowController.swift */,
+				4F5BAFE3289687CE007B0AF7 /* AnotherMainWindowController.swift */,
+				4F5BAFE4289687CE007B0AF7 /* AnotherMainWindowController.xib */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -218,6 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B446B3B2864549800991153 /* Assets.xcassets in Resources */,
+				4F5BAFE6289687CE007B0AF7 /* AnotherMainWindowController.xib in Resources */,
 				4FB21B642874342E00DB8547 /* FrontResources in Resources */,
 				2B446B4C2864560F00991153 /* LogMate.MainWindowController.xib in Resources */,
 				2B446B3E2864549800991153 /* MainMenu.xib in Resources */,
@@ -235,6 +242,7 @@
 				4F1F386E28708C2200CB61AE /* WCTokenSearchFieldCell.swift in Sources */,
 				4FF328512875492E00744DDB /* WCWebViewTool.swift in Sources */,
 				4F162164286D377900CFCA29 /* WCLineMessage.swift in Sources */,
+				4F5BAFE5289687CE007B0AF7 /* AnotherMainWindowController.swift in Sources */,
 				4FF32857287565E600744DDB /* WCStringTool.swift in Sources */,
 				4F1F386B28708C2200CB61AE /* WCAttributedStringTool.swift in Sources */,
 				4F1F386F28708C2200CB61AE /* WCTokenAttachmentCell.swift in Sources */,

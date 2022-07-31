@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="AnotherMainWindowController" customModule="LogMate" customModuleProvider="target">
+            <connections>
+                <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="1200" height="800"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1792" height="1095"/>
+            <view key="contentView" id="se5-gp-TjO">
+                <rect key="frame" x="0.0" y="0.0" width="1200" height="800"/>
+                <autoresizingMask key="autoresizingMask"/>
+            </view>
+            <toolbar key="toolbar" implicitIdentifier="498E9B53-205F-447C-A99B-534F2267E37E" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="VJa-0U-YOh">
+                <allowedToolbarItems>
+                    <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="Wbe-6y-R2n"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="jMo-Wx-jjd"/>
+                    <toolbarItem implicitItemIdentifier="AB2644A7-F7AE-46A7-BDC9-57CE8D4E2480" label="Toolbar Item" paletteLabel="Toolbar Item" tag="-1" image="sidebar.right" catalog="system" bordered="YES" sizingBehavior="auto" id="h0W-mc-Gm3"/>
+                    <toolbarItem implicitItemIdentifier="A130A63E-01C1-487F-96C6-CFA12C04814A" label="Toolbar Item" paletteLabel="Toolbar Item" tag="-1" image="rectangle.bottomhalf.inset.filled" catalog="system" bordered="YES" id="FI4-4B-bCP">
+                        <size key="minSize" width="30" height="25"/>
+                        <size key="maxSize" width="30" height="25"/>
+                    </toolbarItem>
+                </allowedToolbarItems>
+                <defaultToolbarItems>
+                    <toolbarItem reference="jMo-Wx-jjd"/>
+                    <toolbarItem reference="FI4-4B-bCP"/>
+                    <toolbarItem reference="h0W-mc-Gm3"/>
+                </defaultToolbarItems>
+            </toolbar>
+            <connections>
+                <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
+            </connections>
+            <point key="canvasLocation" x="178.5" y="201"/>
+        </window>
+    </objects>
+    <resources>
+        <image name="rectangle.bottomhalf.inset.filled" catalog="system" width="18" height="14"/>
+        <image name="sidebar.right" catalog="system" width="18" height="14"/>
+    </resources>
+</document>

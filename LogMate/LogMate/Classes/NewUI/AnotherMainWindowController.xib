@@ -19,16 +19,23 @@
             <rect key="screenRect" x="0.0" y="0.0" width="1792" height="1095"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="1200" height="800"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             </view>
-            <toolbar key="toolbar" implicitIdentifier="498E9B53-205F-447C-A99B-534F2267E37E" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="VJa-0U-YOh">
+            <toolbar key="toolbar" implicitIdentifier="498E9B53-205F-447C-A99B-534F2267E37E" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="VJa-0U-YOh">
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="Wbe-6y-R2n"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="jMo-Wx-jjd"/>
-                    <toolbarItem implicitItemIdentifier="AB2644A7-F7AE-46A7-BDC9-57CE8D4E2480" label="Toolbar Item" paletteLabel="Toolbar Item" tag="-1" image="sidebar.right" catalog="system" bordered="YES" sizingBehavior="auto" id="h0W-mc-Gm3"/>
-                    <toolbarItem implicitItemIdentifier="A130A63E-01C1-487F-96C6-CFA12C04814A" label="Toolbar Item" paletteLabel="Toolbar Item" tag="-1" image="rectangle.bottomhalf.inset.filled" catalog="system" bordered="YES" id="FI4-4B-bCP">
+                    <toolbarItem implicitItemIdentifier="AB2644A7-F7AE-46A7-BDC9-57CE8D4E2480" label="Toolbar Item" paletteLabel="Toolbar Item" tag="-1" image="sidebar.right" catalog="system" bordered="YES" sizingBehavior="auto" id="h0W-mc-Gm3" userLabel="Right Item">
+                        <connections>
+                            <action selector="sidebarRightItemClicked:" target="-2" id="2TW-Qo-vxZ"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="A130A63E-01C1-487F-96C6-CFA12C04814A" label="Toolbar Item" paletteLabel="Toolbar Item" tag="-1" image="rectangle.bottomhalf.inset.filled" catalog="system" bordered="YES" id="FI4-4B-bCP" userLabel="Bottom Item">
                         <size key="minSize" width="30" height="25"/>
                         <size key="maxSize" width="30" height="25"/>
+                        <connections>
+                            <action selector="sidebarBottomItemClicked:" target="-2" id="pZ9-5r-JjD"/>
+                        </connections>
                     </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>

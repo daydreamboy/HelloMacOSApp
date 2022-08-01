@@ -20,6 +20,16 @@
 		4F1F386E28708C2200CB61AE /* WCTokenSearchFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1F386928708C2200CB61AE /* WCTokenSearchFieldCell.swift */; };
 		4F1F386F28708C2200CB61AE /* WCTokenAttachmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1F386A28708C2200CB61AE /* WCTokenAttachmentCell.swift */; };
 		4F46A1E9288661960084CE32 /* WCGanttDiagramDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F46A1E8288661960084CE32 /* WCGanttDiagramDataParser.swift */; };
+		4F4AC10F28978FD100429AA6 /* HSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4AC10D28978FD100429AA6 /* HSplitViewController.swift */; };
+		4F4AC11028978FD100429AA6 /* HSplitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F4AC10E28978FD100429AA6 /* HSplitViewController.xib */; };
+		4F4AC11328978FE300429AA6 /* VSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4AC11128978FE300429AA6 /* VSplitViewController.swift */; };
+		4F4AC11428978FE300429AA6 /* VSplitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F4AC11228978FE300429AA6 /* VSplitViewController.xib */; };
+		4F4AC1172897907200429AA6 /* VisualizerPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4AC1152897907200429AA6 /* VisualizerPanelViewController.swift */; };
+		4F4AC1182897907200429AA6 /* VisualizerPanelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F4AC1162897907200429AA6 /* VisualizerPanelViewController.xib */; };
+		4F4AC11B2897921100429AA6 /* LogPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4AC1192897921100429AA6 /* LogPanelViewController.swift */; };
+		4F4AC11C2897921100429AA6 /* LogPanelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F4AC11A2897921100429AA6 /* LogPanelViewController.xib */; };
+		4F4AC11F2897922400429AA6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4AC11D2897922400429AA6 /* DetailViewController.swift */; };
+		4F4AC1202897922400429AA6 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F4AC11E2897922400429AA6 /* DetailViewController.xib */; };
 		4F5BAFE5289687CE007B0AF7 /* AnotherMainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5BAFE3289687CE007B0AF7 /* AnotherMainWindowController.swift */; };
 		4F5BAFE6289687CE007B0AF7 /* AnotherMainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5BAFE4289687CE007B0AF7 /* AnotherMainWindowController.xib */; };
 		4F85AF762869F2F50023713A /* WCStringStreamReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F85AF752869F2F50023713A /* WCStringStreamReader.swift */; };
@@ -45,6 +55,16 @@
 		4F1F386A28708C2200CB61AE /* WCTokenAttachmentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCTokenAttachmentCell.swift; sourceTree = "<group>"; };
 		4F1F6D1A28747E81009E54B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4F46A1E8288661960084CE32 /* WCGanttDiagramDataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCGanttDiagramDataParser.swift; sourceTree = "<group>"; };
+		4F4AC10D28978FD100429AA6 /* HSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSplitViewController.swift; sourceTree = "<group>"; };
+		4F4AC10E28978FD100429AA6 /* HSplitViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HSplitViewController.xib; sourceTree = "<group>"; };
+		4F4AC11128978FE300429AA6 /* VSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VSplitViewController.swift; sourceTree = "<group>"; };
+		4F4AC11228978FE300429AA6 /* VSplitViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VSplitViewController.xib; sourceTree = "<group>"; };
+		4F4AC1152897907200429AA6 /* VisualizerPanelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualizerPanelViewController.swift; sourceTree = "<group>"; };
+		4F4AC1162897907200429AA6 /* VisualizerPanelViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VisualizerPanelViewController.xib; sourceTree = "<group>"; };
+		4F4AC1192897921100429AA6 /* LogPanelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogPanelViewController.swift; sourceTree = "<group>"; };
+		4F4AC11A2897921100429AA6 /* LogPanelViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogPanelViewController.xib; sourceTree = "<group>"; };
+		4F4AC11D2897922400429AA6 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		4F4AC11E2897922400429AA6 /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		4F5BAFE3289687CE007B0AF7 /* AnotherMainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherMainWindowController.swift; sourceTree = "<group>"; };
 		4F5BAFE4289687CE007B0AF7 /* AnotherMainWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnotherMainWindowController.xib; sourceTree = "<group>"; };
 		4F85AF752869F2F50023713A /* WCStringStreamReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCStringStreamReader.swift; sourceTree = "<group>"; };
@@ -102,8 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				2B446B492864560F00991153 /* MainWindowController.swift */,
-				4F5BAFE3289687CE007B0AF7 /* AnotherMainWindowController.swift */,
-				4F5BAFE4289687CE007B0AF7 /* AnotherMainWindowController.xib */,
+				4F4AC1212897926900429AA6 /* NewUI */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -154,6 +173,25 @@
 				4F46A1E8288661960084CE32 /* WCGanttDiagramDataParser.swift */,
 			);
 			path = DataParsers;
+			sourceTree = "<group>";
+		};
+		4F4AC1212897926900429AA6 /* NewUI */ = {
+			isa = PBXGroup;
+			children = (
+				4F5BAFE3289687CE007B0AF7 /* AnotherMainWindowController.swift */,
+				4F5BAFE4289687CE007B0AF7 /* AnotherMainWindowController.xib */,
+				4F4AC10D28978FD100429AA6 /* HSplitViewController.swift */,
+				4F4AC10E28978FD100429AA6 /* HSplitViewController.xib */,
+				4F4AC11128978FE300429AA6 /* VSplitViewController.swift */,
+				4F4AC11228978FE300429AA6 /* VSplitViewController.xib */,
+				4F4AC1152897907200429AA6 /* VisualizerPanelViewController.swift */,
+				4F4AC1162897907200429AA6 /* VisualizerPanelViewController.xib */,
+				4F4AC1192897921100429AA6 /* LogPanelViewController.swift */,
+				4F4AC11A2897921100429AA6 /* LogPanelViewController.xib */,
+				4F4AC11D2897922400429AA6 /* DetailViewController.swift */,
+				4F4AC11E2897922400429AA6 /* DetailViewController.xib */,
+			);
+			path = NewUI;
 			sourceTree = "<group>";
 		};
 		4FF3284F2875491900744DDB /* Tools */ = {
@@ -223,11 +261,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F4AC1182897907200429AA6 /* VisualizerPanelViewController.xib in Resources */,
+				4F4AC11028978FD100429AA6 /* HSplitViewController.xib in Resources */,
 				2B446B3B2864549800991153 /* Assets.xcassets in Resources */,
 				4F5BAFE6289687CE007B0AF7 /* AnotherMainWindowController.xib in Resources */,
 				4FB21B642874342E00DB8547 /* FrontResources in Resources */,
+				4F4AC11C2897921100429AA6 /* LogPanelViewController.xib in Resources */,
 				2B446B4C2864560F00991153 /* LogMate.MainWindowController.xib in Resources */,
+				4F4AC1202897922400429AA6 /* DetailViewController.xib in Resources */,
 				2B446B3E2864549800991153 /* MainMenu.xib in Resources */,
+				4F4AC11428978FE300429AA6 /* VSplitViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,17 +281,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F4AC10F28978FD100429AA6 /* HSplitViewController.swift in Sources */,
 				4F85AF762869F2F50023713A /* WCStringStreamReader.swift in Sources */,
 				4F1F386E28708C2200CB61AE /* WCTokenSearchFieldCell.swift in Sources */,
 				4FF328512875492E00744DDB /* WCWebViewTool.swift in Sources */,
 				4F162164286D377900CFCA29 /* WCLineMessage.swift in Sources */,
 				4F5BAFE5289687CE007B0AF7 /* AnotherMainWindowController.swift in Sources */,
+				4F4AC11328978FE300429AA6 /* VSplitViewController.swift in Sources */,
 				4FF32857287565E600744DDB /* WCStringTool.swift in Sources */,
 				4F1F386B28708C2200CB61AE /* WCAttributedStringTool.swift in Sources */,
 				4F1F386F28708C2200CB61AE /* WCTokenAttachmentCell.swift in Sources */,
+				4F4AC11F2897922400429AA6 /* DetailViewController.swift in Sources */,
 				4F1F386D28708C2200CB61AE /* WCTokenTextView.swift in Sources */,
 				4F1F386C28708C2200CB61AE /* WCTokenSearchField.swift in Sources */,
+				4F4AC1172897907200429AA6 /* VisualizerPanelViewController.swift in Sources */,
 				4F162166286D550500CFCA29 /* WCLineLogParser.swift in Sources */,
+				4F4AC11B2897921100429AA6 /* LogPanelViewController.swift in Sources */,
 				2B446B4B2864560F00991153 /* MainWindowController.swift in Sources */,
 				2B446B392864549600991153 /* AppDelegate.swift in Sources */,
 				4F46A1E9288661960084CE32 /* WCGanttDiagramDataParser.swift in Sources */,

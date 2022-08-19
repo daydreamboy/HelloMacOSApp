@@ -19,6 +19,7 @@
 		4F1F386D28708C2200CB61AE /* WCTokenTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1F386828708C2200CB61AE /* WCTokenTextView.swift */; };
 		4F1F386E28708C2200CB61AE /* WCTokenSearchFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1F386928708C2200CB61AE /* WCTokenSearchFieldCell.swift */; };
 		4F1F386F28708C2200CB61AE /* WCTokenAttachmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1F386A28708C2200CB61AE /* WCTokenAttachmentCell.swift */; };
+		4F40111428AF3A9E00A23F36 /* AnotherMainWindowController+MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F40111328AF3A9E00A23F36 /* AnotherMainWindowController+MainMenu.swift */; };
 		4F46A1E9288661960084CE32 /* WCGanttDiagramDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F46A1E8288661960084CE32 /* WCGanttDiagramDataParser.swift */; };
 		4F4AC10F28978FD100429AA6 /* HSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4AC10D28978FD100429AA6 /* HSplitViewController.swift */; };
 		4F4AC11028978FD100429AA6 /* HSplitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F4AC10E28978FD100429AA6 /* HSplitViewController.xib */; };
@@ -30,6 +31,7 @@
 		4F4AC11C2897921100429AA6 /* LogPanelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F4AC11A2897921100429AA6 /* LogPanelViewController.xib */; };
 		4F4AC11F2897922400429AA6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4AC11D2897922400429AA6 /* DetailViewController.swift */; };
 		4F4AC1202897922400429AA6 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F4AC11E2897922400429AA6 /* DetailViewController.xib */; };
+		4F4CB996289D1EFF003BA527 /* AnotherMainWindowController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4CB995289D1EFF003BA527 /* AnotherMainWindowController+TableView.swift */; };
 		4F5BAFE5289687CE007B0AF7 /* AnotherMainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5BAFE3289687CE007B0AF7 /* AnotherMainWindowController.swift */; };
 		4F5BAFE6289687CE007B0AF7 /* AnotherMainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5BAFE4289687CE007B0AF7 /* AnotherMainWindowController.xib */; };
 		4F85AF762869F2F50023713A /* WCStringStreamReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F85AF752869F2F50023713A /* WCStringStreamReader.swift */; };
@@ -54,6 +56,7 @@
 		4F1F386928708C2200CB61AE /* WCTokenSearchFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCTokenSearchFieldCell.swift; sourceTree = "<group>"; };
 		4F1F386A28708C2200CB61AE /* WCTokenAttachmentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCTokenAttachmentCell.swift; sourceTree = "<group>"; };
 		4F1F6D1A28747E81009E54B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4F40111328AF3A9E00A23F36 /* AnotherMainWindowController+MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnotherMainWindowController+MainMenu.swift"; sourceTree = "<group>"; };
 		4F46A1E8288661960084CE32 /* WCGanttDiagramDataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCGanttDiagramDataParser.swift; sourceTree = "<group>"; };
 		4F4AC10D28978FD100429AA6 /* HSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSplitViewController.swift; sourceTree = "<group>"; };
 		4F4AC10E28978FD100429AA6 /* HSplitViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HSplitViewController.xib; sourceTree = "<group>"; };
@@ -65,6 +68,7 @@
 		4F4AC11A2897921100429AA6 /* LogPanelViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogPanelViewController.xib; sourceTree = "<group>"; };
 		4F4AC11D2897922400429AA6 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		4F4AC11E2897922400429AA6 /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
+		4F4CB995289D1EFF003BA527 /* AnotherMainWindowController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnotherMainWindowController+TableView.swift"; sourceTree = "<group>"; };
 		4F5BAFE3289687CE007B0AF7 /* AnotherMainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherMainWindowController.swift; sourceTree = "<group>"; };
 		4F5BAFE4289687CE007B0AF7 /* AnotherMainWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnotherMainWindowController.xib; sourceTree = "<group>"; };
 		4F85AF752869F2F50023713A /* WCStringStreamReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCStringStreamReader.swift; sourceTree = "<group>"; };
@@ -179,6 +183,8 @@
 			isa = PBXGroup;
 			children = (
 				4F5BAFE3289687CE007B0AF7 /* AnotherMainWindowController.swift */,
+				4F4CB995289D1EFF003BA527 /* AnotherMainWindowController+TableView.swift */,
+				4F40111328AF3A9E00A23F36 /* AnotherMainWindowController+MainMenu.swift */,
 				4F5BAFE4289687CE007B0AF7 /* AnotherMainWindowController.xib */,
 				4F4AC10D28978FD100429AA6 /* HSplitViewController.swift */,
 				4F4AC10E28978FD100429AA6 /* HSplitViewController.xib */,
@@ -286,7 +292,9 @@
 				4F1F386E28708C2200CB61AE /* WCTokenSearchFieldCell.swift in Sources */,
 				4FF328512875492E00744DDB /* WCWebViewTool.swift in Sources */,
 				4F162164286D377900CFCA29 /* WCLineMessage.swift in Sources */,
+				4F40111428AF3A9E00A23F36 /* AnotherMainWindowController+MainMenu.swift in Sources */,
 				4F5BAFE5289687CE007B0AF7 /* AnotherMainWindowController.swift in Sources */,
+				4F4CB996289D1EFF003BA527 /* AnotherMainWindowController+TableView.swift in Sources */,
 				4F4AC11328978FE300429AA6 /* VSplitViewController.swift in Sources */,
 				4FF32857287565E600744DDB /* WCStringTool.swift in Sources */,
 				4F1F386B28708C2200CB61AE /* WCAttributedStringTool.swift in Sources */,

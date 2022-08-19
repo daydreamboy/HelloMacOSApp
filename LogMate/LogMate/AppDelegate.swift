@@ -13,8 +13,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc private dynamic var mainWindowControllers: [ NSWindowController ] = []
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        //self.newDocument(nil)
-        self.newDocument2(nil)
+        self.newDocument(nil)
+//        self.newDocument2(nil)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

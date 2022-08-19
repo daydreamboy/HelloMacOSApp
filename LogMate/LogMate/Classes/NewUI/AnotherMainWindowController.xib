@@ -30,9 +30,7 @@
                             <action selector="sidebarRightItemClicked:" target="-2" id="2TW-Qo-vxZ"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="A130A63E-01C1-487F-96C6-CFA12C04814A" label="Toolbar Item" paletteLabel="Toolbar Item" tag="-1" image="rectangle.bottomhalf.inset.filled" catalog="system" bordered="YES" id="FI4-4B-bCP" userLabel="Bottom Item">
-                        <size key="minSize" width="30" height="25"/>
-                        <size key="maxSize" width="30" height="25"/>
+                    <toolbarItem implicitItemIdentifier="A130A63E-01C1-487F-96C6-CFA12C04814A" label="Toolbar Item" paletteLabel="Toolbar Item" tag="-1" image="rectangle.bottomhalf.inset.filled" catalog="system" bordered="YES" sizingBehavior="auto" id="FI4-4B-bCP" userLabel="Bottom Item">
                         <connections>
                             <action selector="sidebarBottomItemClicked:" target="-2" id="pZ9-5r-JjD"/>
                         </connections>

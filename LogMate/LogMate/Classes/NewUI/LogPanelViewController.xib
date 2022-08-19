@@ -16,24 +16,25 @@
             <rect key="frame" x="0.0" y="0.0" width="659" height="462"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o0M-lw-toQ">
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="o0M-lw-toQ" customClass="WCTokenSearchField" customModule="LogMate" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="432" width="659" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="AjN-HW-mSW">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="Bgm-j9-2Rz"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="AjN-HW-mSW" customClass="WCTokenSearchFieldCell" customModule="LogMate" customModuleProvider="target">
                         <font key="font" usesAppearanceFont="YES"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="24" horizontalPageScroll="10" verticalLineScroll="24" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYq-ku-EjA">
-                    <rect key="frame" x="0.0" y="0.0" width="659" height="433"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                <scrollView autohidesScrollers="YES" horizontalLineScroll="24" horizontalPageScroll="10" verticalLineScroll="24" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYq-ku-EjA">
+                    <rect key="frame" x="0.0" y="0.0" width="659" height="432"/>
                     <clipView key="contentView" id="sVE-hj-K2E">
-                        <rect key="frame" x="1" y="1" width="657" height="431"/>
+                        <rect key="frame" x="1" y="1" width="657" height="430"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" rowHeight="24" rowSizeStyle="automatic" headerView="rv8-r2-EeQ" viewBased="YES" id="V6R-Bd-rgr">
-                                <rect key="frame" x="0.0" y="0.0" width="657" height="403"/>
+                                <rect key="frame" x="0.0" y="0.0" width="657" height="402"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <size key="intercellSpacing" width="17" height="0.0"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -108,7 +109,7 @@
                         </subviews>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="RQf-6i-PrD">
-                        <rect key="frame" x="1" y="324" width="637" height="16"/>
+                        <rect key="frame" x="1" y="416" width="657" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="jSS-yA-1ZA">
@@ -121,6 +122,15 @@
                     </tableHeaderView>
                 </scrollView>
             </subviews>
+            <constraints>
+                <constraint firstItem="FYq-ku-EjA" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="45c-WQ-dek"/>
+                <constraint firstAttribute="trailing" secondItem="FYq-ku-EjA" secondAttribute="trailing" id="9As-Kc-40n"/>
+                <constraint firstAttribute="trailing" secondItem="o0M-lw-toQ" secondAttribute="trailing" id="9LI-xN-bQ5"/>
+                <constraint firstItem="o0M-lw-toQ" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="Drh-wY-3v7"/>
+                <constraint firstItem="FYq-ku-EjA" firstAttribute="top" secondItem="o0M-lw-toQ" secondAttribute="bottom" id="HUc-oI-OlB"/>
+                <constraint firstAttribute="bottom" secondItem="FYq-ku-EjA" secondAttribute="bottom" id="Idw-d7-N0x"/>
+                <constraint firstItem="o0M-lw-toQ" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="b11-CY-8tj"/>
+            </constraints>
             <point key="canvasLocation" x="-47.5" y="229"/>
         </customView>
     </objects>

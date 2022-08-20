@@ -27,7 +27,7 @@ protocol WCTokenSearchFieldDelegate {
     func tokenSearchFieldDidPressEnter(_ textField: WCTokenSearchField, _ tokens: [WCToken])
 }
 
-// TODO: Set this class to the NSTextField object's custom class
+// !!!:  Configure:  Set this class to the NSTextField object's custom class in IB
 class WCTokenSearchField: NSTextField {
     
     public var tokenSearchDelegate: WCTokenSearchFieldDelegate?

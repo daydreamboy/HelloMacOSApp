@@ -29,7 +29,7 @@ class VisualizerPanelViewController: NSViewController {
                 if object is URL {
                     let fileURL = object as! URL
                     self.webView.loadFileURL(fileURL, allowingReadAccessTo: fileURL.deletingLastPathComponent())
-                    print("[Visualizer] \(fileURL)")
+                    print("[Visualizer] \(fileURL.path)")
                 }
             }
         }

@@ -47,7 +47,7 @@ extension LogPanelViewController {
                 print("-----------------------")
                 var syntaxString: String = ""
                 for (index, task) in tasks.enumerated() {
-                    let line = "\(task.desc)  :a\(index), \(task.startLine.time), \(Int(task.duration))s\n"
+                    let line = "\(task.desc)  :a\(index), \(String(describing: task.startLine.time)), \(Int(task.duration))s\n"
                     syntaxString.append(line)
                 }
                 print(syntaxString)

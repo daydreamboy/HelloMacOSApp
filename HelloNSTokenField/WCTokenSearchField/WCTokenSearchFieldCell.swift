@@ -7,7 +7,7 @@
 
 import Cocoa
 
-// TODO:  Configure: Set this class to the NSTextFieldCell object's custom class
+// !!!:  Configure: Set this class to the NSTextFieldCell object's custom class in IB
 class WCTokenSearchFieldCell: NSTextFieldCell {
     public var leftPadding: CGFloat = 0.0
     public var tokenTextView: WCTokenTextView = WCTokenTextView()

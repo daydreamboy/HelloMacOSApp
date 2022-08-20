@@ -13,7 +13,7 @@ class AnotherMainWindowController: NSWindowController {
     
     
     @IBOutlet weak var webView: WKWebView!
-    @IBOutlet var messageDetailView: NSTextView!
+    
     @IBOutlet weak var tokenSearchField: WCTokenSearchField!
     
     convenience init() {

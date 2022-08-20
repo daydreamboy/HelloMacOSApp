@@ -66,8 +66,10 @@ extension LogPanelViewController: NSTableViewDataSource, NSTableViewDelegate {
         // Note: selectedRow maybe -1
         if self.tableView.selectedRow > 0 && self.tableView.selectedRow < self.recordList.count {
             let line = self.recordList[self.tableView.selectedRow]
-            // TODO: uncomment this line
-            //self.messageDetailView.string = line.message
+            
+            NotificationCenter.default.post(name: LogPanelLineDidSelectedNotification, object: nil, userInfo: [
+                LogPanelLineDidSelectedNotificationKey_line: line
+            ])
         }
     }
     

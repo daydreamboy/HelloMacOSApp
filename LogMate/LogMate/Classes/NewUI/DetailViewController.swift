@@ -8,10 +8,19 @@
 import Cocoa
 
 class DetailViewController: NSViewController {
-
+    @IBOutlet var messageDetailView: NSTextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+        
+        NotificationCenter.default.addObserver(forName: LogPanelLineDidSelectedNotification, object: nil, queue: .main) { note in
+            
+            if let userInfo = note.userInfo, let line = userInfo[LogPanelLineDidSelectedNotificationKey_line] {
+                
+                if line is WCLineMessage {
+                    self.messageDetailView.string = (line as! WCLineMessage).message
+                }
+            }
+        }
     }
-    
 }

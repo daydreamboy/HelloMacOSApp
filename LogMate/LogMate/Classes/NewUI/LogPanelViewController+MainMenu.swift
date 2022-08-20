@@ -8,7 +8,7 @@
 import Foundation
 import Cocoa
 
-extension AnotherMainWindowController {
+extension LogPanelViewController {
     // MARK: IBAction
     
     @IBAction func openFiles(_ sender: Any) {

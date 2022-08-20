@@ -12,26 +12,9 @@ class AnotherMainWindowController: NSWindowController {
     let splitViewController: VSplitViewController = VSplitViewController()
     
     
-    @IBOutlet weak var tableView: NSTableView!
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet var messageDetailView: NSTextView!
     @IBOutlet weak var tokenSearchField: WCTokenSearchField!
-    
-    var logParser: WCLineLogParser?
-    
-    enum CellIdentifiers {
-        static let TimeCell = "TimeCell"
-        static let MessageCell = "MessageCell"
-        static let OrderCell = "OrderCell"
-    }
-    
-    var recordList: [WCLineMessage] = []
-    var reversed: Bool = false
-    
-    var timeFormatString: String = "YYYY-MM-dd HH:mm:ss.SSS"
-    var timeRange: NSRange?
-    
-    
     
     convenience init() {
         self.init(windowNibName: NSNib.Name(String(describing: type(of: self))))

@@ -9,7 +9,7 @@ import Foundation
 import Cocoa
 import WebKit
 
-extension AnotherMainWindowController: NSTableViewDataSource, NSTableViewDelegate {
+extension LogPanelViewController: NSTableViewDataSource, NSTableViewDelegate {
     // MARK: NSTableViewDataSource
     func numberOfRows(in tableView: NSTableView) -> Int {
         return self.recordList.count
@@ -66,7 +66,8 @@ extension AnotherMainWindowController: NSTableViewDataSource, NSTableViewDelegat
         // Note: selectedRow maybe -1
         if self.tableView.selectedRow > 0 && self.tableView.selectedRow < self.recordList.count {
             let line = self.recordList[self.tableView.selectedRow]
-            self.messageDetailView.string = line.message
+            // TODO: uncomment this line
+            //self.messageDetailView.string = line.message
         }
     }
     

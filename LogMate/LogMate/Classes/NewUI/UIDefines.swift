@@ -10,3 +10,6 @@ import Foundation
 // Notification
 let LogPanelLineDidSelectedNotification: NSNotification.Name = NSNotification.Name(rawValue: "LogPanelLineDidSelectedNotification")
 let LogPanelLineDidSelectedNotificationKey_line: String = "line"
+
+let WebViewNeedReloadNotification: NSNotification.Name = NSNotification.Name(rawValue: "WebViewNeedReloadNotification")
+let WebViewNeedReloadNotification_fileURL: String = "fileURL"

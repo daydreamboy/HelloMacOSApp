@@ -9,6 +9,7 @@ import Cocoa
 
 class LogPanelViewController: NSViewController {
     @IBOutlet weak var tableView: NSTableView!
+    @IBOutlet weak var tokenSearchField: WCTokenSearchField!
     
     var logParser: WCLineLogParser?
     
@@ -26,6 +27,16 @@ class LogPanelViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.setup()
     }
     
+    fileprivate func setup() {
+        self.tokenSearchField.tokenSearchDelegate = self
+        self.tokenSearchField.tokenMode = .stemRestricted
+        self.tokenSearchField.restrictedSteamWords = [
+            "filter",
+            "filter-node",
+        ]
+    }
 }

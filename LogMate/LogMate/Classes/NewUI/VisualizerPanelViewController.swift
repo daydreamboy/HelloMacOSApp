@@ -6,19 +6,12 @@
 //
 
 import Cocoa
+import WebKit
 
 class VisualizerPanelViewController: NSViewController {
-
-    var backgrounColor: CGColor?
-    var textFieldString: String?
-
-    //@IBOutlet weak var textField: NSTextField!
+    @IBOutlet weak var webView: WKWebView!
     
-    convenience init(labelString: String?, backgrounColor: CGColor?) {
-        self.init()
-        self.backgrounColor = backgrounColor
-        self.textFieldString = labelString
-    }
+    var backgrounColor: CGColor? = CGColor.init(red: 1.0, green: 1.0, blue: 0.0, alpha: 1.0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,8 +22,28 @@ class VisualizerPanelViewController: NSViewController {
             self.view.layer?.backgroundColor = backgrounColor ?? color
         }
         
-//        if let textFieldString = textFieldString {
-//            self.textField.stringValue = textFieldString
-//        }
+        NotificationCenter.default.addObserver(forName: WebViewNeedReloadNotification, object: nil, queue: .main) { note in
+            
+            if let userInfo = note.userInfo, let object = userInfo[WebViewNeedReloadNotification_fileURL] {
+                
+                if object is URL {
+                    let fileURL = object as! URL
+                    self.webView.loadFileURL(fileURL, allowingReadAccessTo: fileURL.deletingLastPathComponent())
+                    print("[Visualizer] \(fileURL)")
+                }
+            }
+        }
+        
+        self.setup()
+    }
+    
+    fileprivate func setup() {
+        // @see https://stackoverflow.com/a/40267954
+        //self.webView.setValue(false, forKey: "drawsBackground")
+        self.webView.navigationDelegate = self
+        self.webView.uiDelegate = self
+        if let userScript = WCWebViewTool.createUserScript(fileName: "FrontResources/mermaid.min.js") {
+            self.webView.configuration.userContentController.addUserScript(userScript)
+        }
     }
 }

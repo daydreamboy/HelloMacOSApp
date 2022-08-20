@@ -35,6 +35,8 @@
 		4F5BAFE5289687CE007B0AF7 /* AnotherMainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5BAFE3289687CE007B0AF7 /* AnotherMainWindowController.swift */; };
 		4F5BAFE6289687CE007B0AF7 /* AnotherMainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5BAFE4289687CE007B0AF7 /* AnotherMainWindowController.xib */; };
 		4F5C652A28B107F8009B9D81 /* UIDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C652928B107F8009B9D81 /* UIDefines.swift */; };
+		4F5C652C28B1093D009B9D81 /* LogPanelViewController+TokenSearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C652B28B1093D009B9D81 /* LogPanelViewController+TokenSearchField.swift */; };
+		4F5C652E28B10F97009B9D81 /* VisualizerPanelViewController+WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5C652D28B10F97009B9D81 /* VisualizerPanelViewController+WebView.swift */; };
 		4F85AF762869F2F50023713A /* WCStringStreamReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F85AF752869F2F50023713A /* WCStringStreamReader.swift */; };
 		4FB21B642874342E00DB8547 /* FrontResources in Resources */ = {isa = PBXBuildFile; fileRef = 4FB21B632874342D00DB8547 /* FrontResources */; };
 		4FF328512875492E00744DDB /* WCWebViewTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF328502875492E00744DDB /* WCWebViewTool.swift */; };
@@ -73,6 +75,8 @@
 		4F5BAFE3289687CE007B0AF7 /* AnotherMainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherMainWindowController.swift; sourceTree = "<group>"; };
 		4F5BAFE4289687CE007B0AF7 /* AnotherMainWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnotherMainWindowController.xib; sourceTree = "<group>"; };
 		4F5C652928B107F8009B9D81 /* UIDefines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDefines.swift; sourceTree = "<group>"; };
+		4F5C652B28B1093D009B9D81 /* LogPanelViewController+TokenSearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LogPanelViewController+TokenSearchField.swift"; sourceTree = "<group>"; };
+		4F5C652D28B10F97009B9D81 /* VisualizerPanelViewController+WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VisualizerPanelViewController+WebView.swift"; sourceTree = "<group>"; };
 		4F85AF752869F2F50023713A /* WCStringStreamReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCStringStreamReader.swift; sourceTree = "<group>"; };
 		4FB21B632874342D00DB8547 /* FrontResources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = FrontResources; sourceTree = "<group>"; };
 		4FF328502875492E00744DDB /* WCWebViewTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCWebViewTool.swift; sourceTree = "<group>"; };
@@ -191,10 +195,12 @@
 				4F4AC11128978FE300429AA6 /* VSplitViewController.swift */,
 				4F4AC11228978FE300429AA6 /* VSplitViewController.xib */,
 				4F4AC1152897907200429AA6 /* VisualizerPanelViewController.swift */,
+				4F5C652D28B10F97009B9D81 /* VisualizerPanelViewController+WebView.swift */,
 				4F4AC1162897907200429AA6 /* VisualizerPanelViewController.xib */,
 				4F4AC1192897921100429AA6 /* LogPanelViewController.swift */,
 				4F4CB995289D1EFF003BA527 /* LogPanelViewController+TableView.swift */,
 				4F40111328AF3A9E00A23F36 /* LogPanelViewController+MainMenu.swift */,
+				4F5C652B28B1093D009B9D81 /* LogPanelViewController+TokenSearchField.swift */,
 				4F4AC11A2897921100429AA6 /* LogPanelViewController.xib */,
 				4F4AC11D2897922400429AA6 /* DetailViewController.swift */,
 				4F4AC11E2897922400429AA6 /* DetailViewController.xib */,
@@ -294,6 +300,7 @@
 				4F85AF762869F2F50023713A /* WCStringStreamReader.swift in Sources */,
 				4F1F386E28708C2200CB61AE /* WCTokenSearchFieldCell.swift in Sources */,
 				4FF328512875492E00744DDB /* WCWebViewTool.swift in Sources */,
+				4F5C652C28B1093D009B9D81 /* LogPanelViewController+TokenSearchField.swift in Sources */,
 				4F162164286D377900CFCA29 /* WCLineMessage.swift in Sources */,
 				4F40111428AF3A9E00A23F36 /* LogPanelViewController+MainMenu.swift in Sources */,
 				4F5BAFE5289687CE007B0AF7 /* AnotherMainWindowController.swift in Sources */,
@@ -304,6 +311,7 @@
 				4F1F386F28708C2200CB61AE /* WCTokenAttachmentCell.swift in Sources */,
 				4F4AC11F2897922400429AA6 /* DetailViewController.swift in Sources */,
 				4F1F386D28708C2200CB61AE /* WCTokenTextView.swift in Sources */,
+				4F5C652E28B10F97009B9D81 /* VisualizerPanelViewController+WebView.swift in Sources */,
 				4F5C652A28B107F8009B9D81 /* UIDefines.swift in Sources */,
 				4F1F386C28708C2200CB61AE /* WCTokenSearchField.swift in Sources */,
 				4F4AC1172897907200429AA6 /* VisualizerPanelViewController.swift in Sources */,

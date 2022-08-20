@@ -11,11 +11,6 @@ import WebKit
 class AnotherMainWindowController: NSWindowController {
     let splitViewController: VSplitViewController = VSplitViewController()
     
-    
-    @IBOutlet weak var webView: WKWebView!
-    
-    @IBOutlet weak var tokenSearchField: WCTokenSearchField!
-    
     convenience init() {
         self.init(windowNibName: NSNib.Name(String(describing: type(of: self))))
     }
@@ -25,7 +20,7 @@ class AnotherMainWindowController: NSWindowController {
 
         splitViewController.splitView.isVertical = false
         
-        let topItem = NSSplitViewItem.init(viewController: VisualizerPanelViewController.init(labelString: "This the top panel", backgrounColor: CGColor.init(red: 1.0, green: 1.0, blue: 0.0, alpha: 1.0)))
+        let topItem = NSSplitViewItem.init(viewController: VisualizerPanelViewController.init())
         let bottomItem = NSSplitViewItem.init(viewController: HSplitViewController())
         
         // @see https://stackoverflow.com/a/46064439

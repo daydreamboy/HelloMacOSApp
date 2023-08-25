@@ -189,6 +189,18 @@ override func viewDidLoad() {
 
 
 
+## 3、Xcode编译问题
+
+### (1) ld: file not found: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/arc/libarclite_macosx.a
+
+在Xcode14上最低支持macOS 10.13，通过macOS Deployment Target的列表找到该最小版本
+
+解决方法：设置target的版本为macOS 10.13以及以上
+
+
+
+
+
 ## References
 
 [^1]:https://stackoverflow.com/a/57292829

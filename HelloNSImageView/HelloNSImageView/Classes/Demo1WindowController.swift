@@ -23,6 +23,7 @@ class Demo1WindowController: NSWindowController {
         
         if let path = Bundle.main.path(forResource: "head", ofType: "png") {
             if let image = NSImage.init(contentsOfFile: path) {
+                // @see https://stackoverflow.com/questions/24118328/set-background-color-of-nsview-and-nsimageview-in-cocoa
                 self.imageView.image = image
                 self.imageView.wantsLayer = true
                 self.imageView.layer?.backgroundColor = NSColor.green.cgColor

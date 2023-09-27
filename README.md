@@ -75,24 +75,61 @@ https://stackoverflow.com/a/17245860
 
 
 
-### (2) 常用UI组件
-
-
+## 2、常用UI组件
 
 | 类                  | UI组件      | 作用                    |      |
 | ------------------- | ----------- | ----------------------- | ---- |
 | NSImageView         | 显示图片    |                         |      |
 | NSProgressIndicator | loading组件 | 有2个样式：转圈和进度条 |      |
 | NSSearchField       | 搜索框      |                         |      |
-| NSTextView          | 显示文本框  |                         |      |
+| NSTextField         | 文本框      |                         |      |
+| NSTextView          | 文本框      |                         |      |
+| WKWebView           | Web容器     |                         |      |
+
+
+
+### (1) NSTextField
+
+NSTextField限制某些字符不能输入。
+
+举个例子[^6]，如下
+
+```swift
+class IntegerFormatter: NumberFormatter {
+    override func isPartialStringValid(_ partialString: String, newEditingString newString: AutoreleasingUnsafeMutablePointer<NSString?>?, errorDescription error: AutoreleasingUnsafeMutablePointer<NSString?>?) -> Bool{
+        
+        // Ability to reset your field (otherwise you can't delete the content)
+        // You can check if the field is empty later
+        if partialString.isEmpty {
+            return true
+        }
+
+        // Actual check
+        if Int(partialString) != nil {
+            return true
+        }
+        else {
+            // @see https://stackoverflow.com/questions/41668688/no-beeping-with-nsbeep
+            NSSound.beep()
+            return false
+        }
+    }
+}
+
+someTextField.formatter = IntegerFormatter()
+```
 
 
 
 
 
+## 3、常用非UI组件
 
 
-## 2、常见问题
+
+
+
+## 4、常见问题
 
 ### (1) MacOS app无法访问网络
 
@@ -114,7 +151,7 @@ https://www.jianshu.com/p/d7e96597bd1f
 
 
 
-### (2)  NSProgressIndicator显示没有动画
+### (2) NSProgressIndicator显示没有动画
 
 解决方法：将Drawing勾选Hidden[^2]，如下
 
@@ -189,7 +226,19 @@ override func viewDidLoad() {
 
 
 
-## 3、Xcode编译问题
+### (6) 设置WKWebView背景透明
+
+示例代码[^5]，如下
+
+```swift
+self.webView.setValue(false, forKey: "drawsBackground")
+```
+
+
+
+
+
+## 5、Xcode编译问题
 
 ### (1) ld: file not found: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/arc/libarclite_macosx.a
 
@@ -208,4 +257,8 @@ override func viewDidLoad() {
 
 [^3]:https://developer.apple.com/forums/thread/667695
 [^4]:https://stackoverflow.com/questions/26553444/swift-nsviewcontroller-background-color-mac-app
+
+[^5]:https://stackoverflow.com/questions/27211561/transparent-background-wkwebview-nsview
+
+[^6]:https://stackoverflow.com/questions/12161654/restrict-nstextfield-to-only-allow-numbers
 

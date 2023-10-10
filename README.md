@@ -236,6 +236,12 @@ self.webView.setValue(false, forKey: "drawsBackground")
 
 
 
+### (7) 执行`-[NSObject performSelector:withObject:afterDelay:]`可能没有生效
+
+参考这篇[SO](https://stackoverflow.com/questions/21687774/mac-os-console-application-performselectorwithobjectafterdelay-doesnt-work)，可以换成dispatch_after的方式
+
+
+
 
 
 ## 5、Xcode编译问题

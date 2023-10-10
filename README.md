@@ -254,6 +254,14 @@ self.webView.setValue(false, forKey: "drawsBackground")
 
 
 
+## 6、配置Capability
+
+### (1) 访问Downloads文件夹
+
+在Xcode的Signing & Capabilities > Downloads Folder，选择Read/Write[^7]。在第一次运行app，系统会提示访问。
+
+
+
 
 
 ## References
@@ -267,4 +275,6 @@ self.webView.setValue(false, forKey: "drawsBackground")
 [^5]:https://stackoverflow.com/questions/27211561/transparent-background-wkwebview-nsview
 
 [^6]:https://stackoverflow.com/questions/12161654/restrict-nstextfield-to-only-allow-numbers
+
+[^7]:https://stackoverflow.com/questions/50200377/how-to-create-a-directory-in-downloads-folder-with-swift-on-macos-permission-ex
 

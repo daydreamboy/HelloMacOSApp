@@ -12,11 +12,7 @@ import Sparkle
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var checkForUpdatesItem: NSMenuItem!
-    let updaterController: SPUStandardUpdaterController
-    
-    override init() {
-        self.updaterController = SPUStandardUpdaterController(startingUpdater: true, updaterDelegate: nil, userDriverDelegate: nil)
-    }
+    lazy var updaterController: SPUStandardUpdaterController = SPUStandardUpdaterController(startingUpdater: true, updaterDelegate: nil, userDriverDelegate: nil)
     
     @objc private dynamic var mainWindowControllers: [ NSWindowController ] = []
 

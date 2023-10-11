@@ -28,6 +28,7 @@
 		4F66192C2AD6415000A613D6 /* Demo2WindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Demo2WindowController.xib; sourceTree = "<group>"; };
 		4F66192D2AD6415000A613D6 /* Demo1WindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Demo1WindowController.xib; sourceTree = "<group>"; };
 		4F6619332AD6415800A613D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		4F6619372AD67EC900A613D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9723B50C598CA95ED266DF69 /* Pods-HelloSparkle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloSparkle.release.xcconfig"; path = "Target Support Files/Pods-HelloSparkle/Pods-HelloSparkle.release.xcconfig"; sourceTree = "<group>"; };
 		9EAC98E0D6232528B0543D14 /* Pods-HelloSparkle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloSparkle.debug.xcconfig"; path = "Target Support Files/Pods-HelloSparkle/Pods-HelloSparkle.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -50,7 +51,6 @@
 				9EAC98E0D6232528B0543D14 /* Pods-HelloSparkle.debug.xcconfig */,
 				9723B50C598CA95ED266DF69 /* Pods-HelloSparkle.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -75,6 +75,7 @@
 		4F6619182AD6404300A613D6 /* HelloSparkle */ = {
 			isa = PBXGroup;
 			children = (
+				4F6619372AD67EC900A613D6 /* Info.plist */,
 				4F6619282AD6415000A613D6 /* Classes */,
 				4F66192B2AD6415000A613D6 /* UI */,
 				4F6619192AD6404300A613D6 /* AppDelegate.swift */,
@@ -371,6 +372,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HelloSparkle/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -397,6 +399,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HelloSparkle/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;

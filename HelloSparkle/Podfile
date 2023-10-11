@@ -1,0 +1,7 @@
+source 'https://cdn.cocoapods.org/'
+
+platform :osx, '11.0'
+
+target 'HelloSparkle' do
+  pod 'Sparkle', '2.1.0'
+end

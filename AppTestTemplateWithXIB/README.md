@@ -29,6 +29,6 @@ $ tree .
 几个修改步骤，如下
 
 * 删除Main.storyboard文件，设置INFOPLIST_KEY_UIMainStoryboardFile为空
-* 设置`INFOPLIST_KEY_NSMainNibFile=MainMenu，即设置应用菜单为MainMenu.xib
+* 设置INFOPLIST_KEY_NSMainNibFile=MainMenu，即设置应用菜单为MainMenu.xib
 * 设置INFOPLIST_KEY_NSMainStoryboardFile为空
 

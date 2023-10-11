@@ -6,13 +6,22 @@
 //
 
 import Cocoa
+import Sparkle
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
 
+    @IBOutlet weak var checkForUpdatesItem: NSMenuItem!
+    let updaterController: SPUStandardUpdaterController
+    
+    override init() {
+        self.updaterController = SPUStandardUpdaterController(startingUpdater: true, updaterDelegate: nil, userDriverDelegate: nil)
+    }
+    
     @objc private dynamic var mainWindowControllers: [ NSWindowController ] = []
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        self.setupCheckForUpdates()
         self.newDemo1Document(nil)
     }
 
@@ -22,6 +31,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
         return true
+    }
+    
+    // MARK:
+    func setupCheckForUpdates() -> Void {
+        self.checkForUpdatesItem.target = self.updaterController
+        self.checkForUpdatesItem.action = #selector(SPUStandardUpdaterController.checkForUpdates(_:))
     }
     
     // MARK:

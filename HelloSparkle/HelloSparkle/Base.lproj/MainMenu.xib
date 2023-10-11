@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21701"/>
     </dependencies>
     <objects>
@@ -12,19 +11,26 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="AppTestTemplateWithXIB" customModuleProvider="target"/>
+        <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="HelloSparkle" customModuleProvider="target">
+            <connections>
+                <outlet property="checkForUpdatesItem" destination="cfE-3B-KUD" id="VJu-PT-pzm"/>
+            </connections>
+        </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
-                <menuItem title="AppTestTemplateWithXIB" id="1Xt-HY-uBw">
+                <menuItem title="HelloSparkle" id="1Xt-HY-uBw" userLabel="HelloSparkle">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="AppTestTemplateWithXIB" systemMenu="apple" id="uQy-DD-JDr">
+                    <menu key="submenu" title="HelloSparkle" systemMenu="apple" id="uQy-DD-JDr">
                         <items>
-                            <menuItem title="About AppTestTemplateWithXIB" id="5kV-Vb-QxS">
+                            <menuItem title="About HelloSparkle" id="5kV-Vb-QxS">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="orderFrontStandardAboutPanel:" target="-1" id="Exp-CZ-Vem"/>
                                 </connections>
+                            </menuItem>
+                            <menuItem title="Check For Updates..." id="cfE-3B-KUD">
+                                <modifierMask key="keyEquivalentModifierMask"/>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
                             <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW"/>

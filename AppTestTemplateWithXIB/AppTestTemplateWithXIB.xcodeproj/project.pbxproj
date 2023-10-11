@@ -26,6 +26,7 @@
 		4F485CA12892226C007D9403 /* Demo1WindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Demo1WindowController.xib; sourceTree = "<group>"; };
 		4F485CA4289225B6007D9403 /* Demo2WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Demo2WindowController.swift; sourceTree = "<group>"; };
 		4F485CA5289225B6007D9403 /* Demo2WindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Demo2WindowController.xib; sourceTree = "<group>"; };
+		4F6619352AD6727100A613D6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +63,7 @@
 				4F485C9E2892223C007D9403 /* Classes */,
 				4F485C91289221D0007D9403 /* AppDelegate.swift */,
 				4F485C93289221D2007D9403 /* Assets.xcassets */,
+				4F6619352AD6727100A613D6 /* Info.plist */,
 				4F485C95289221D2007D9403 /* MainMenu.xib */,
 				4F485C98289221D2007D9403 /* AppTestTemplateWithXIB.entitlements */,
 			);
@@ -114,7 +116,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1330;
-				LastUpgradeCheck = 1330;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					4F485C8D289221D0007D9403 = {
 						CreatedOnToolsVersion = 13.3;
@@ -211,6 +213,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -228,7 +231,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -271,6 +274,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -282,7 +286,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -300,7 +304,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
+				DEAD_CODE_STRIPPING = YES;
+				INFOPLIST_FILE = AppTestTemplateWithXIB/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -325,7 +330,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
+				DEAD_CODE_STRIPPING = YES;
+				INFOPLIST_FILE = AppTestTemplateWithXIB/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;

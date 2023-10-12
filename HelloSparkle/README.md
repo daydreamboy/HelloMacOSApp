@@ -85,13 +85,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 ### (3) 配置Info.plist
 
-Sparkle提供一些自定义Key可以配置在Info.plist中，官方文档见：https://sparkle-project.org/documentation/customization/。这里介绍一些必要和常用的key。
+Sparkle提供一些自定义Key可以配置在Info.plist中，官方文档见：https://sparkle-project.org/documentation/customization/。这里介绍一些必填和常用的key。
 
 
 
 #### a. 配置SUPublicEDKey (必填)
 
-EdDSA的公钥，使用generate_keys工具可以生成。
+SUPublicEDKey用于配置EdDSA的公钥，使用generate_keys工具可以生成。
 
 在Pods中找到Sparkle文件夹，如下
 
@@ -111,11 +111,17 @@ updates. It should appear like this:
 
 <img src="images/02_private_key.png" style="zoom:50%; float: left;" />
 
+该私钥的账户是ed25519，执行generate_keys --help命令查看具体用法，可以指定账户。
+
+
+
+#### b. 配置SUFeedURL (必填)
 
 
 
 
-#### b. 配置SUEnableAutomaticChecks (可选)
+
+#### c. 配置SUEnableAutomaticChecks (可选)
 
 不配置SUEnableAutomaticChecks，默认会自动出现一个提示框，让用户选择是否自动检查更新，如下
 
@@ -158,6 +164,32 @@ $ ./generate_keys -x private-key-file
 ```
 
 
+
+### (3) 如何将本地私钥导出，用于其他mac电脑打包
+
+参考官方文档[^2]下面这段话，如下
+
+> Here is an example run of `./bin/generate_keys`:
+>
+> ```
+> A key has been generated and saved in your keychain. Add the `SUPublicEDKey` key to
+> the Info.plist of each app for which you intend to use Sparkle for distributing
+> updates. It should appear like this:
+> 
+>     <key>SUPublicEDKey</key>
+>     <string>pfIShU4dEXqPd5ObYNfDBiQWcXozk7estwzTnF9BamQ=</string>
+> ```
+>
+> You can use the `-x private-key-file` and `-f private-key-file` options to export and import the keys respectively when transferring keys to another Mac. Otherwise we recommend keeping the keys inside your Mac’s keychain. Be sure to keep them safe and not lose them (they will be erased if your keychain or system is erased).
+
+* 使用命令`./bin/generate_keys -x private-key-file`，导出私钥到private-key-file文件中
+* 使用命令`./bin/generate_keys -f private-key-file`，将private-key-file文件的私钥导入到Keychain Access中
+
+
+
+### (4) 如何使用多个公私钥对打包
+
+TODO
 
 
 

@@ -107,6 +107,12 @@ updates. It should appear like this:
     <string>gV2YaGTVamTS2dlFbt0dzuNFNHwHwWEhPnSzX2fzj3A=</string>
 ```
 
+执行上面命令，会自动生成一对公私钥，公钥已经在Terminal中提示，而私钥存在Keychain Access中，如下
+
+<img src="images/02_private_key.png" style="zoom:50%; float: left;" />
+
+
+
 
 
 #### b. 配置SUEnableAutomaticChecks (可选)
@@ -132,6 +138,24 @@ Xcode Console提示，如下
 ```
 
 解决方法：Info.plist缺少SUPublicEDKey，添加这个key
+
+
+
+### (2) 下载更新报错“The update is improperly signed and could not be validated. Please try again later or contact the app developer.”
+
+原因：检查更新包的签名不对
+
+解决方法：检查本地Keychain Access的私钥是否正确，检查该私钥对应的公钥，是否和Info.plist的SUPublicEDKey是否一致。
+
+导出本地私钥和公钥，执行下面命令，如下
+
+```shell
+# 查看公钥
+$ ./generate_keys -p    
+zN8wNUgNoYGew4k6bI/Wzy2PjVg6Z7wb9L7T2yiEDic=
+# 导出私钥文件
+$ ./generate_keys -x private-key-file 
+```
 
 
 

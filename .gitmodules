@@ -1,0 +1,3 @@
+[submodule "HelloSparkle/Sparkle"]
+	path = HelloSparkle/Sparkle
+	url = git@github.com:daydreamboy/Sparkle.git

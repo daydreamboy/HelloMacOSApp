@@ -29,6 +29,7 @@
 		4F66192D2AD6415000A613D6 /* Demo1WindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Demo1WindowController.xib; sourceTree = "<group>"; };
 		4F6619332AD6415800A613D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		4F6619372AD67EC900A613D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4F7B221B2ADACDD40015AE3D /* pack.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = pack.sh; sourceTree = "<group>"; };
 		9723B50C598CA95ED266DF69 /* Pods-HelloSparkle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloSparkle.release.xcconfig"; path = "Target Support Files/Pods-HelloSparkle/Pods-HelloSparkle.release.xcconfig"; sourceTree = "<group>"; };
 		9EAC98E0D6232528B0543D14 /* Pods-HelloSparkle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloSparkle.debug.xcconfig"; path = "Target Support Files/Pods-HelloSparkle/Pods-HelloSparkle.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -82,6 +83,7 @@
 				4F66191D2AD6404600A613D6 /* Assets.xcassets */,
 				4F6619322AD6415800A613D6 /* MainMenu.xib */,
 				4F6619222AD6404700A613D6 /* HelloSparkle.entitlements */,
+				4F7B22192ADACA460015AE3D /* RunScripts */,
 			);
 			path = HelloSparkle;
 			sourceTree = "<group>";
@@ -104,6 +106,14 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
+		4F7B22192ADACA460015AE3D /* RunScripts */ = {
+			isa = PBXGroup;
+			children = (
+				4F7B221B2ADACDD40015AE3D /* pack.sh */,
+			);
+			path = RunScripts;
+			sourceTree = "<group>";
+		};
 		D979AFCA8FF5BE6645538088 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +134,7 @@
 				4F6619132AD6404300A613D6 /* Frameworks */,
 				4F6619142AD6404300A613D6 /* Resources */,
 				CDADA166BB2B11886891D022 /* [CP] Embed Pods Frameworks */,
+				4F7B221A2ADACDAA0015AE3D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -182,6 +193,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		4F7B221A2ADACDAA0015AE3D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bash \"${PROJECT_DIR}/HelloSparkle/RunScripts/pack.sh\"\n";
+		};
 		CDADA166BB2B11886891D022 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -371,7 +399,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HelloSparkle/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
@@ -398,7 +425,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HelloSparkle/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;

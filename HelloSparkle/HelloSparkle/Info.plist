@@ -2,11 +2,37 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>SUPublicEDKey</key>
-	<string>gV2YaGTVamTS2dlFbt0dzuNFNHwHwWEhPnSzX2fzj3A=</string>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundlePackageType</key>
+	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
+	<key>CFBundleShortVersionString</key>
+	<string>$(MARKETING_VERSION)</string>
+	<key>CFBundleVersion</key>
+	<string>20231014/22:10:16</string>
+	<key>NSHumanReadableCopyright</key>
+	<string></string>
+	<key>NSMainNibFile</key>
+	<string>MainMenu</string>
+	<key>NSMainStoryboardFile</key>
+	<string></string>
+	<key>NSPrincipalClass</key>
+	<string>NSApplication</string>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
 	<key>SUFeedURL</key>
-	<string>https://github.com/daydreamboy/HelloMacOSApp/raw/master/downloads/appcast.xml</string>
+	<string>https://raw.githubusercontent.com/daydreamboy/HelloMacOSApp/master/downloads/appcast.xml</string>
+	<key>SUPublicEDKey</key>
+	<string>MhfHFaB0dpZSR53yn7AkkZpk8U4w8xKdsN+FNkkYy/s=</string>
 </dict>
 </plist>

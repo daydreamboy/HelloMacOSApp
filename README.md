@@ -133,12 +133,6 @@ someTextField.formatter = IntegerFormatter()
 
 ### (1) MacOS app无法访问网络
 
-新建的MacOS app工程，没有Info.plist文件可以设置，在App Sandbox设置[^1]，如下
-
-<img src="images/01_turn_on_network.png" style="zoom:50%; float: left" />
-
-
-
 Console报错提示，如下
 
 ```
@@ -147,7 +141,12 @@ networkd_settings_read_from_file Sandbox is preventing this process from reading
 
 
 
-https://www.jianshu.com/p/d7e96597bd1f
+新建的MacOS app工程，没有Info.plist文件可以设置，在App Sandbox设置[^1]，如下
+
+<img src="images/01_turn_on_network.png" style="zoom:50%; float: left" />
+
+* 勾选Incoming Connections或Outgoing Connections[^8]
+* 设置Allow Arbitrary Loads为YES
 
 
 
@@ -262,8 +261,6 @@ self.webView.setValue(false, forKey: "drawsBackground")
 
 
 
-
-
 ## References
 
 [^1]:https://stackoverflow.com/a/57292829
@@ -277,4 +274,6 @@ self.webView.setValue(false, forKey: "drawsBackground")
 [^6]:https://stackoverflow.com/questions/12161654/restrict-nstextfield-to-only-allow-numbers
 
 [^7]:https://stackoverflow.com/questions/50200377/how-to-create-a-directory-in-downloads-folder-with-swift-on-macos-permission-ex
+
+[^8]:https://www.jianshu.com/p/d7e96597bd1f
 

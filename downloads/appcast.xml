@@ -1,5 +1,14 @@
 <?xml version="1.0" standalone="yes"?>
 <rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
     <channel>
+        <title>HelloSparkle</title>
+        <item>
+            <title>1.1</title>
+            <pubDate>Sun, 15 Oct 2023 17:26:06 +0800</pubDate>
+            <sparkle:version>20231015/17:10:49</sparkle:version>
+            <sparkle:shortVersionString>1.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>13.3</sparkle:minimumSystemVersion>
+            <enclosure url="https://raw.githubusercontent.com/daydreamboy/HelloMacOSApp/master/downloads/HelloSparkle.zip" length="4360255" type="application/octet-stream" sparkle:edSignature="5e2PMVywXw2cdJCEutTfXD9UwCfh2bp+ATRdSoYpfS1Aaxk8uZiJ8W9zV2C+u5bMC0CMMrGNtGooC7Pr8wi/CA=="/>
+        </item>
     </channel>
 </rss>

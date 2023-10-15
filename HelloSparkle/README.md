@@ -135,7 +135,23 @@ SUFeedURL用于配置url地址，类似https://yourcompany.example.com/appcast.x
 
 
 
-### (4) 发布app包和appcast.xml
+### (4) 配置app网络权限
+
+如果没有配置网络权限，Sparkle请求更新包，Xcode console会报错，如下
+
+```shell
+2023-10-14 20:21:36.569610+0800 HelloSparkle[11859:115522] [] networkd_settings_read_from_file Sandbox is preventing this process from reading networkd settings file at "/Library/Preferences/com.apple.networkd.plist", please add an exception.
+...
+2023-10-14 20:21:36.655234+0800 HelloSparkle[11859:116170] Task <4772EE64-CAB2-45D6-B4C0-7B58804A085B>.<1> finished with error [-1003] Error Domain=NSURLErrorDomain Code=-1003 "A server with the specified hostname could not be found." UserInfo={_kCFStreamErrorCodeKey=-72000, NSUnderlyingError=0x600000074030 {Error Domain=kCFErrorDomainCFNetwork Code=-1003 "(null)" UserInfo={_NSURLErrorNWPathKey=satisfied (Path is satisfied), interface: en0[802.11], ipv4, ipv6, dns, _kCFStreamErrorCodeKey=-72000, _kCFStreamErrorDomainKey=10}}, _NSURLErrorFailingURLSessionTaskErrorKey=LocalDownloadTask <4772EE64-CAB2-45D6-B4C0-7B58804A085B>.<1>, _NSURLErrorRelatedURLSessionTaskErrorKey=(
+    "LocalDownloadTask <4772EE64-CAB2-45D6-B4C0-7B58804A085B>.<1>"
+), NSLocalizedDescription=A server with the specified hostname could not be found., NSErrorFailingURLStringKey=https://raw.githubusercontent.com/daydreamboy/HelloMacOSApp/master/downloads/appcast.xml, NSErrorFailingURLKey=https://raw.githubusercontent.com/daydreamboy/HelloMacOSApp/master/downloads/appcast.xml, _kCFStreamErrorDomainKey=10}
+```
+
+解决方法：在Xcode的Signing & Capabilities > App Sandbox中勾选Outgoing Connection (Client)
+
+
+
+### (5) 发布app包和appcast.xml
 
 Sparkle支持下面几种形式发布app，如下
 
@@ -150,27 +166,30 @@ Sparkle推荐使用zip包或者tarball
 
 > Sparkle supports updating from ZIP archives, tarballs, disk images (DMGs), and installer packages. While you can reuse the same archive for distribution of your app on your website, we recommend serving ZIPs or tarballs (e.g. tar.xz) for updates because they are the fastest and most reliable formats for Sparkle.
 
-这里以发布zip包为例。
+这里以发布zip包为例。执行下面几个步骤
 
+* 使用Xcode编译Release版本的app。有几种方式
+  * 使用xcodebuild archive和xcodebuild -exportArchive，导出一个`.app`包
+  * 直接编译`.app`包
 
+* 将`.app`放入单独的文件夹，然后压缩这个文件夹
+  * 注意这个文件夹，下面除了`.app`不能有其他文件和文件夹
+* 使用`"Pods/Sparkle/bin/generate_appcast "path/to/Update`
+  * Update文件夹仅包含一个zip文件
+  * 添加`--account`参数，可以指定用哪个私钥
+  * 执行成功后，Update文件夹会多出一个appcast.xml文件
+* 将zip和xml上传到可供下载的地方
 
+可以使用脚本自动化完整上面的步骤。有2种方式
 
+* 使用独立的脚本
+* 使用Xcode的Run Script脚本
 
+这里使用第二种方式，见HelloSparkle/HelloSparkle/RunScripts/pack.sh脚本。
 
+如果当前app的版本低于appcast.xml中的版本，则在app检查更新（自动检查或者手动检查）后，会自动弹出下面提示，如下
 
-### (5) 配置app网络权限
-
-如果没有配置网络权限，Sparkle请求更新包，Xcode console会报错，如下
-
-```shell
-2023-10-14 20:21:36.569610+0800 HelloSparkle[11859:115522] [] networkd_settings_read_from_file Sandbox is preventing this process from reading networkd settings file at "/Library/Preferences/com.apple.networkd.plist", please add an exception.
-...
-2023-10-14 20:21:36.655234+0800 HelloSparkle[11859:116170] Task <4772EE64-CAB2-45D6-B4C0-7B58804A085B>.<1> finished with error [-1003] Error Domain=NSURLErrorDomain Code=-1003 "A server with the specified hostname could not be found." UserInfo={_kCFStreamErrorCodeKey=-72000, NSUnderlyingError=0x600000074030 {Error Domain=kCFErrorDomainCFNetwork Code=-1003 "(null)" UserInfo={_NSURLErrorNWPathKey=satisfied (Path is satisfied), interface: en0[802.11], ipv4, ipv6, dns, _kCFStreamErrorCodeKey=-72000, _kCFStreamErrorDomainKey=10}}, _NSURLErrorFailingURLSessionTaskErrorKey=LocalDownloadTask <4772EE64-CAB2-45D6-B4C0-7B58804A085B>.<1>, _NSURLErrorRelatedURLSessionTaskErrorKey=(
-    "LocalDownloadTask <4772EE64-CAB2-45D6-B4C0-7B58804A085B>.<1>"
-), NSLocalizedDescription=A server with the specified hostname could not be found., NSErrorFailingURLStringKey=https://raw.githubusercontent.com/daydreamboy/HelloMacOSApp/master/downloads/appcast.xml, NSErrorFailingURLKey=https://raw.githubusercontent.com/daydreamboy/HelloMacOSApp/master/downloads/appcast.xml, _kCFStreamErrorDomainKey=10}
-```
-
-解决方法：在Xcode的Signing & Capabilities > App Sandbox中勾选Outgoing Connection (Client)
+![](images/03_update_prompt.png)
 
 
 
@@ -230,7 +249,9 @@ $ ./generate_keys -x private-key-file
 
 ### (4) 如何使用多个公私钥对打包
 
-TODO
+如果有多个app打包的需求，可以使用账户来隔离多个公私钥对。使用`--account`参数。
+
+* 生成公私钥对，如下
 
 ```shell
 ./bin/generate_keys --account HelloSparkle 
@@ -243,11 +264,35 @@ updates. It should appear like this:
     <string>MhfHFaB0dpZSR53yn7AkkZpk8U4w8xKdsN+FNkkYy/s=</string>
 ```
 
+* 使用私钥，如下
+
+```shell
+"${PROJECT_DIR}"/Pods/Sparkle/bin/generate_appcast "${PROJECT_DIR}"/${package_folder}/Update --account ${account_name}
+```
+
 
 
 ### (5) 如何设置每次app启动检查更新
 
+在app启动之前，删除UserDefaults中的SULastCheckTime，这样每次app启动都会检查更新。
 
+示例代码，如下
+
+```swift
+func applicationWillFinishLaunching(_ notification: Notification) {
+    UserDefaults.standard.removeObject(forKey: "SULastCheckTime")
+}
+```
+
+参考官方文档描述[^2]，如下
+
+> To test automatic update checks immediately, run `defaults delete my-bundle-id SULastCheckTime` to clear the last update check time before launching the app.
+
+
+
+## (6) Sparkle更新失败
+
+解决方法：打开Console，过滤Process和Error，查看报错日志。
 
 
 

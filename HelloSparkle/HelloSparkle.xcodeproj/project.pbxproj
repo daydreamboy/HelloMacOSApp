@@ -32,6 +32,7 @@
 		4F7B221B2ADACDD40015AE3D /* pack.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = pack.sh; sourceTree = "<group>"; };
 		9723B50C598CA95ED266DF69 /* Pods-HelloSparkle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloSparkle.release.xcconfig"; path = "Target Support Files/Pods-HelloSparkle/Pods-HelloSparkle.release.xcconfig"; sourceTree = "<group>"; };
 		9EAC98E0D6232528B0543D14 /* Pods-HelloSparkle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloSparkle.debug.xcconfig"; path = "Target Support Files/Pods-HelloSparkle/Pods-HelloSparkle.debug.xcconfig"; sourceTree = "<group>"; };
+		BBA548418D64680C02746497 /* Pods-HelloSparkle.packaging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloSparkle.packaging.xcconfig"; path = "Target Support Files/Pods-HelloSparkle/Pods-HelloSparkle.packaging.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +52,7 @@
 			children = (
 				9EAC98E0D6232528B0543D14 /* Pods-HelloSparkle.debug.xcconfig */,
 				9723B50C598CA95ED266DF69 /* Pods-HelloSparkle.release.xcconfig */,
+				BBA548418D64680C02746497 /* Pods-HelloSparkle.packaging.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -399,6 +401,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = U7337LU6F2;
 				INFOPLIST_FILE = HelloSparkle/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
@@ -425,6 +428,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = U7337LU6F2;
 				INFOPLIST_FILE = HelloSparkle/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
@@ -496,7 +500,7 @@
 		};
 		4F7B221D2ADADC110015AE3D /* Packaging */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9723B50C598CA95ED266DF69 /* Pods-HelloSparkle.release.xcconfig */;
+			baseConfigurationReference = BBA548418D64680C02746497 /* Pods-HelloSparkle.packaging.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -504,6 +508,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = U7337LU6F2;
 				INFOPLIST_FILE = HelloSparkle/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;

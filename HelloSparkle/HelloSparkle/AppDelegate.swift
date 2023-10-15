@@ -15,6 +15,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     lazy var updaterController: SPUStandardUpdaterController = SPUStandardUpdaterController(startingUpdater: true, updaterDelegate: nil, userDriverDelegate: nil)
     
     @objc private dynamic var mainWindowControllers: [ NSWindowController ] = []
+    
+    func applicationWillFinishLaunching(_ notification: Notification) {
+        UserDefaults.standard.removeObject(forKey: "SULastCheckTime")
+    }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         self.setupCheckForUpdates()

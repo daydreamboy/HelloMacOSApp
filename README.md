@@ -261,6 +261,18 @@ self.webView.setValue(false, forKey: "drawsBackground")
 
 
 
+## 7、App异常
+
+### (1) 系统Crash Report位置
+
+```
+~/Library/Logs/DiagnosticReports
+```
+
+
+
+
+
 ## References
 
 [^1]:https://stackoverflow.com/a/57292829

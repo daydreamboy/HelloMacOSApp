@@ -290,7 +290,7 @@ func applicationWillFinishLaunching(_ notification: Notification) {
 
 
 
-## (6) Sparkle更新失败
+### (6) Sparkle更新失败
 
 解决方法：打开Console，过滤Process和Error，查看报错日志。
 

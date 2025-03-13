@@ -271,6 +271,19 @@ self.webView.setValue(false, forKey: "drawsBackground")
 
 
 
+## 8、macOS系统构建号
+
+官方网址：https://developer.apple.com/news/releases/
+
+| 系统版本             | 说明 |
+| -------------------- | ---- |
+| macOS 15.3.2 (24D81) |      |
+| macOS 15.3.1 (24D70) |      |
+
+
+
+
+
 
 
 ## References
